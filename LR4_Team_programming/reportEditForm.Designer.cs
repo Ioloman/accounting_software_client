@@ -42,20 +42,20 @@ namespace LR4_Team_programming
             this.reportLowestDate = new System.Windows.Forms.DateTimePicker();
             this.reportHighestDateLabel = new System.Windows.Forms.Label();
             this.reportLowestDateLabel = new System.Windows.Forms.Label();
-            this.reportPanel = new System.Windows.Forms.Panel();
+            this.reportEditPanel = new System.Windows.Forms.Panel();
             this.departmentSearch = new System.Windows.Forms.GroupBox();
+            this.senderDepSelector = new System.Windows.Forms.CheckBox();
             this.senderDepLabel = new System.Windows.Forms.Label();
             this.senderDep = new System.Windows.Forms.TextBox();
             this.numberSearch = new System.Windows.Forms.GroupBox();
+            this.documentNumberSelector = new System.Windows.Forms.CheckBox();
             this.reportNumberLabel = new System.Windows.Forms.Label();
             this.reportNumber = new System.Windows.Forms.TextBox();
             this.Head = new System.Windows.Forms.GroupBox();
             this.reportLabel = new System.Windows.Forms.Label();
-            this.documentNumberSelector = new System.Windows.Forms.CheckBox();
-            this.senderDepSelector = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.reportsGrid)).BeginInit();
             this.reportDateFilter.SuspendLayout();
-            this.reportPanel.SuspendLayout();
+            this.reportEditPanel.SuspendLayout();
             this.departmentSearch.SuspendLayout();
             this.numberSearch.SuspendLayout();
             this.Head.SuspendLayout();
@@ -72,7 +72,7 @@ namespace LR4_Team_programming
             this.reportsGrid.Location = new System.Drawing.Point(20, 309);
             this.reportsGrid.Name = "reportsGrid";
             this.reportsGrid.RowHeadersWidth = 51;
-            this.reportsGrid.Size = new System.Drawing.Size(1031, 293);
+            this.reportsGrid.Size = new System.Drawing.Size(800, 334);
             this.reportsGrid.TabIndex = 1;
             // 
             // documentNumberColoumn
@@ -187,29 +187,38 @@ namespace LR4_Team_programming
             this.reportLowestDateLabel.TabIndex = 7;
             this.reportLowestDateLabel.Text = "нижняя дата";
             // 
-            // reportPanel
+            // reportEditPanel
             // 
-            this.reportPanel.Controls.Add(this.departmentSearch);
-            this.reportPanel.Controls.Add(this.numberSearch);
-            this.reportPanel.Controls.Add(this.Head);
-            this.reportPanel.Controls.Add(this.reportsGrid);
-            this.reportPanel.Controls.Add(this.reportDateFilter);
-            this.reportPanel.Location = new System.Drawing.Point(17, 12);
-            this.reportPanel.Name = "reportPanel";
-            this.reportPanel.Size = new System.Drawing.Size(1070, 654);
-            this.reportPanel.TabIndex = 11;
+            this.reportEditPanel.Controls.Add(this.departmentSearch);
+            this.reportEditPanel.Controls.Add(this.numberSearch);
+            this.reportEditPanel.Controls.Add(this.Head);
+            this.reportEditPanel.Controls.Add(this.reportsGrid);
+            this.reportEditPanel.Controls.Add(this.reportDateFilter);
+            this.reportEditPanel.Location = new System.Drawing.Point(17, 12);
+            this.reportEditPanel.Name = "reportEditPanel";
+            this.reportEditPanel.Size = new System.Drawing.Size(835, 690);
+            this.reportEditPanel.TabIndex = 11;
             // 
             // departmentSearch
             // 
             this.departmentSearch.Controls.Add(this.senderDepSelector);
             this.departmentSearch.Controls.Add(this.senderDepLabel);
             this.departmentSearch.Controls.Add(this.senderDep);
-            this.departmentSearch.Location = new System.Drawing.Point(467, 203);
+            this.departmentSearch.Location = new System.Drawing.Point(440, 203);
             this.departmentSearch.Name = "departmentSearch";
             this.departmentSearch.Size = new System.Drawing.Size(380, 76);
             this.departmentSearch.TabIndex = 11;
             this.departmentSearch.TabStop = false;
             this.departmentSearch.Text = "поиск по цеху";
+            // 
+            // senderDepSelector
+            // 
+            this.senderDepSelector.AutoSize = true;
+            this.senderDepSelector.Location = new System.Drawing.Point(343, 42);
+            this.senderDepSelector.Name = "senderDepSelector";
+            this.senderDepSelector.Size = new System.Drawing.Size(18, 17);
+            this.senderDepSelector.TabIndex = 15;
+            this.senderDepSelector.UseVisualStyleBackColor = true;
             // 
             // senderDepLabel
             // 
@@ -232,12 +241,21 @@ namespace LR4_Team_programming
             this.numberSearch.Controls.Add(this.documentNumberSelector);
             this.numberSearch.Controls.Add(this.reportNumberLabel);
             this.numberSearch.Controls.Add(this.reportNumber);
-            this.numberSearch.Location = new System.Drawing.Point(467, 107);
+            this.numberSearch.Location = new System.Drawing.Point(440, 107);
             this.numberSearch.Name = "numberSearch";
             this.numberSearch.Size = new System.Drawing.Size(380, 76);
             this.numberSearch.TabIndex = 10;
             this.numberSearch.TabStop = false;
             this.numberSearch.Text = "поиск по номеру документа";
+            // 
+            // documentNumberSelector
+            // 
+            this.documentNumberSelector.AutoSize = true;
+            this.documentNumberSelector.Location = new System.Drawing.Point(343, 36);
+            this.documentNumberSelector.Name = "documentNumberSelector";
+            this.documentNumberSelector.Size = new System.Drawing.Size(18, 17);
+            this.documentNumberSelector.TabIndex = 14;
+            this.documentNumberSelector.UseVisualStyleBackColor = true;
             // 
             // reportNumberLabel
             // 
@@ -260,7 +278,7 @@ namespace LR4_Team_programming
             this.Head.Controls.Add(this.reportLabel);
             this.Head.Location = new System.Drawing.Point(20, 10);
             this.Head.Name = "Head";
-            this.Head.Size = new System.Drawing.Size(1031, 69);
+            this.Head.Size = new System.Drawing.Size(808, 69);
             this.Head.TabIndex = 10;
             this.Head.TabStop = false;
             // 
@@ -268,44 +286,26 @@ namespace LR4_Team_programming
             // 
             this.reportLabel.AutoSize = true;
             this.reportLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.reportLabel.Location = new System.Drawing.Point(329, 23);
+            this.reportLabel.Location = new System.Drawing.Point(204, 23);
             this.reportLabel.Name = "reportLabel";
             this.reportLabel.Size = new System.Drawing.Size(384, 32);
             this.reportLabel.TabIndex = 0;
             this.reportLabel.Text = "РАПОРТА СДАЧИ ПРОДУКЦИИ";
             this.reportLabel.Click += new System.EventHandler(this.reportLabel_Click);
             // 
-            // documentNumberSelector
-            // 
-            this.documentNumberSelector.AutoSize = true;
-            this.documentNumberSelector.Location = new System.Drawing.Point(343, 36);
-            this.documentNumberSelector.Name = "documentNumberSelector";
-            this.documentNumberSelector.Size = new System.Drawing.Size(18, 17);
-            this.documentNumberSelector.TabIndex = 14;
-            this.documentNumberSelector.UseVisualStyleBackColor = true;
-            // 
-            // senderDepSelector
-            // 
-            this.senderDepSelector.AutoSize = true;
-            this.senderDepSelector.Location = new System.Drawing.Point(343, 42);
-            this.senderDepSelector.Name = "senderDepSelector";
-            this.senderDepSelector.Size = new System.Drawing.Size(18, 17);
-            this.senderDepSelector.TabIndex = 15;
-            this.senderDepSelector.UseVisualStyleBackColor = true;
-            // 
             // reportEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 678);
-            this.Controls.Add(this.reportPanel);
+            this.ClientSize = new System.Drawing.Size(1304, 678);
+            this.Controls.Add(this.reportEditPanel);
             this.Name = "reportEditForm";
             this.Text = "report";
             this.Load += new System.EventHandler(this.report_Load);
             ((System.ComponentModel.ISupportInitialize)(this.reportsGrid)).EndInit();
             this.reportDateFilter.ResumeLayout(false);
             this.reportDateFilter.PerformLayout();
-            this.reportPanel.ResumeLayout(false);
+            this.reportEditPanel.ResumeLayout(false);
             this.departmentSearch.ResumeLayout(false);
             this.departmentSearch.PerformLayout();
             this.numberSearch.ResumeLayout(false);
@@ -322,7 +322,7 @@ namespace LR4_Team_programming
         private System.Windows.Forms.Label reportDateLabel;
         private System.Windows.Forms.GroupBox reportDateFilter;
         private System.Windows.Forms.Label reportHighestDateLabel;
-        private System.Windows.Forms.Panel reportPanel;
+        private System.Windows.Forms.Panel reportEditPanel;
         private System.Windows.Forms.GroupBox Head;
         private System.Windows.Forms.Label reportLabel;
         private System.Windows.Forms.DateTimePicker reportLowestDate;

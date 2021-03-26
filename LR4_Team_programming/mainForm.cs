@@ -22,20 +22,21 @@ namespace LR4_Team_programming
         public mainForm()
         {
             InitializeComponent();
+            //reportEditPanel
             reportEditForm reportEditForm = new reportEditForm();
             reportEditForm.Show();
-            inventarizationReportCreatePanel.Location = 
+            reportEditPanel.Location = 
                 reportPanel.Location = 
                 inventarizationPanel.Location = 
                 editAndLookVedomost.Location = locationPanels;
 
-            inventarizationReportCreatePanel.Size = 
+            reportEditPanel.Size = 
                 reportPanel.Size = 
                 inventarizationPanel.Size = 
                 editAndLookVedomost.Size = sizePanels;
 
 
-            inventarizationReportCreatePanel.Visible = false;
+            reportEditPanel.Visible = false;
             reportPanel.Visible = false;
             inventarizationPanel.Visible = false;
             editAndLookVedomost.Visible = false;
@@ -46,17 +47,16 @@ namespace LR4_Team_programming
                 {menuTree.Nodes[0].Nodes[1],  editAndLookVedomost },
 
                 {menuTree.Nodes[1].Nodes[0],  reportPanel},
-                {menuTree.Nodes[1].Nodes[1],  inventarizationReportCreatePanel}
+                {menuTree.Nodes[1].Nodes[1],  reportEditPanel}
             };
             panels = new List<Panel>()
             {
                 inventarizationPanel,
                 editAndLookVedomost,
                 reportPanel,
-                inventarizationReportCreatePanel
+                reportEditPanel
 
             };
-            int f = 0;
         }
     
         private void senderDep_TextChanged(object sender, EventArgs e)
