@@ -539,7 +539,7 @@ namespace LR4_Team_programming
         private System.Windows.Forms.TextBox senderDep;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
+        //private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
