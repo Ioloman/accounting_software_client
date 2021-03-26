@@ -40,13 +40,15 @@ namespace LR4_Team_programming
             this.dateLabel = new System.Windows.Forms.Label();
             this.senderLabel = new System.Windows.Forms.Label();
             this.reportInfo1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.reciverLabel = new System.Windows.Forms.Label();
             this.reciverDep = new System.Windows.Forms.TextBox();
-            this.reportHeader = new System.Windows.Forms.GroupBox();
+            this.reciverLabel = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Head = new System.Windows.Forms.GroupBox();
+            this.RaportPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
             this.reportInfo1.SuspendLayout();
-            this.reportHeader.SuspendLayout();
+            this.Head.SuspendLayout();
+            this.RaportPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // reportLabel
@@ -68,7 +70,7 @@ namespace LR4_Team_programming
             this.productName,
             this.okpCode,
             this.amount});
-            this.productsGrid.Location = new System.Drawing.Point(12, 290);
+            this.productsGrid.Location = new System.Drawing.Point(20, 309);
             this.productsGrid.Name = "productsGrid";
             this.productsGrid.RowHeadersWidth = 51;
             this.productsGrid.Size = new System.Drawing.Size(1031, 293);
@@ -145,18 +147,18 @@ namespace LR4_Team_programming
             this.reportInfo1.Controls.Add(this.senderLabel);
             this.reportInfo1.Controls.Add(this.senderDep);
             this.reportInfo1.Controls.Add(this.dateLabel);
-            this.reportInfo1.Location = new System.Drawing.Point(12, 88);
+            this.reportInfo1.Location = new System.Drawing.Point(20, 107);
             this.reportInfo1.Name = "reportInfo1";
             this.reportInfo1.Size = new System.Drawing.Size(380, 172);
             this.reportInfo1.TabIndex = 8;
             this.reportInfo1.TabStop = false;
             // 
-            // textBox2
+            // reciverDep
             // 
-            this.textBox2.Location = new System.Drawing.Point(386, 28);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(138, 27);
-            this.textBox2.TabIndex = 9;
+            this.reciverDep.Location = new System.Drawing.Point(145, 115);
+            this.reciverDep.Name = "reciverDep";
+            this.reciverDep.Size = new System.Drawing.Size(180, 27);
+            this.reciverDep.TabIndex = 9;
             // 
             // reciverLabel
             // 
@@ -167,40 +169,49 @@ namespace LR4_Team_programming
             this.reciverLabel.TabIndex = 8;
             this.reciverLabel.Text = "цех-получатель";
             // 
-            // reciverDep
+            // textBox2
             // 
-            this.reciverDep.Location = new System.Drawing.Point(145, 115);
-            this.reciverDep.Name = "reciverDep";
-            this.reciverDep.Size = new System.Drawing.Size(180, 27);
-            this.reciverDep.TabIndex = 9;
+            this.textBox2.Location = new System.Drawing.Point(386, 28);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(138, 27);
+            this.textBox2.TabIndex = 9;
             // 
-            // reportHeader
+            // Head
             // 
-            this.reportHeader.Controls.Add(this.anotherReportLabel);
-            this.reportHeader.Controls.Add(this.textBox2);
-            this.reportHeader.Controls.Add(this.reportLabel);
-            this.reportHeader.Location = new System.Drawing.Point(12, 2);
-            this.reportHeader.Name = "reportHeader";
-            this.reportHeader.Size = new System.Drawing.Size(1031, 69);
-            this.reportHeader.TabIndex = 10;
-            this.reportHeader.TabStop = false;
+            this.Head.Controls.Add(this.anotherReportLabel);
+            this.Head.Controls.Add(this.textBox2);
+            this.Head.Controls.Add(this.reportLabel);
+            this.Head.Location = new System.Drawing.Point(20, 10);
+            this.Head.Name = "Head";
+            this.Head.Size = new System.Drawing.Size(1031, 69);
+            this.Head.TabIndex = 10;
+            this.Head.TabStop = false;
+            // 
+            // RaportPanel
+            // 
+            this.RaportPanel.Controls.Add(this.Head);
+            this.RaportPanel.Controls.Add(this.productsGrid);
+            this.RaportPanel.Controls.Add(this.reportInfo1);
+            this.RaportPanel.Location = new System.Drawing.Point(17, 39);
+            this.RaportPanel.Name = "RaportPanel";
+            this.RaportPanel.Size = new System.Drawing.Size(1070, 654);
+            this.RaportPanel.TabIndex = 11;
             // 
             // report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 595);
-            this.Controls.Add(this.reportHeader);
-            this.Controls.Add(this.reportInfo1);
-            this.Controls.Add(this.productsGrid);
+            this.ClientSize = new System.Drawing.Size(1099, 678);
+            this.Controls.Add(this.RaportPanel);
             this.Name = "report";
             this.Text = "report";
             this.Load += new System.EventHandler(this.report_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).EndInit();
             this.reportInfo1.ResumeLayout(false);
             this.reportInfo1.PerformLayout();
-            this.reportHeader.ResumeLayout(false);
-            this.reportHeader.PerformLayout();
+            this.Head.ResumeLayout(false);
+            this.Head.PerformLayout();
+            this.RaportPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -221,6 +232,7 @@ namespace LR4_Team_programming
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox reciverDep;
         private System.Windows.Forms.Label reciverLabel;
-        private System.Windows.Forms.GroupBox reportHeader;
+        private System.Windows.Forms.GroupBox Head;
+        private System.Windows.Forms.Panel RaportPanel;
     }
 }

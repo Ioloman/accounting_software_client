@@ -93,6 +93,7 @@ namespace LR4_Team_programming
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeight = 29;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewComboBoxColumn1,
@@ -188,7 +189,6 @@ namespace LR4_Team_programming
             this.dataGridViewComboBoxColumn1.HeaderText = "Название детали";
             this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
             this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            this.dataGridViewComboBoxColumn1.Width = 125;
             // 
             // dataGridViewComboBoxColumn2
             // 
@@ -197,7 +197,6 @@ namespace LR4_Team_programming
             this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
             this.dataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewComboBoxColumn2.Width = 125;
             // 
             // Column4
             // 
@@ -206,7 +205,6 @@ namespace LR4_Team_programming
             this.Column4.Name = "Column4";
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column4.Width = 125;
             // 
             // InventoryStatementForm
             // 
