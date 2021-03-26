@@ -34,7 +34,7 @@ namespace LR4_Team_programming
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ведомость инвентаризации", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Создать");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Создание");
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Просмотр и редактирование");
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Рапорта о выполнении", new System.Windows.Forms.TreeNode[] {
             treeNode4,
@@ -81,6 +81,18 @@ namespace LR4_Team_programming
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.inventarizationPanel = new System.Windows.Forms.Panel();
+            this.editAndLookVedomost = new System.Windows.Forms.Panel();
+            this.inventarizationTable = new System.Windows.Forms.DataGridView();
+            this.documentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateCreateDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inventarizationSearchPanel = new System.Windows.Forms.GroupBox();
+            this.finishDateSearch = new System.Windows.Forms.DateTimePicker();
+            this.finishDateSearchLabel = new System.Windows.Forms.Label();
+            this.startDateSearch = new System.Windows.Forms.DateTimePicker();
+            this.startDateSearchLabel = new System.Windows.Forms.Label();
+            this.inventarizationHeader = new System.Windows.Forms.Label();
+            this.detailName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inventarizationReportCreatePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -90,6 +102,9 @@ namespace LR4_Team_programming
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
             this.reportInfo1.SuspendLayout();
             this.inventarizationPanel.SuspendLayout();
+            this.editAndLookVedomost.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).BeginInit();
+            this.inventarizationSearchPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuTree
@@ -109,7 +124,7 @@ namespace LR4_Team_programming
             treeNode3.Text = "Ведомость инвентаризации";
             treeNode4.ImageIndex = 1;
             treeNode4.Name = "createReportNode";
-            treeNode4.Text = "Создать";
+            treeNode4.Text = "Создание";
             treeNode5.ImageIndex = 2;
             treeNode5.Name = "reportModifyNode";
             treeNode5.Text = "Просмотр и редактирование";
@@ -156,7 +171,7 @@ namespace LR4_Team_programming
             this.inventarizationReportCreatePanel.Controls.Add(this.dataGridView2);
             this.inventarizationReportCreatePanel.Controls.Add(this.comboBox1);
             this.inventarizationReportCreatePanel.Controls.Add(this.dateOfReport);
-            this.inventarizationReportCreatePanel.Location = new System.Drawing.Point(371, 12);
+            this.inventarizationReportCreatePanel.Location = new System.Drawing.Point(946, 163);
             this.inventarizationReportCreatePanel.Name = "inventarizationReportCreatePanel";
             this.inventarizationReportCreatePanel.Size = new System.Drawing.Size(835, 690);
             this.inventarizationReportCreatePanel.TabIndex = 5;
@@ -164,7 +179,11 @@ namespace LR4_Team_programming
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.detailName,
+            this.codeDetail});
             this.dataGridView2.Location = new System.Drawing.Point(14, 63);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
@@ -332,7 +351,7 @@ namespace LR4_Team_programming
             this.reportPanel.Controls.Add(this.Head);
             this.reportPanel.Controls.Add(this.productsGrid);
             this.reportPanel.Controls.Add(this.reportInfo1);
-            this.reportPanel.Location = new System.Drawing.Point(640, 284);
+            this.reportPanel.Location = new System.Drawing.Point(853, 272);
             this.reportPanel.Name = "reportPanel";
             this.reportPanel.Size = new System.Drawing.Size(835, 690);
             this.reportPanel.TabIndex = 12;
@@ -477,16 +496,126 @@ namespace LR4_Team_programming
             this.inventarizationPanel.Controls.Add(this.groupBox3);
             this.inventarizationPanel.Controls.Add(this.label1);
             this.inventarizationPanel.Controls.Add(this.dataGridView3);
-            this.inventarizationPanel.Location = new System.Drawing.Point(392, 374);
+            this.inventarizationPanel.Location = new System.Drawing.Point(768, 379);
             this.inventarizationPanel.Name = "inventarizationPanel";
             this.inventarizationPanel.Size = new System.Drawing.Size(835, 690);
             this.inventarizationPanel.TabIndex = 13;
+            // 
+            // editAndLookVedomost
+            // 
+            this.editAndLookVedomost.Controls.Add(this.inventarizationTable);
+            this.editAndLookVedomost.Controls.Add(this.inventarizationSearchPanel);
+            this.editAndLookVedomost.Controls.Add(this.inventarizationHeader);
+            this.editAndLookVedomost.Location = new System.Drawing.Point(1030, 72);
+            this.editAndLookVedomost.Name = "editAndLookVedomost";
+            this.editAndLookVedomost.Size = new System.Drawing.Size(835, 690);
+            this.editAndLookVedomost.TabIndex = 16;
+            // 
+            // inventarizationTable
+            // 
+            this.inventarizationTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.inventarizationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.inventarizationTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.documentNumber,
+            this.dateCreateDocument});
+            this.inventarizationTable.Location = new System.Drawing.Point(29, 168);
+            this.inventarizationTable.Name = "inventarizationTable";
+            this.inventarizationTable.RowHeadersWidth = 51;
+            this.inventarizationTable.RowTemplate.Height = 29;
+            this.inventarizationTable.Size = new System.Drawing.Size(782, 447);
+            this.inventarizationTable.TabIndex = 3;
+            // 
+            // documentNumber
+            // 
+            this.documentNumber.HeaderText = "Номер документа";
+            this.documentNumber.MinimumWidth = 6;
+            this.documentNumber.Name = "documentNumber";
+            // 
+            // dateCreateDocument
+            // 
+            this.dateCreateDocument.HeaderText = "Дата создания документа";
+            this.dateCreateDocument.MinimumWidth = 6;
+            this.dateCreateDocument.Name = "dateCreateDocument";
+            // 
+            // inventarizationSearchPanel
+            // 
+            this.inventarizationSearchPanel.Controls.Add(this.finishDateSearch);
+            this.inventarizationSearchPanel.Controls.Add(this.finishDateSearchLabel);
+            this.inventarizationSearchPanel.Controls.Add(this.startDateSearch);
+            this.inventarizationSearchPanel.Controls.Add(this.startDateSearchLabel);
+            this.inventarizationSearchPanel.Location = new System.Drawing.Point(29, 54);
+            this.inventarizationSearchPanel.Name = "inventarizationSearchPanel";
+            this.inventarizationSearchPanel.Size = new System.Drawing.Size(782, 87);
+            this.inventarizationSearchPanel.TabIndex = 2;
+            this.inventarizationSearchPanel.TabStop = false;
+            this.inventarizationSearchPanel.Text = "Поиск";
+            // 
+            // finishDateSearch
+            // 
+            this.finishDateSearch.CustomFormat = "dd MMMM yyyy";
+            this.finishDateSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.finishDateSearch.Location = new System.Drawing.Point(516, 37);
+            this.finishDateSearch.Name = "finishDateSearch";
+            this.finishDateSearch.Size = new System.Drawing.Size(180, 27);
+            this.finishDateSearch.TabIndex = 7;
+            this.finishDateSearch.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
+            // 
+            // finishDateSearchLabel
+            // 
+            this.finishDateSearchLabel.AutoSize = true;
+            this.finishDateSearchLabel.Location = new System.Drawing.Point(465, 44);
+            this.finishDateSearchLabel.Name = "finishDateSearchLabel";
+            this.finishDateSearchLabel.Size = new System.Drawing.Size(27, 20);
+            this.finishDateSearchLabel.TabIndex = 6;
+            this.finishDateSearchLabel.Text = "по";
+            // 
+            // startDateSearch
+            // 
+            this.startDateSearch.CustomFormat = "dd MMMM yyyy";
+            this.startDateSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.startDateSearch.Location = new System.Drawing.Point(256, 37);
+            this.startDateSearch.Name = "startDateSearch";
+            this.startDateSearch.Size = new System.Drawing.Size(180, 27);
+            this.startDateSearch.TabIndex = 5;
+            this.startDateSearch.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
+            // 
+            // startDateSearchLabel
+            // 
+            this.startDateSearchLabel.AutoSize = true;
+            this.startDateSearchLabel.Location = new System.Drawing.Point(87, 42);
+            this.startDateSearchLabel.Name = "startDateSearchLabel";
+            this.startDateSearchLabel.Size = new System.Drawing.Size(146, 20);
+            this.startDateSearchLabel.TabIndex = 1;
+            this.startDateSearchLabel.Text = "Найти ведомости с ";
+            // 
+            // inventarizationHeader
+            // 
+            this.inventarizationHeader.AutoSize = true;
+            this.inventarizationHeader.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.inventarizationHeader.Location = new System.Drawing.Point(272, 14);
+            this.inventarizationHeader.Name = "inventarizationHeader";
+            this.inventarizationHeader.Size = new System.Drawing.Size(301, 25);
+            this.inventarizationHeader.TabIndex = 1;
+            this.inventarizationHeader.Text = "ВЕДОМОСТИ ИНВЕНТАРИЗАЦИИ";
+            // 
+            // detailName
+            // 
+            this.detailName.HeaderText = "Название детали";
+            this.detailName.MinimumWidth = 6;
+            this.detailName.Name = "detailName";
+            // 
+            // codeDetail
+            // 
+            this.codeDetail.HeaderText = "Код по ОКП";
+            this.codeDetail.MinimumWidth = 6;
+            this.codeDetail.Name = "codeDetail";
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 709);
+            this.Controls.Add(this.editAndLookVedomost);
             this.Controls.Add(this.inventarizationReportCreatePanel);
             this.Controls.Add(this.reportPanel);
             this.Controls.Add(this.menuTree);
@@ -506,6 +635,11 @@ namespace LR4_Team_programming
             this.reportInfo1.PerformLayout();
             this.inventarizationPanel.ResumeLayout(false);
             this.inventarizationPanel.PerformLayout();
+            this.editAndLookVedomost.ResumeLayout(false);
+            this.editAndLookVedomost.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).EndInit();
+            this.inventarizationSearchPanel.ResumeLayout(false);
+            this.inventarizationSearchPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -561,5 +695,17 @@ namespace LR4_Team_programming
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel inventarizationPanel;
         private System.Windows.Forms.ImageList imagesForMenuTree;
+        private System.Windows.Forms.Panel editAndLookVedomost;
+        private System.Windows.Forms.DataGridView inventarizationTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn documentNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateCreateDocument;
+        private System.Windows.Forms.GroupBox inventarizationSearchPanel;
+        private System.Windows.Forms.DateTimePicker finishDateSearch;
+        private System.Windows.Forms.Label finishDateSearchLabel;
+        private System.Windows.Forms.DateTimePicker startDateSearch;
+        private System.Windows.Forms.Label startDateSearchLabel;
+        private System.Windows.Forms.Label inventarizationHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detailName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDetail;
     }
 }

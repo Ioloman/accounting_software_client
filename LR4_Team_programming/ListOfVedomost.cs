@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LR4_Team_programming
 {
-    public partial class login : Form
+    public partial class ListOfVedomost : Form
     {
-        public login()
+        public ListOfVedomost()
         {
             InitializeComponent();
         }
