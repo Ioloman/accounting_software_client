@@ -1,7 +1,7 @@
 ﻿
 namespace LR4_Team_programming
 {
-    partial class MenuForm
+    partial class mainForm
     {
         /// <summary>
         /// </summary>
@@ -39,12 +39,12 @@ namespace LR4_Team_programming
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Рапорта о выполнении", new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode5});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.menuTree = new System.Windows.Forms.TreeView();
             this.imagesForMenuTree = new System.Windows.Forms.ImageList(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.AccountingBalancesPanel = new System.Windows.Forms.Panel();
+            this.dateOfReport = new System.Windows.Forms.DateTimePicker();
+            this.inventarizationReportCreatePanel = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -64,7 +64,7 @@ namespace LR4_Team_programming
             this.senderLabel = new System.Windows.Forms.Label();
             this.senderDep = new System.Windows.Forms.TextBox();
             this.dateLabel = new System.Windows.Forms.Label();
-            this.RaportPanel = new System.Windows.Forms.Panel();
+            this.reportPanel = new System.Windows.Forms.Panel();
             this.Head = new System.Windows.Forms.GroupBox();
             this.anotherReportLabel = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -80,16 +80,16 @@ namespace LR4_Team_programming
             this.label9 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.VedomostPanel = new System.Windows.Forms.Panel();
-            this.AccountingBalancesPanel.SuspendLayout();
+            this.inventarizationPanel = new System.Windows.Forms.Panel();
+            this.inventarizationReportCreatePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.RaportPanel.SuspendLayout();
+            this.reportPanel.SuspendLayout();
             this.Head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
             this.reportInfo1.SuspendLayout();
-            this.VedomostPanel.SuspendLayout();
+            this.inventarizationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuTree
@@ -99,22 +99,22 @@ namespace LR4_Team_programming
             this.menuTree.Location = new System.Drawing.Point(12, 12);
             this.menuTree.Name = "menuTree";
             treeNode1.ImageIndex = 1;
-            treeNode1.Name = "";
+            treeNode1.Name = "inventarizationCreateNode";
             treeNode1.Text = "Создание";
             treeNode2.ImageIndex = 2;
-            treeNode2.Name = "";
+            treeNode2.Name = "inventarizationModifyNode";
             treeNode2.Text = "Просмотр и редактирование";
             treeNode3.ImageIndex = 0;
-            treeNode3.Name = "Node0";
+            treeNode3.Name = "inventarizationNode";
             treeNode3.Text = "Ведомость инвентаризации";
             treeNode4.ImageIndex = 1;
-            treeNode4.Name = "createRaport";
+            treeNode4.Name = "createReportNode";
             treeNode4.Text = "Создать";
             treeNode5.ImageIndex = 2;
-            treeNode5.Name = "editAndLookRaport";
+            treeNode5.Name = "reportModifyNode";
             treeNode5.Text = "Просмотр и редактирование";
             treeNode6.ImageIndex = 3;
-            treeNode6.Name = "raports";
+            treeNode6.Name = "reportsNode";
             treeNode6.Text = "Рапорта о выполнении";
             this.menuTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
@@ -144,23 +144,23 @@ namespace LR4_Team_programming
             this.comboBox1.TabIndex = 0;
             this.comboBox1.Text = "Цех";
             // 
-            // dateTimePicker1
+            // dateOfReport
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(526, 18);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(292, 27);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dateOfReport.Location = new System.Drawing.Point(526, 18);
+            this.dateOfReport.Name = "dateOfReport";
+            this.dateOfReport.Size = new System.Drawing.Size(292, 27);
+            this.dateOfReport.TabIndex = 1;
             // 
-            // AccountingBalancesPanel
+            // inventarizationReportCreatePanel
             // 
-            this.AccountingBalancesPanel.Controls.Add(this.dataGridView2);
-            this.AccountingBalancesPanel.Controls.Add(this.comboBox1);
-            this.AccountingBalancesPanel.Controls.Add(this.dateTimePicker1);
-            this.AccountingBalancesPanel.Location = new System.Drawing.Point(371, 12);
-            this.AccountingBalancesPanel.Name = "AccountingBalancesPanel";
-            this.AccountingBalancesPanel.Size = new System.Drawing.Size(835, 690);
-            this.AccountingBalancesPanel.TabIndex = 5;
-            this.AccountingBalancesPanel.Visible = false;
+            this.inventarizationReportCreatePanel.Controls.Add(this.dataGridView2);
+            this.inventarizationReportCreatePanel.Controls.Add(this.comboBox1);
+            this.inventarizationReportCreatePanel.Controls.Add(this.dateOfReport);
+            this.inventarizationReportCreatePanel.Location = new System.Drawing.Point(371, 12);
+            this.inventarizationReportCreatePanel.Name = "inventarizationReportCreatePanel";
+            this.inventarizationReportCreatePanel.Size = new System.Drawing.Size(835, 690);
+            this.inventarizationReportCreatePanel.TabIndex = 5;
+            this.inventarizationReportCreatePanel.Visible = false;
             // 
             // dataGridView2
             // 
@@ -284,7 +284,6 @@ namespace LR4_Team_programming
             this.label1.Size = new System.Drawing.Size(298, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // reciverDep
             // 
@@ -328,15 +327,15 @@ namespace LR4_Team_programming
             this.dateLabel.Size = new System.Drawing.Size(100, 23);
             this.dateLabel.TabIndex = 0;
             // 
-            // RaportPanel
+            // reportPanel
             // 
-            this.RaportPanel.Controls.Add(this.Head);
-            this.RaportPanel.Controls.Add(this.productsGrid);
-            this.RaportPanel.Controls.Add(this.reportInfo1);
-            this.RaportPanel.Location = new System.Drawing.Point(640, 284);
-            this.RaportPanel.Name = "RaportPanel";
-            this.RaportPanel.Size = new System.Drawing.Size(835, 690);
-            this.RaportPanel.TabIndex = 12;
+            this.reportPanel.Controls.Add(this.Head);
+            this.reportPanel.Controls.Add(this.productsGrid);
+            this.reportPanel.Controls.Add(this.reportInfo1);
+            this.reportPanel.Location = new System.Drawing.Point(640, 284);
+            this.reportPanel.Name = "reportPanel";
+            this.reportPanel.Size = new System.Drawing.Size(835, 690);
+            this.reportPanel.TabIndex = 12;
             // 
             // Head
             // 
@@ -473,40 +472,40 @@ namespace LR4_Team_programming
             this.label10.TabIndex = 6;
             this.label10.Text = "от";
             // 
-            // VedomostPanel
+            // inventarizationPanel
             // 
-            this.VedomostPanel.Controls.Add(this.groupBox3);
-            this.VedomostPanel.Controls.Add(this.label1);
-            this.VedomostPanel.Controls.Add(this.dataGridView3);
-            this.VedomostPanel.Location = new System.Drawing.Point(392, 374);
-            this.VedomostPanel.Name = "VedomostPanel";
-            this.VedomostPanel.Size = new System.Drawing.Size(835, 690);
-            this.VedomostPanel.TabIndex = 13;
+            this.inventarizationPanel.Controls.Add(this.groupBox3);
+            this.inventarizationPanel.Controls.Add(this.label1);
+            this.inventarizationPanel.Controls.Add(this.dataGridView3);
+            this.inventarizationPanel.Location = new System.Drawing.Point(392, 374);
+            this.inventarizationPanel.Name = "inventarizationPanel";
+            this.inventarizationPanel.Size = new System.Drawing.Size(835, 690);
+            this.inventarizationPanel.TabIndex = 13;
             // 
-            // MenuForm
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1217, 714);
-            this.Controls.Add(this.AccountingBalancesPanel);
-            this.Controls.Add(this.RaportPanel);
+            this.ClientSize = new System.Drawing.Size(1202, 709);
+            this.Controls.Add(this.inventarizationReportCreatePanel);
+            this.Controls.Add(this.reportPanel);
             this.Controls.Add(this.menuTree);
-            this.Controls.Add(this.VedomostPanel);
-            this.Name = "MenuForm";
-            this.Text = "LR4_admin";
-            this.AccountingBalancesPanel.ResumeLayout(false);
+            this.Controls.Add(this.inventarizationPanel);
+            this.Name = "mainForm";
+            this.Text = "Рабочее место";
+            this.inventarizationReportCreatePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.RaportPanel.ResumeLayout(false);
+            this.reportPanel.ResumeLayout(false);
             this.Head.ResumeLayout(false);
             this.Head.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).EndInit();
             this.reportInfo1.ResumeLayout(false);
             this.reportInfo1.PerformLayout();
-            this.VedomostPanel.ResumeLayout(false);
-            this.VedomostPanel.PerformLayout();
+            this.inventarizationPanel.ResumeLayout(false);
+            this.inventarizationPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -514,8 +513,8 @@ namespace LR4_Team_programming
         #endregion
         private System.Windows.Forms.TreeView menuTree;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Panel AccountingBalancesPanel;
+        private System.Windows.Forms.DateTimePicker dateOfReport;
+        private System.Windows.Forms.Panel inventarizationReportCreatePanel;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox fg;
         private System.Windows.Forms.DataGridView dataGridView3;
@@ -544,7 +543,7 @@ namespace LR4_Team_programming
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel RaportPanel;
+        private System.Windows.Forms.Panel reportPanel;
         private System.Windows.Forms.GroupBox Head;
         private System.Windows.Forms.Label anotherReportLabel;
         private System.Windows.Forms.TextBox textBox2;
@@ -560,7 +559,7 @@ namespace LR4_Team_programming
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel VedomostPanel;
+        private System.Windows.Forms.Panel inventarizationPanel;
         private System.Windows.Forms.ImageList imagesForMenuTree;
     }
 }
