@@ -33,9 +33,9 @@ namespace LR4_Team_programming
 
             menuToPanel = new Dictionary<TreeNode, Panel>()
             {
-                {menuTree.Nodes[0].Nodes[0],  AccountingBalancesPanel},
-                {menuTree.Nodes[0].Nodes[1],  RaportPanel},
-                {menuTree.Nodes[1].Nodes[0],  VedomostPanel}
+                {menuTree.Nodes[0].Nodes[0],  VedomostPanel},
+                {menuTree.Nodes[0].Nodes[1],  AccountingBalancesPanel}, 
+                {menuTree.Nodes[1].Nodes[0],  RaportPanel} 
             };
             panels = new List<Panel>()
             {
@@ -57,11 +57,7 @@ namespace LR4_Team_programming
 
         private void menuTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //foreach(var menuTree )
-            //foreach(var menuNode in menuToPanel)
-            //    menuNode.Visible = false;
 
-            //menuTree.SelectedNode.SelectedNode.Visible = true;    
 
             try
             {

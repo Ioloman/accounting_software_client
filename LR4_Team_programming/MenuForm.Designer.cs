@@ -156,7 +156,7 @@ namespace LR4_Team_programming
             this.AccountingBalancesPanel.Controls.Add(this.dataGridView2);
             this.AccountingBalancesPanel.Controls.Add(this.comboBox1);
             this.AccountingBalancesPanel.Controls.Add(this.dateTimePicker1);
-            this.AccountingBalancesPanel.Location = new System.Drawing.Point(371, 12);
+            this.AccountingBalancesPanel.Location = new System.Drawing.Point(1110, 212);
             this.AccountingBalancesPanel.Name = "AccountingBalancesPanel";
             this.AccountingBalancesPanel.Size = new System.Drawing.Size(835, 690);
             this.AccountingBalancesPanel.TabIndex = 5;
@@ -333,7 +333,7 @@ namespace LR4_Team_programming
             this.RaportPanel.Controls.Add(this.Head);
             this.RaportPanel.Controls.Add(this.productsGrid);
             this.RaportPanel.Controls.Add(this.reportInfo1);
-            this.RaportPanel.Location = new System.Drawing.Point(640, 284);
+            this.RaportPanel.Location = new System.Drawing.Point(1001, 322);
             this.RaportPanel.Name = "RaportPanel";
             this.RaportPanel.Size = new System.Drawing.Size(835, 690);
             this.RaportPanel.TabIndex = 12;
@@ -478,7 +478,7 @@ namespace LR4_Team_programming
             this.VedomostPanel.Controls.Add(this.groupBox3);
             this.VedomostPanel.Controls.Add(this.label1);
             this.VedomostPanel.Controls.Add(this.dataGridView3);
-            this.VedomostPanel.Location = new System.Drawing.Point(392, 374);
+            this.VedomostPanel.Location = new System.Drawing.Point(922, 429);
             this.VedomostPanel.Name = "VedomostPanel";
             this.VedomostPanel.Size = new System.Drawing.Size(835, 690);
             this.VedomostPanel.TabIndex = 13;
@@ -487,13 +487,13 @@ namespace LR4_Team_programming
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1217, 714);
+            this.ClientSize = new System.Drawing.Size(1494, 714);
             this.Controls.Add(this.AccountingBalancesPanel);
             this.Controls.Add(this.RaportPanel);
             this.Controls.Add(this.menuTree);
             this.Controls.Add(this.VedomostPanel);
             this.Name = "MenuForm";
-            this.Text = "LR4_admin";
+            this.Text = "m";
             this.AccountingBalancesPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -539,7 +539,7 @@ namespace LR4_Team_programming
         private System.Windows.Forms.TextBox senderDep;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
+        //private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
