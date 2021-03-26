@@ -46,6 +46,8 @@ namespace LR4_Team_programming
             this.dateOfReport = new System.Windows.Forms.DateTimePicker();
             this.inventarizationReportCreatePanel = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.detailName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,8 +93,6 @@ namespace LR4_Team_programming
             this.startDateSearch = new System.Windows.Forms.DateTimePicker();
             this.startDateSearchLabel = new System.Windows.Forms.Label();
             this.inventarizationHeader = new System.Windows.Forms.Label();
-            this.detailName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inventarizationReportCreatePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -190,6 +190,18 @@ namespace LR4_Team_programming
             this.dataGridView2.RowTemplate.Height = 29;
             this.dataGridView2.Size = new System.Drawing.Size(804, 576);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // detailName
+            // 
+            this.detailName.HeaderText = "Название детали";
+            this.detailName.MinimumWidth = 6;
+            this.detailName.Name = "detailName";
+            // 
+            // codeDetail
+            // 
+            this.codeDetail.HeaderText = "Код по ОКП";
+            this.codeDetail.MinimumWidth = 6;
+            this.codeDetail.Name = "codeDetail";
             // 
             // dataGridView3
             // 
@@ -598,18 +610,6 @@ namespace LR4_Team_programming
             this.inventarizationHeader.TabIndex = 1;
             this.inventarizationHeader.Text = "ВЕДОМОСТИ ИНВЕНТАРИЗАЦИИ";
             // 
-            // detailName
-            // 
-            this.detailName.HeaderText = "Название детали";
-            this.detailName.MinimumWidth = 6;
-            this.detailName.Name = "detailName";
-            // 
-            // codeDetail
-            // 
-            this.codeDetail.HeaderText = "Код по ОКП";
-            this.codeDetail.MinimumWidth = 6;
-            this.codeDetail.Name = "codeDetail";
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -622,6 +622,7 @@ namespace LR4_Team_programming
             this.Controls.Add(this.inventarizationPanel);
             this.Name = "mainForm";
             this.Text = "Рабочее место";
+            this.Load += new System.EventHandler(this.mainForm_Load_1);
             this.inventarizationReportCreatePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();

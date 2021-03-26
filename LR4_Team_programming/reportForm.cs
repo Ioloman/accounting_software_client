@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace LR4_Team_programming
 {
-    public partial class report : Form
+    public partial class reportForm : Form
     {
-        public report()
+        public reportForm()
         {
             InitializeComponent();
         }

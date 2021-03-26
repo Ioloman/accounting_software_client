@@ -22,7 +22,8 @@ namespace LR4_Team_programming
         public mainForm()
         {
             InitializeComponent();
-
+            reportEditForm reportEditForm = new reportEditForm();
+            reportEditForm.Show();
             inventarizationReportCreatePanel.Location = 
                 reportPanel.Location = 
                 inventarizationPanel.Location = 
@@ -82,6 +83,11 @@ namespace LR4_Team_programming
         }
 
         private void mainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mainForm_Load_1(object sender, EventArgs e)
         {
 
         }
