@@ -23,23 +23,39 @@ namespace LR4_Team_programming
         {
             InitializeComponent();
 
-            inventarizationReportCreatePanel.Location = reportPanel.Location = inventarizationPanel.Location = locationPanels;
-            inventarizationReportCreatePanel.Size = reportPanel.Size = inventarizationPanel.Size = sizePanels;
+            inventarizationReportCreatePanel.Location = 
+                reportPanel.Location = 
+                inventarizationPanel.Location = 
+                editAndLookVedomost.Location = locationPanels;
+
+            inventarizationReportCreatePanel.Size = 
+                reportPanel.Size = 
+                inventarizationPanel.Size = 
+                editAndLookVedomost.Size = sizePanels;
+
 
             inventarizationReportCreatePanel.Visible = false;
             reportPanel.Visible = false;
             inventarizationPanel.Visible = false;
+            editAndLookVedomost.Visible = false;
 
             menuToPanel = new Dictionary<TreeNode, Panel>()
             {
-                {menuTree.Nodes[0].Nodes[0],  inventarizationReportCreatePanel},
-                {menuTree.Nodes[0].Nodes[1],  reportPanel},
-                {menuTree.Nodes[1].Nodes[0],  inventarizationPanel}
+                {menuTree.Nodes[0].Nodes[0],  inventarizationPanel },
+                {menuTree.Nodes[0].Nodes[1],  editAndLookVedomost },
+
+                {menuTree.Nodes[1].Nodes[0],  reportPanel},
+                {menuTree.Nodes[1].Nodes[1],  inventarizationReportCreatePanel}
             };
             panels = new List<Panel>()
             {
-                inventarizationReportCreatePanel, reportPanel, inventarizationPanel
+                inventarizationPanel,
+                editAndLookVedomost,
+                reportPanel,
+                inventarizationReportCreatePanel
+
             };
+            int f = 0;
         }
     
         private void senderDep_TextChanged(object sender, EventArgs e)
