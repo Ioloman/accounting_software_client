@@ -153,6 +153,7 @@ namespace LR4_Team_programming
             // 
             // inventarizationReportCreatePanel
             // 
+            this.inventarizationReportCreatePanel.Controls.Add(this.reportPanel);
             this.inventarizationReportCreatePanel.Controls.Add(this.dataGridView2);
             this.inventarizationReportCreatePanel.Controls.Add(this.comboBox1);
             this.inventarizationReportCreatePanel.Controls.Add(this.dateOfReport);
@@ -330,9 +331,10 @@ namespace LR4_Team_programming
             // reportPanel
             // 
             this.reportPanel.Controls.Add(this.Head);
+            this.reportPanel.Controls.Add(this.inventarizationPanel);
             this.reportPanel.Controls.Add(this.productsGrid);
             this.reportPanel.Controls.Add(this.reportInfo1);
-            this.reportPanel.Location = new System.Drawing.Point(640, 284);
+            this.reportPanel.Location = new System.Drawing.Point(0, 0);
             this.reportPanel.Name = "reportPanel";
             this.reportPanel.Size = new System.Drawing.Size(835, 690);
             this.reportPanel.TabIndex = 12;
@@ -477,7 +479,7 @@ namespace LR4_Team_programming
             this.inventarizationPanel.Controls.Add(this.groupBox3);
             this.inventarizationPanel.Controls.Add(this.label1);
             this.inventarizationPanel.Controls.Add(this.dataGridView3);
-            this.inventarizationPanel.Location = new System.Drawing.Point(392, 374);
+            this.inventarizationPanel.Location = new System.Drawing.Point(0, 0);
             this.inventarizationPanel.Name = "inventarizationPanel";
             this.inventarizationPanel.Size = new System.Drawing.Size(835, 690);
             this.inventarizationPanel.TabIndex = 13;
@@ -486,13 +488,12 @@ namespace LR4_Team_programming
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 709);
-            this.Controls.Add(this.inventarizationReportCreatePanel);
-            this.Controls.Add(this.reportPanel);
+            this.ClientSize = new System.Drawing.Size(1214, 709);
             this.Controls.Add(this.menuTree);
-            this.Controls.Add(this.inventarizationPanel);
+            this.Controls.Add(this.inventarizationReportCreatePanel);
             this.Name = "mainForm";
             this.Text = "Рабочее место";
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.inventarizationReportCreatePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();

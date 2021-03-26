@@ -64,5 +64,10 @@ namespace LR4_Team_programming
             }
 
         }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
