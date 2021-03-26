@@ -44,11 +44,11 @@ namespace LR4_Team_programming
             this.reciverLabel = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.Head = new System.Windows.Forms.GroupBox();
-            this.RaportPanel = new System.Windows.Forms.Panel();
+            this.reportPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
             this.reportInfo1.SuspendLayout();
             this.Head.SuspendLayout();
-            this.RaportPanel.SuspendLayout();
+            this.reportPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // reportLabel
@@ -187,22 +187,22 @@ namespace LR4_Team_programming
             this.Head.TabIndex = 10;
             this.Head.TabStop = false;
             // 
-            // RaportPanel
+            // reportPanel
             // 
-            this.RaportPanel.Controls.Add(this.Head);
-            this.RaportPanel.Controls.Add(this.productsGrid);
-            this.RaportPanel.Controls.Add(this.reportInfo1);
-            this.RaportPanel.Location = new System.Drawing.Point(17, 39);
-            this.RaportPanel.Name = "RaportPanel";
-            this.RaportPanel.Size = new System.Drawing.Size(1070, 654);
-            this.RaportPanel.TabIndex = 11;
+            this.reportPanel.Controls.Add(this.Head);
+            this.reportPanel.Controls.Add(this.productsGrid);
+            this.reportPanel.Controls.Add(this.reportInfo1);
+            this.reportPanel.Location = new System.Drawing.Point(17, 39);
+            this.reportPanel.Name = "reportPanel";
+            this.reportPanel.Size = new System.Drawing.Size(1070, 654);
+            this.reportPanel.TabIndex = 11;
             // 
             // report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 678);
-            this.Controls.Add(this.RaportPanel);
+            this.Controls.Add(this.reportPanel);
             this.Name = "report";
             this.Text = "report";
             this.Load += new System.EventHandler(this.report_Load);
@@ -211,7 +211,7 @@ namespace LR4_Team_programming
             this.reportInfo1.PerformLayout();
             this.Head.ResumeLayout(false);
             this.Head.PerformLayout();
-            this.RaportPanel.ResumeLayout(false);
+            this.reportPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -233,6 +233,6 @@ namespace LR4_Team_programming
         private System.Windows.Forms.TextBox reciverDep;
         private System.Windows.Forms.Label reciverLabel;
         private System.Windows.Forms.GroupBox Head;
-        private System.Windows.Forms.Panel RaportPanel;
+        private System.Windows.Forms.Panel reportPanel;
     }
 }
