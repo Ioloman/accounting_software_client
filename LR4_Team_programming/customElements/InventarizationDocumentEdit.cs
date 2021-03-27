@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LR4_Team_programming
+namespace LR4_Team_programming.customElements
 {
-    public partial class ListOfVedomost : Form
+    public partial class InventarizationDocumentEdit : UserControl
     {
-        public ListOfVedomost()
+        public InventarizationDocumentEdit()
         {
             InitializeComponent();
         }
-
     }
 }

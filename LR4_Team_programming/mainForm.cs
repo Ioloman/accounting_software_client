@@ -5,13 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using LR4_Team_programming.customElements;
 
 namespace LR4_Team_programming
 {
     public partial class mainForm : Form
     {
-        Dictionary<TreeNode, Panel> menuToPanel;
-        List<Panel> panels;
+        Dictionary<TreeNode, UserControl> menuToPanel;
+        List<UserControl> panels;
+
         // 835; 690 - size
         // 362; 0 - location
 
@@ -23,40 +25,36 @@ namespace LR4_Team_programming
         {
             InitializeComponent();
             //reportEditPanel
-            reportEditForm reportEditForm = new reportEditForm();
-            reportEditForm.Show();
-            reportEditPanel.Location = 
-                reportPanel.Location = 
-                inventarizationPanel.Location = 
-                editAndLookVedomost.Location = locationPanels;
+            InventarizationDocument inventarization = new InventarizationDocument();
+            InventarizationDocumentEdit inventarizationEdit = new InventarizationDocumentEdit();
+            ReportDocument report = new ReportDocument();
+            ReportDocumentEdit reportEdit = new ReportDocumentEdit();
+            inventarization.Location = inventarizationEdit.Location = report.Location = reportEdit.Location = locationPanels;
+            inventarization.Visible = inventarizationEdit.Visible = report.Visible = reportEdit.Visible = false;
 
-            reportEditPanel.Size = 
-                reportPanel.Size = 
-                inventarizationPanel.Size = 
-                editAndLookVedomost.Size = sizePanels;
+            this.Controls.Add(inventarization);
+            this.Controls.Add(inventarizationEdit);
+            this.Controls.Add(report);
+            this.Controls.Add(reportEdit);
 
-
-            reportEditPanel.Visible = false;
-            reportPanel.Visible = false;
-            inventarizationPanel.Visible = false;
-            editAndLookVedomost.Visible = false;
-
-            menuToPanel = new Dictionary<TreeNode, Panel>()
+            menuToPanel = new Dictionary<TreeNode, UserControl>()
             {
-                {menuTree.Nodes[0].Nodes[0],  inventarizationPanel },
-                {menuTree.Nodes[0].Nodes[1],  editAndLookVedomost },
+                {menuTree.Nodes[0].Nodes[0],  inventarization },
+                {menuTree.Nodes[0].Nodes[1],  inventarizationEdit },
 
-                {menuTree.Nodes[1].Nodes[0],  reportPanel},
-                {menuTree.Nodes[1].Nodes[1],  reportEditPanel}
+                {menuTree.Nodes[1].Nodes[0],  report},
+                {menuTree.Nodes[1].Nodes[1],  reportEdit}
             };
-            panels = new List<Panel>()
+
+            panels = new List<UserControl>()
             {
-                inventarizationPanel,
-                editAndLookVedomost,
-                reportPanel,
-                reportEditPanel
-
+                inventarization,
+                inventarizationEdit,
+                report,
+                reportEdit
             };
+
+        
         }
     
         private void senderDep_TextChanged(object sender, EventArgs e)
@@ -68,12 +66,13 @@ namespace LR4_Team_programming
         {
             try
             {
+                
                 menuToPanel[menuTree.SelectedNode].Visible = true;
-                foreach (Panel panel in panels)
+                foreach (UserControl panel in panels)
                     panel.Visible = false;
 
                 menuToPanel[menuTree.SelectedNode].Visible = true;
-
+                
             }
             catch
             {

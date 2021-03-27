@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LR4_Team_programming
+namespace LR4_Team_programming.customElements
 {
-    public partial class InventoryStatementForm : Form
+    public partial class ReportDocument : UserControl
     {
-        public InventoryStatementForm()
+        public ReportDocument()
         {
             InitializeComponent();
         }

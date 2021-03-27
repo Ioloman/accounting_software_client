@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LR4_Team_programming
+namespace LR4_Team_programming.customElements
 {
-    public partial class listOfDetails : Form
+    public partial class InventarizationDocument : UserControl
     {
-        public listOfDetails()
+        public InventarizationDocument()
         {
             InitializeComponent();
         }
