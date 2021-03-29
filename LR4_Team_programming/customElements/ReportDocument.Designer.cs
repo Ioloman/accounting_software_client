@@ -30,6 +30,8 @@ namespace LR4_Team_programming.customElements
         private void InitializeComponent()
         {
             this.reportPanel = new System.Windows.Forms.Panel();
+            this.deleteRecordButton = new System.Windows.Forms.Button();
+            this.saveChangeButton = new System.Windows.Forms.Button();
             this.Head = new System.Windows.Forms.GroupBox();
             this.anotherReportLabel = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -44,8 +46,6 @@ namespace LR4_Team_programming.customElements
             this.label9 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.deleteRecordButton = new System.Windows.Forms.Button();
-            this.saveChangeButton = new System.Windows.Forms.Button();
             this.reportPanel.SuspendLayout();
             this.Head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
@@ -63,6 +63,24 @@ namespace LR4_Team_programming.customElements
             this.reportPanel.Name = "reportPanel";
             this.reportPanel.Size = new System.Drawing.Size(835, 690);
             this.reportPanel.TabIndex = 13;
+            // 
+            // deleteRecordButton
+            // 
+            this.deleteRecordButton.Location = new System.Drawing.Point(519, 643);
+            this.deleteRecordButton.Name = "deleteRecordButton";
+            this.deleteRecordButton.Size = new System.Drawing.Size(298, 36);
+            this.deleteRecordButton.TabIndex = 12;
+            this.deleteRecordButton.Text = "Удалить запись";
+            this.deleteRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // saveChangeButton
+            // 
+            this.saveChangeButton.Location = new System.Drawing.Point(20, 643);
+            this.saveChangeButton.Name = "saveChangeButton";
+            this.saveChangeButton.Size = new System.Drawing.Size(298, 36);
+            this.saveChangeButton.TabIndex = 11;
+            this.saveChangeButton.Text = "Сохранить изменения";
+            this.saveChangeButton.UseVisualStyleBackColor = true;
             // 
             // Head
             // 
@@ -187,24 +205,6 @@ namespace LR4_Team_programming.customElements
             this.label10.Size = new System.Drawing.Size(24, 20);
             this.label10.TabIndex = 6;
             this.label10.Text = "от";
-            // 
-            // deleteRecordButton
-            // 
-            this.deleteRecordButton.Location = new System.Drawing.Point(519, 643);
-            this.deleteRecordButton.Name = "deleteRecordButton";
-            this.deleteRecordButton.Size = new System.Drawing.Size(298, 36);
-            this.deleteRecordButton.TabIndex = 12;
-            this.deleteRecordButton.Text = "Удалить запись";
-            this.deleteRecordButton.UseVisualStyleBackColor = true;
-            // 
-            // saveChangeButton
-            // 
-            this.saveChangeButton.Location = new System.Drawing.Point(20, 643);
-            this.saveChangeButton.Name = "saveChangeButton";
-            this.saveChangeButton.Size = new System.Drawing.Size(298, 36);
-            this.saveChangeButton.TabIndex = 11;
-            this.saveChangeButton.Text = "Сохранить изменения";
-            this.saveChangeButton.UseVisualStyleBackColor = true;
             // 
             // ReportDocument
             // 

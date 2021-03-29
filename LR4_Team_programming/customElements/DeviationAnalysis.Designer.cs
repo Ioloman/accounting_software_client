@@ -50,6 +50,7 @@ namespace LR4_Team_programming.customElements
             this.mediumDevTextBox = new System.Windows.Forms.TextBox();
             this.smallDevTextBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.searchButton = new System.Windows.Forms.Button();
             this.settingButton = new System.Windows.Forms.Button();
             this.searchInAllDebCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -243,6 +244,7 @@ namespace LR4_Team_programming.customElements
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.searchButton);
             this.groupBox3.Controls.Add(this.settingButton);
             this.groupBox3.Controls.Add(this.searchInAllDebCheckBox);
             this.groupBox3.Controls.Add(this.label2);
@@ -257,6 +259,15 @@ namespace LR4_Team_programming.customElements
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "поиск";
+            // 
+            // searchButton
+            // 
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(764, 81);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(35, 35);
+            this.searchButton.TabIndex = 17;
+            this.searchButton.UseVisualStyleBackColor = true;
             // 
             // settingButton
             // 
@@ -346,6 +357,7 @@ namespace LR4_Team_programming.customElements
             // 
             // timerForShiftingTable
             // 
+            this.timerForShiftingTable.Interval = 10;
             this.timerForShiftingTable.Tick += new System.EventHandler(this.timerForShiftingTable_Tick);
             // 
             // DeviationAnalysis
@@ -398,5 +410,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn expectedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn producedColoumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deviationColumn;
+        private System.Windows.Forms.Button searchButton;
     }
 }

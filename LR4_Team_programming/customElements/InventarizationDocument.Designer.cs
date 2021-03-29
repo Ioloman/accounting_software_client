@@ -43,7 +43,7 @@ namespace LR4_Team_programming.customElements
             this.docNumberLabel = new System.Windows.Forms.Label();
             this.docNumberTextBox = new System.Windows.Forms.TextBox();
             this.docCreateDate = new System.Windows.Forms.DateTimePicker();
-            this.inventarizationLabel = new System.Windows.Forms.Label();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.informationAboutDocPanel.SuspendLayout();
@@ -51,11 +51,11 @@ namespace LR4_Team_programming.customElements
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.headerLabel);
             this.groupBox1.Controls.Add(this.deleteRecordButton);
             this.groupBox1.Controls.Add(this.saveChangeButton);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.informationAboutDocPanel);
-            this.groupBox1.Controls.Add(this.inventarizationLabel);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(835, 687);
@@ -183,15 +183,15 @@ namespace LR4_Team_programming.customElements
             this.docCreateDate.Size = new System.Drawing.Size(194, 27);
             this.docCreateDate.TabIndex = 2;
             // 
-            // inventarizationLabel
+            // headerLabel
             // 
-            this.inventarizationLabel.AutoSize = true;
-            this.inventarizationLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.inventarizationLabel.Location = new System.Drawing.Point(261, 23);
-            this.inventarizationLabel.Name = "inventarizationLabel";
-            this.inventarizationLabel.Size = new System.Drawing.Size(298, 25);
-            this.inventarizationLabel.TabIndex = 0;
-            this.inventarizationLabel.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.headerLabel.Location = new System.Drawing.Point(208, 23);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(407, 32);
+            this.headerLabel.TabIndex = 8;
+            this.headerLabel.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
             // 
             // InventarizationDocument
             // 
@@ -224,7 +224,7 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.Label docNumberLabel;
         private System.Windows.Forms.TextBox docNumberTextBox;
         private System.Windows.Forms.DateTimePicker docCreateDate;
-        private System.Windows.Forms.Label inventarizationLabel;
         private System.Windows.Forms.Button deleteRecordButton;
+        private System.Windows.Forms.Label headerLabel;
     }
 }

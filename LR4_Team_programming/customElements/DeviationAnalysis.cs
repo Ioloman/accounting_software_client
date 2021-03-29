@@ -35,7 +35,7 @@ namespace LR4_Team_programming.customElements
         {
             if (downMove)
             {
-                table.Location = new Point(table.Location.X, table.Location.Y + 1);
+                table.Location = new Point(table.Location.X, table.Location.Y + 2);
                 if (table.Location.Y >= 359)
                 {
                     timerForShiftingTable.Enabled = false;
@@ -44,7 +44,7 @@ namespace LR4_Team_programming.customElements
             }
             else
             {
-                table.Location = new Point(table.Location.X, table.Location.Y - 1);
+                table.Location = new Point(table.Location.X, table.Location.Y - 2);
                 if (table.Location.Y <= 207)
                 {
                     timerForShiftingTable.Enabled = false;

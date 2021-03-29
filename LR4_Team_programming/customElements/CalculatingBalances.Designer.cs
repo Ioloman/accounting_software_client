@@ -29,16 +29,18 @@ namespace LR4_Team_programming.customElements
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculatingBalances));
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchPanel = new System.Windows.Forms.GroupBox();
-            this.depLabel = new System.Windows.Forms.Label();
-            this.dateLabel = new System.Windows.Forms.Label();
-            this.date = new System.Windows.Forms.DateTimePicker();
             this.depNameComboBox = new System.Windows.Forms.ComboBox();
+            this.date = new System.Windows.Forms.DateTimePicker();
+            this.dateLabel = new System.Windows.Forms.Label();
+            this.depLabel = new System.Windows.Forms.Label();
             this.table = new System.Windows.Forms.DataGridView();
             this.detailNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeOKPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchButton = new System.Windows.Forms.Button();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
@@ -55,34 +57,25 @@ namespace LR4_Team_programming.customElements
             // 
             // searchPanel
             // 
+            this.searchPanel.Controls.Add(this.searchButton);
             this.searchPanel.Controls.Add(this.depNameComboBox);
             this.searchPanel.Controls.Add(this.date);
             this.searchPanel.Controls.Add(this.dateLabel);
             this.searchPanel.Controls.Add(this.depLabel);
             this.searchPanel.Location = new System.Drawing.Point(9, 61);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(334, 141);
+            this.searchPanel.Size = new System.Drawing.Size(399, 141);
             this.searchPanel.TabIndex = 3;
             this.searchPanel.TabStop = false;
             this.searchPanel.Text = "поиск";
             // 
-            // depLabel
+            // depNameComboBox
             // 
-            this.depLabel.AutoSize = true;
-            this.depLabel.Location = new System.Drawing.Point(6, 37);
-            this.depLabel.Name = "depLabel";
-            this.depLabel.Size = new System.Drawing.Size(35, 20);
-            this.depLabel.TabIndex = 0;
-            this.depLabel.Text = "Цех";
-            // 
-            // dateLabel
-            // 
-            this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(6, 91);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(41, 20);
-            this.dateLabel.TabIndex = 2;
-            this.dateLabel.Text = "Дата";
+            this.depNameComboBox.FormattingEnabled = true;
+            this.depNameComboBox.Location = new System.Drawing.Point(65, 37);
+            this.depNameComboBox.Name = "depNameComboBox";
+            this.depNameComboBox.Size = new System.Drawing.Size(241, 28);
+            this.depNameComboBox.TabIndex = 14;
             // 
             // date
             // 
@@ -94,13 +87,23 @@ namespace LR4_Team_programming.customElements
             this.date.TabIndex = 13;
             this.date.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
             // 
-            // depNameComboBox
+            // dateLabel
             // 
-            this.depNameComboBox.FormattingEnabled = true;
-            this.depNameComboBox.Location = new System.Drawing.Point(65, 37);
-            this.depNameComboBox.Name = "depNameComboBox";
-            this.depNameComboBox.Size = new System.Drawing.Size(241, 28);
-            this.depNameComboBox.TabIndex = 14;
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Location = new System.Drawing.Point(6, 91);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(41, 20);
+            this.dateLabel.TabIndex = 2;
+            this.dateLabel.Text = "Дата";
+            // 
+            // depLabel
+            // 
+            this.depLabel.AutoSize = true;
+            this.depLabel.Location = new System.Drawing.Point(6, 37);
+            this.depLabel.Name = "depLabel";
+            this.depLabel.Size = new System.Drawing.Size(35, 20);
+            this.depLabel.TabIndex = 0;
+            this.depLabel.Text = "Цех";
             // 
             // table
             // 
@@ -135,6 +138,15 @@ namespace LR4_Team_programming.customElements
             this.amount.MinimumWidth = 6;
             this.amount.Name = "amount";
             // 
+            // searchButton
+            // 
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(358, 100);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(35, 35);
+            this.searchButton.TabIndex = 18;
+            this.searchButton.UseVisualStyleBackColor = true;
+            // 
             // CalculatingBalances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -164,5 +176,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn detailNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeOKPColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.Button searchButton;
     }
 }

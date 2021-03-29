@@ -29,25 +29,37 @@ namespace LR4_Team_programming.customElements
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventarizationDocumentEdit));
             this.editAndLookVedomost = new System.Windows.Forms.Panel();
+            this.searchButton = new System.Windows.Forms.Button();
             this.inventarizationTable = new System.Windows.Forms.DataGridView();
             this.documentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreateDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
-            this.inventarizationHeader = new System.Windows.Forms.Label();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.editAndLookVedomost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).BeginInit();
             this.SuspendLayout();
             // 
             // editAndLookVedomost
             // 
+            this.editAndLookVedomost.Controls.Add(this.headerLabel);
+            this.editAndLookVedomost.Controls.Add(this.searchButton);
             this.editAndLookVedomost.Controls.Add(this.inventarizationTable);
             this.editAndLookVedomost.Controls.Add(this.searchFilterBar1);
-            this.editAndLookVedomost.Controls.Add(this.inventarizationHeader);
             this.editAndLookVedomost.Location = new System.Drawing.Point(0, 0);
             this.editAndLookVedomost.Name = "editAndLookVedomost";
             this.editAndLookVedomost.Size = new System.Drawing.Size(835, 690);
             this.editAndLookVedomost.TabIndex = 17;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(402, 126);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(35, 35);
+            this.searchButton.TabIndex = 18;
+            this.searchButton.UseVisualStyleBackColor = true;
             // 
             // inventarizationTable
             // 
@@ -82,15 +94,15 @@ namespace LR4_Team_programming.customElements
             this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
             this.searchFilterBar1.TabIndex = 4;
             // 
-            // inventarizationHeader
+            // headerLabel
             // 
-            this.inventarizationHeader.AutoSize = true;
-            this.inventarizationHeader.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.inventarizationHeader.Location = new System.Drawing.Point(272, 14);
-            this.inventarizationHeader.Name = "inventarizationHeader";
-            this.inventarizationHeader.Size = new System.Drawing.Size(301, 25);
-            this.inventarizationHeader.TabIndex = 1;
-            this.inventarizationHeader.Text = "ВЕДОМОСТИ ИНВЕНТАРИЗАЦИИ";
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.headerLabel.Location = new System.Drawing.Point(213, 10);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(411, 32);
+            this.headerLabel.TabIndex = 19;
+            this.headerLabel.Text = "ВЕДОМОСТИ ИНВЕНТАРИЗАЦИИ";
             // 
             // InventarizationDocumentEdit
             // 
@@ -113,6 +125,7 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn documentNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateCreateDocument;
         private screens.searchFilterBar searchFilterBar1;
-        private System.Windows.Forms.Label inventarizationHeader;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Label headerLabel;
     }
 }

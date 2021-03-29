@@ -29,6 +29,7 @@ namespace LR4_Team_programming.customElements
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportDocumentEdit));
             this.reportEditPanel = new System.Windows.Forms.Panel();
             this.reportsGrid = new System.Windows.Forms.DataGridView();
             this.documentNumberColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,6 +38,7 @@ namespace LR4_Team_programming.customElements
             this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
             this.reportEditPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reportsGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -44,6 +46,7 @@ namespace LR4_Team_programming.customElements
             // 
             // reportEditPanel
             // 
+            this.reportEditPanel.Controls.Add(this.searchButton);
             this.reportEditPanel.Controls.Add(this.reportsGrid);
             this.reportEditPanel.Controls.Add(this.searchFilterBar1);
             this.reportEditPanel.Controls.Add(this.groupBox1);
@@ -110,6 +113,15 @@ namespace LR4_Team_programming.customElements
             this.label5.TabIndex = 0;
             this.label5.Text = "РАПОРТА СДАЧИ ПРОДУКЦИИ";
             // 
+            // searchButton
+            // 
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(404, 157);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(35, 35);
+            this.searchButton.TabIndex = 18;
+            this.searchButton.UseVisualStyleBackColor = true;
+            // 
             // ReportDocumentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -135,5 +147,6 @@ namespace LR4_Team_programming.customElements
         private screens.searchFilterBar searchFilterBar1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button searchButton;
     }
 }
