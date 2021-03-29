@@ -46,7 +46,7 @@ namespace LR4_Team_programming.customElements
             this.editAndLookVedomost.Controls.Add(this.inventarizationHeader);
             this.editAndLookVedomost.Location = new System.Drawing.Point(0, 0);
             this.editAndLookVedomost.Name = "editAndLookVedomost";
-            this.editAndLookVedomost.Size = new System.Drawing.Size(835, 636);
+            this.editAndLookVedomost.Size = new System.Drawing.Size(835, 690);
             this.editAndLookVedomost.TabIndex = 17;
             // 
             // inventarizationTable
@@ -60,7 +60,7 @@ namespace LR4_Team_programming.customElements
             this.inventarizationTable.Name = "inventarizationTable";
             this.inventarizationTable.RowHeadersWidth = 51;
             this.inventarizationTable.RowTemplate.Height = 29;
-            this.inventarizationTable.Size = new System.Drawing.Size(801, 364);
+            this.inventarizationTable.Size = new System.Drawing.Size(801, 428);
             this.inventarizationTable.TabIndex = 3;
             // 
             // documentNumber
@@ -98,7 +98,7 @@ namespace LR4_Team_programming.customElements
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.editAndLookVedomost);
             this.Name = "InventarizationDocumentEdit";
-            this.Size = new System.Drawing.Size(834, 637);
+            this.Size = new System.Drawing.Size(835, 690);
             this.editAndLookVedomost.ResumeLayout(false);
             this.editAndLookVedomost.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).EndInit();

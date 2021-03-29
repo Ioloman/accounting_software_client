@@ -30,16 +30,16 @@ namespace LR4_Team_programming.customElements
         private void InitializeComponent()
         {
             this.reportEditPanel = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.reportsGrid = new System.Windows.Forms.DataGridView();
             this.documentNumberColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportDateColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.senderDepColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.reportEditPanel.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reportsGrid)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // reportEditPanel
@@ -49,27 +49,8 @@ namespace LR4_Team_programming.customElements
             this.reportEditPanel.Controls.Add(this.groupBox1);
             this.reportEditPanel.Location = new System.Drawing.Point(0, 0);
             this.reportEditPanel.Name = "reportEditPanel";
-            this.reportEditPanel.Size = new System.Drawing.Size(835, 661);
+            this.reportEditPanel.Size = new System.Drawing.Size(835, 690);
             this.reportEditPanel.TabIndex = 18;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(20, 10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(808, 69);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(204, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(384, 32);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "РАПОРТА СДАЧИ ПРОДУКЦИИ";
             // 
             // reportsGrid
             // 
@@ -82,7 +63,7 @@ namespace LR4_Team_programming.customElements
             this.reportsGrid.Location = new System.Drawing.Point(20, 280);
             this.reportsGrid.Name = "reportsGrid";
             this.reportsGrid.RowHeadersWidth = 51;
-            this.reportsGrid.Size = new System.Drawing.Size(800, 354);
+            this.reportsGrid.Size = new System.Drawing.Size(800, 398);
             this.reportsGrid.TabIndex = 1;
             // 
             // documentNumberColoumn
@@ -110,17 +91,36 @@ namespace LR4_Team_programming.customElements
             this.searchFilterBar1.Size = new System.Drawing.Size(808, 220);
             this.searchFilterBar1.TabIndex = 11;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(20, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(808, 69);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(204, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(384, 32);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "РАПОРТА СДАЧИ ПРОДУКЦИИ";
+            // 
             // ReportDocumentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.reportEditPanel);
             this.Name = "ReportDocumentEdit";
-            this.Size = new System.Drawing.Size(839, 663);
+            this.Size = new System.Drawing.Size(835, 690);
             this.reportEditPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.reportsGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reportsGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
