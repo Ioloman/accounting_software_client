@@ -59,6 +59,7 @@ namespace LR4_Team_programming.customElements
             this.codeOKPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expectedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.producedColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deviationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.deviationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -95,7 +96,8 @@ namespace LR4_Team_programming.customElements
             this.nameProductColoumn,
             this.codeOKPColumn,
             this.expectedColumn,
-            this.producedColoumn});
+            this.producedColoumn,
+            this.deviationColumn});
             this.table.Location = new System.Drawing.Point(17, 207);
             this.table.Name = "table";
             this.table.RowHeadersWidth = 51;
@@ -339,6 +341,12 @@ namespace LR4_Team_programming.customElements
             this.producedColoumn.MinimumWidth = 6;
             this.producedColoumn.Name = "producedColoumn";
             // 
+            // deviationColumn
+            // 
+            this.deviationColumn.HeaderText = "Отклонение, шт";
+            this.deviationColumn.MinimumWidth = 6;
+            this.deviationColumn.Name = "deviationColumn";
+            // 
             // DeviationAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -388,5 +396,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn codeOKPColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expectedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn producedColoumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deviationColumn;
     }
 }

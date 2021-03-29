@@ -69,11 +69,14 @@
   <metadata name="producedColoumn.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>True</value>
   </metadata>
+  <metadata name="deviationColumn.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
   <data name="settingButton.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAABWhJREFUWEfFl8tLnFcYh12YfyAgRDGo8ZJ4jZeFm2pRq6YXKU3TloJLF/oXBETx
+        cQAAEnEB89x6jgAABWhJREFUWEfFl8tLnFcYh12YfyAgRDGo8ZJ4jZeFm2pRq6YXKU3TloJLF/oXBETx
         koVVmyIYFVoSpYXuWnAnNInUOlqtNQsppkQdDVlUR40QU2qsvj3Pme+M321mmumiP3iZeL5zzvd873kv
         J0mSgKanpyUvL0/Ky8u15efnS3t7u/U0cSUE09fXJ5cvX5aKigptJSUlUlVVZT1NXAnB3LlzR8MYzwBT
         X19vPU1cvjCvXr2SxsZGWVhYsEbCCoVCGqSurk6uXr0agSkrK9PW09Mjy8vL1uywTk5O5Nq1axIIBKyR

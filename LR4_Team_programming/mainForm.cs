@@ -49,7 +49,7 @@ namespace LR4_Team_programming
                 {menuTree.Nodes[1].Nodes[0],  report},
                 {menuTree.Nodes[1].Nodes[1],  reportEdit},
                 
-                {menuTree.Nodes[2],  deviationAnalysis}
+                {menuTree.Nodes[3],  deviationAnalysis}
 
             };
 
