@@ -30,15 +30,29 @@ namespace LR4_Team_programming
             ReportDocument report = new ReportDocument();
             ReportDocumentEdit reportEdit = new ReportDocumentEdit();
             DeviationAnalysis deviationAnalysis = new DeviationAnalysis();
+            CalculatingBalances calculatingBalances = new CalculatingBalances();
 
-            inventarization.Location = inventarizationEdit.Location = report.Location = reportEdit.Location = deviationAnalysis.Location = locationPanels;
-            inventarization.Visible = inventarizationEdit.Visible = report.Visible = reportEdit.Visible = deviationAnalysis.Visible = false;
+            inventarization.Location = 
+                inventarizationEdit.Location = 
+                report.Location = 
+                reportEdit.Location = 
+                deviationAnalysis.Location = 
+                calculatingBalances.Location = locationPanels;
+
+            inventarization.Visible = 
+                inventarizationEdit.Visible = 
+                report.Visible = 
+                reportEdit.Visible = 
+                deviationAnalysis.Visible = 
+                calculatingBalances.Visible = false;
 
             this.Controls.Add(inventarization);
             this.Controls.Add(inventarizationEdit);
             this.Controls.Add(report);
             this.Controls.Add(reportEdit);
             this.Controls.Add(deviationAnalysis);
+            this.Controls.Add(calculatingBalances);
+
 
 
             menuToPanel = new Dictionary<TreeNode, UserControl>()
@@ -49,7 +63,8 @@ namespace LR4_Team_programming
                 {menuTree.Nodes[1].Nodes[0],  report},
                 {menuTree.Nodes[1].Nodes[1],  reportEdit},
                 
-                {menuTree.Nodes[3],  deviationAnalysis}
+                {menuTree.Nodes[2],  deviationAnalysis},
+                {menuTree.Nodes[3],  calculatingBalances}
 
             };
 
@@ -59,7 +74,8 @@ namespace LR4_Team_programming
                 inventarizationEdit,
                 report,
                 reportEdit,
-                deviationAnalysis
+                deviationAnalysis,
+                calculatingBalances
             };
 
         

@@ -29,18 +29,18 @@ namespace LR4_Team_programming
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Создание");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Просмотр и редактирование");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ведомость инвентаризации", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Создание", 1, 1);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Просмотр и редактирование", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ведомость инвентаризации", 0, 0, new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Создание");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Просмотр и редактирование");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Рапорта о выполнении", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Создание", 1, 1);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Просмотр и редактирование", 2, 2);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Рапорта о выполнении", 3, 3, new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Сводный учет");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Анализ отклонений");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Сводный учет", 6, 6);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Расчет остатков", 7, 7);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.menuTree = new System.Windows.Forms.TreeView();
             this.imagesForMenuTree = new System.Windows.Forms.ImageList(this.components);
@@ -60,28 +60,36 @@ namespace LR4_Team_programming
             this.menuTree.Name = "menuTree";
             treeNode1.ImageIndex = 1;
             treeNode1.Name = "inventarizationCreateNode";
+            treeNode1.SelectedImageIndex = 1;
             treeNode1.Text = "Создание";
             treeNode2.ImageIndex = 2;
             treeNode2.Name = "inventarizationModifyNode";
+            treeNode2.SelectedImageIndex = 2;
             treeNode2.Text = "Просмотр и редактирование";
             treeNode3.ImageIndex = 0;
             treeNode3.Name = "inventarizationNode";
+            treeNode3.SelectedImageIndex = 0;
             treeNode3.Text = "Ведомость инвентаризации";
             treeNode4.ImageIndex = 1;
             treeNode4.Name = "createReportNode";
+            treeNode4.SelectedImageIndex = 1;
             treeNode4.Text = "Создание";
             treeNode5.ImageIndex = 2;
             treeNode5.Name = "reportModifyNode";
+            treeNode5.SelectedImageIndex = 2;
             treeNode5.Text = "Просмотр и редактирование";
             treeNode6.ImageIndex = 3;
             treeNode6.Name = "reportsNode";
+            treeNode6.SelectedImageIndex = 3;
             treeNode6.Text = "Рапорта о выполнении";
             treeNode7.ImageIndex = 6;
             treeNode7.Name = "summaryAccountingNode";
+            treeNode7.SelectedImageIndex = 6;
             treeNode7.Text = "Сводный учет";
-            treeNode8.ImageIndex = 5;
-            treeNode8.Name = "deviationAnalysisNode";
-            treeNode8.Text = "Анализ отклонений";
+            treeNode8.ImageIndex = 7;
+            treeNode8.Name = "СalculatingBalancesNode";
+            treeNode8.SelectedImageIndex = 7;
+            treeNode8.Text = "Расчет остатков";
             this.menuTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
             treeNode6,
@@ -104,6 +112,7 @@ namespace LR4_Team_programming
             this.imagesForMenuTree.Images.SetKeyName(4, "9e3fc0aa10f16d013eb8cf20e6f2d845.png");
             this.imagesForMenuTree.Images.SetKeyName(5, "Отклонения.png");
             this.imagesForMenuTree.Images.SetKeyName(6, "Сводный учет.png");
+            this.imagesForMenuTree.Images.SetKeyName(7, "Остатки.png");
             // 
             // reciverDep
             // 

@@ -34,6 +34,11 @@ namespace LR4_Team_programming.customElements
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.deviationPanel = new System.Windows.Forms.GroupBox();
             this.table = new System.Windows.Forms.DataGridView();
+            this.nameProductColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeOKPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expectedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.producedColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deviationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraSettingPanel = new System.Windows.Forms.GroupBox();
             this.smallDevCheckBox = new System.Windows.Forms.CheckBox();
             this.mediumDepCheckBox = new System.Windows.Forms.CheckBox();
@@ -53,13 +58,8 @@ namespace LR4_Team_programming.customElements
             this.endDate = new System.Windows.Forms.DateTimePicker();
             this.depLabel = new System.Windows.Forms.Label();
             this.depComboBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.timerForShiftingTable = new System.Windows.Forms.Timer(this.components);
-            this.nameProductColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeOKPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expectedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.producedColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deviationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.deviationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -81,7 +81,7 @@ namespace LR4_Team_programming.customElements
             this.deviationPanel.Controls.Add(this.table);
             this.deviationPanel.Controls.Add(this.extraSettingPanel);
             this.deviationPanel.Controls.Add(this.groupBox3);
-            this.deviationPanel.Controls.Add(this.label5);
+            this.deviationPanel.Controls.Add(this.headerLabel);
             this.deviationPanel.Location = new System.Drawing.Point(0, 0);
             this.deviationPanel.Name = "deviationPanel";
             this.deviationPanel.Size = new System.Drawing.Size(835, 690);
@@ -104,6 +104,36 @@ namespace LR4_Team_programming.customElements
             this.table.RowTemplate.Height = 29;
             this.table.Size = new System.Drawing.Size(805, 477);
             this.table.TabIndex = 4;
+            // 
+            // nameProductColoumn
+            // 
+            this.nameProductColoumn.HeaderText = "Наименование продукта";
+            this.nameProductColoumn.MinimumWidth = 6;
+            this.nameProductColoumn.Name = "nameProductColoumn";
+            // 
+            // codeOKPColumn
+            // 
+            this.codeOKPColumn.HeaderText = "Код по ОКП";
+            this.codeOKPColumn.MinimumWidth = 6;
+            this.codeOKPColumn.Name = "codeOKPColumn";
+            // 
+            // expectedColumn
+            // 
+            this.expectedColumn.HeaderText = "По плану, шт";
+            this.expectedColumn.MinimumWidth = 6;
+            this.expectedColumn.Name = "expectedColumn";
+            // 
+            // producedColoumn
+            // 
+            this.producedColoumn.HeaderText = "Произведено, шт";
+            this.producedColoumn.MinimumWidth = 6;
+            this.producedColoumn.Name = "producedColoumn";
+            // 
+            // deviationColumn
+            // 
+            this.deviationColumn.HeaderText = "Отклонение, шт";
+            this.deviationColumn.MinimumWidth = 6;
+            this.deviationColumn.Name = "deviationColumn";
             // 
             // extraSettingPanel
             // 
@@ -221,9 +251,9 @@ namespace LR4_Team_programming.customElements
             this.groupBox3.Controls.Add(this.endDate);
             this.groupBox3.Controls.Add(this.depLabel);
             this.groupBox3.Controls.Add(this.depComboBox);
-            this.groupBox3.Location = new System.Drawing.Point(17, 69);
+            this.groupBox3.Location = new System.Drawing.Point(17, 82);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(805, 132);
+            this.groupBox3.Size = new System.Drawing.Size(805, 119);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "поиск";
@@ -303,49 +333,20 @@ namespace LR4_Team_programming.customElements
             this.depComboBox.Size = new System.Drawing.Size(180, 28);
             this.depComboBox.TabIndex = 2;
             // 
-            // label5
+            // headerLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(57, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(736, 32);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "АНАЛИЗ ОТКЛОНЕНИЙ ОТ ФАКТИЧЕСКОГО ПРОИЗВОДСТВА";
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.headerLabel.Location = new System.Drawing.Point(41, 15);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(758, 64);
+            this.headerLabel.TabIndex = 1;
+            this.headerLabel.Text = "СВОДНЫЙ УЧЕТ И АНАЛИЗ ОТКЛОНЕНИЙ ОТ ФАКТИЧЕСКОГО\r\n                               " +
+    "          ПРОИЗВОДСТВА                                     ";
             // 
             // timerForShiftingTable
             // 
             this.timerForShiftingTable.Tick += new System.EventHandler(this.timerForShiftingTable_Tick);
-            // 
-            // nameProductColoumn
-            // 
-            this.nameProductColoumn.HeaderText = "Наименование продукта";
-            this.nameProductColoumn.MinimumWidth = 6;
-            this.nameProductColoumn.Name = "nameProductColoumn";
-            // 
-            // codeOKPColumn
-            // 
-            this.codeOKPColumn.HeaderText = "Код по ОКП";
-            this.codeOKPColumn.MinimumWidth = 6;
-            this.codeOKPColumn.Name = "codeOKPColumn";
-            // 
-            // expectedColumn
-            // 
-            this.expectedColumn.HeaderText = "По плану, шт";
-            this.expectedColumn.MinimumWidth = 6;
-            this.expectedColumn.Name = "expectedColumn";
-            // 
-            // producedColoumn
-            // 
-            this.producedColoumn.HeaderText = "Произведено, шт";
-            this.producedColoumn.MinimumWidth = 6;
-            this.producedColoumn.Name = "producedColoumn";
-            // 
-            // deviationColumn
-            // 
-            this.deviationColumn.HeaderText = "Отклонение, шт";
-            this.deviationColumn.MinimumWidth = 6;
-            this.deviationColumn.Name = "deviationColumn";
             // 
             // DeviationAnalysis
             // 
@@ -391,7 +392,7 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DateTimePicker endDate;
         private System.Windows.Forms.Label depLabel;
         private System.Windows.Forms.ComboBox depComboBox;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameProductColoumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeOKPColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expectedColumn;
