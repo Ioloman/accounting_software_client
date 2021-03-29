@@ -29,13 +29,17 @@ namespace LR4_Team_programming
             InventarizationDocumentEdit inventarizationEdit = new InventarizationDocumentEdit();
             ReportDocument report = new ReportDocument();
             ReportDocumentEdit reportEdit = new ReportDocumentEdit();
-            inventarization.Location = inventarizationEdit.Location = report.Location = reportEdit.Location = locationPanels;
-            inventarization.Visible = inventarizationEdit.Visible = report.Visible = reportEdit.Visible = false;
+            DeviationAnalysis deviationAnalysis = new DeviationAnalysis();
+
+            inventarization.Location = inventarizationEdit.Location = report.Location = reportEdit.Location = deviationAnalysis.Location = locationPanels;
+            inventarization.Visible = inventarizationEdit.Visible = report.Visible = reportEdit.Visible = deviationAnalysis.Visible = false;
 
             this.Controls.Add(inventarization);
             this.Controls.Add(inventarizationEdit);
             this.Controls.Add(report);
             this.Controls.Add(reportEdit);
+            this.Controls.Add(deviationAnalysis);
+
 
             menuToPanel = new Dictionary<TreeNode, UserControl>()
             {
@@ -43,7 +47,10 @@ namespace LR4_Team_programming
                 {menuTree.Nodes[0].Nodes[1],  inventarizationEdit },
 
                 {menuTree.Nodes[1].Nodes[0],  report},
-                {menuTree.Nodes[1].Nodes[1],  reportEdit}
+                {menuTree.Nodes[1].Nodes[1],  reportEdit},
+                
+                {menuTree.Nodes[2],  deviationAnalysis}
+
             };
 
             panels = new List<UserControl>()
@@ -51,7 +58,8 @@ namespace LR4_Team_programming
                 inventarization,
                 inventarizationEdit,
                 report,
-                reportEdit
+                reportEdit,
+                deviationAnalysis
             };
 
         
@@ -65,8 +73,7 @@ namespace LR4_Team_programming
         private void menuTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
-            {
-                
+            {            
                 menuToPanel[menuTree.SelectedNode].Visible = true;
                 foreach (UserControl panel in panels)
                     panel.Visible = false;

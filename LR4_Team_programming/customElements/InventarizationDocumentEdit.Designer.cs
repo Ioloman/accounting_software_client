@@ -33,8 +33,8 @@ namespace LR4_Team_programming.customElements
             this.inventarizationTable = new System.Windows.Forms.DataGridView();
             this.documentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreateDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inventarizationHeader = new System.Windows.Forms.Label();
             this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
+            this.inventarizationHeader = new System.Windows.Forms.Label();
             this.editAndLookVedomost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +46,7 @@ namespace LR4_Team_programming.customElements
             this.editAndLookVedomost.Controls.Add(this.inventarizationHeader);
             this.editAndLookVedomost.Location = new System.Drawing.Point(0, 0);
             this.editAndLookVedomost.Name = "editAndLookVedomost";
-            this.editAndLookVedomost.Size = new System.Drawing.Size(835, 636);
+            this.editAndLookVedomost.Size = new System.Drawing.Size(835, 690);
             this.editAndLookVedomost.TabIndex = 17;
             // 
             // inventarizationTable
@@ -60,7 +60,7 @@ namespace LR4_Team_programming.customElements
             this.inventarizationTable.Name = "inventarizationTable";
             this.inventarizationTable.RowHeadersWidth = 51;
             this.inventarizationTable.RowTemplate.Height = 29;
-            this.inventarizationTable.Size = new System.Drawing.Size(801, 364);
+            this.inventarizationTable.Size = new System.Drawing.Size(801, 428);
             this.inventarizationTable.TabIndex = 3;
             // 
             // documentNumber
@@ -75,6 +75,13 @@ namespace LR4_Team_programming.customElements
             this.dateCreateDocument.MinimumWidth = 6;
             this.dateCreateDocument.Name = "dateCreateDocument";
             // 
+            // searchFilterBar1
+            // 
+            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
+            this.searchFilterBar1.Name = "searchFilterBar1";
+            this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
+            this.searchFilterBar1.TabIndex = 4;
+            // 
             // inventarizationHeader
             // 
             this.inventarizationHeader.AutoSize = true;
@@ -85,20 +92,13 @@ namespace LR4_Team_programming.customElements
             this.inventarizationHeader.TabIndex = 1;
             this.inventarizationHeader.Text = "ВЕДОМОСТИ ИНВЕНТАРИЗАЦИИ";
             // 
-            // searchFilterBar1
-            // 
-            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
-            this.searchFilterBar1.Name = "searchFilterBar1";
-            this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
-            this.searchFilterBar1.TabIndex = 4;
-            // 
             // InventarizationDocumentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.editAndLookVedomost);
             this.Name = "InventarizationDocumentEdit";
-            this.Size = new System.Drawing.Size(834, 637);
+            this.Size = new System.Drawing.Size(835, 690);
             this.editAndLookVedomost.ResumeLayout(false);
             this.editAndLookVedomost.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).EndInit();

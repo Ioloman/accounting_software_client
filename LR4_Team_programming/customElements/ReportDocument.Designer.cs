@@ -44,6 +44,8 @@ namespace LR4_Team_programming.customElements
             this.label9 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.deleteRecordButton = new System.Windows.Forms.Button();
+            this.saveChangeButton = new System.Windows.Forms.Button();
             this.reportPanel.SuspendLayout();
             this.Head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
@@ -52,6 +54,8 @@ namespace LR4_Team_programming.customElements
             // 
             // reportPanel
             // 
+            this.reportPanel.Controls.Add(this.deleteRecordButton);
+            this.reportPanel.Controls.Add(this.saveChangeButton);
             this.reportPanel.Controls.Add(this.Head);
             this.reportPanel.Controls.Add(this.productsGrid);
             this.reportPanel.Controls.Add(this.reportInfo1);
@@ -107,10 +111,10 @@ namespace LR4_Team_programming.customElements
             this.okpCode,
             this.dataGridViewTextBoxColumn1,
             this.receiverDepColumn});
-            this.productsGrid.Location = new System.Drawing.Point(20, 264);
+            this.productsGrid.Location = new System.Drawing.Point(20, 223);
             this.productsGrid.Name = "productsGrid";
             this.productsGrid.RowHeadersWidth = 51;
-            this.productsGrid.Size = new System.Drawing.Size(797, 399);
+            this.productsGrid.Size = new System.Drawing.Size(797, 414);
             this.productsGrid.TabIndex = 1;
             // 
             // productName
@@ -143,7 +147,7 @@ namespace LR4_Team_programming.customElements
             this.reportInfo1.Controls.Add(this.label9);
             this.reportInfo1.Controls.Add(this.textBox6);
             this.reportInfo1.Controls.Add(this.label10);
-            this.reportInfo1.Location = new System.Drawing.Point(20, 107);
+            this.reportInfo1.Location = new System.Drawing.Point(20, 85);
             this.reportInfo1.Name = "reportInfo1";
             this.reportInfo1.Size = new System.Drawing.Size(380, 132);
             this.reportInfo1.TabIndex = 8;
@@ -184,6 +188,24 @@ namespace LR4_Team_programming.customElements
             this.label10.TabIndex = 6;
             this.label10.Text = "от";
             // 
+            // deleteRecordButton
+            // 
+            this.deleteRecordButton.Location = new System.Drawing.Point(519, 643);
+            this.deleteRecordButton.Name = "deleteRecordButton";
+            this.deleteRecordButton.Size = new System.Drawing.Size(298, 36);
+            this.deleteRecordButton.TabIndex = 12;
+            this.deleteRecordButton.Text = "Удалить запись";
+            this.deleteRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // saveChangeButton
+            // 
+            this.saveChangeButton.Location = new System.Drawing.Point(20, 643);
+            this.saveChangeButton.Name = "saveChangeButton";
+            this.saveChangeButton.Size = new System.Drawing.Size(298, 36);
+            this.saveChangeButton.TabIndex = 11;
+            this.saveChangeButton.Text = "Сохранить изменения";
+            this.saveChangeButton.UseVisualStyleBackColor = true;
+            // 
             // ReportDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -218,5 +240,7 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button deleteRecordButton;
+        private System.Windows.Forms.Button saveChangeButton;
     }
 }

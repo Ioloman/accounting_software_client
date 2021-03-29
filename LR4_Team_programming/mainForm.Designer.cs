@@ -39,6 +39,8 @@ namespace LR4_Team_programming
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Рапорта о выполнении", new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Сводный учет");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Анализ отклонений");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.menuTree = new System.Windows.Forms.TreeView();
             this.imagesForMenuTree = new System.Windows.Forms.ImageList(this.components);
@@ -74,9 +76,17 @@ namespace LR4_Team_programming
             treeNode6.ImageIndex = 3;
             treeNode6.Name = "reportsNode";
             treeNode6.Text = "Рапорта о выполнении";
+            treeNode7.ImageIndex = 6;
+            treeNode7.Name = "summaryAccountingNode";
+            treeNode7.Text = "Сводный учет";
+            treeNode8.ImageIndex = 5;
+            treeNode8.Name = "deviationAnalysisNode";
+            treeNode8.Text = "Анализ отклонений";
             this.menuTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
-            treeNode6});
+            treeNode6,
+            treeNode7,
+            treeNode8});
             this.menuTree.SelectedImageIndex = 4;
             this.menuTree.Size = new System.Drawing.Size(353, 690);
             this.menuTree.TabIndex = 4;
@@ -92,6 +102,8 @@ namespace LR4_Team_programming
             this.imagesForMenuTree.Images.SetKeyName(2, "img_179080.png");
             this.imagesForMenuTree.Images.SetKeyName(3, "127-1279288_report-clipart-hd-png-download.png");
             this.imagesForMenuTree.Images.SetKeyName(4, "9e3fc0aa10f16d013eb8cf20e6f2d845.png");
+            this.imagesForMenuTree.Images.SetKeyName(5, "Отклонения.png");
+            this.imagesForMenuTree.Images.SetKeyName(6, "Сводный учет.png");
             // 
             // reciverDep
             // 

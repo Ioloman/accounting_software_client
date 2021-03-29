@@ -30,44 +30,55 @@ namespace LR4_Team_programming.customElements
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.deleteRecordButton = new System.Windows.Forms.Button();
+            this.saveChangeButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.informationAboutDocPanel = new System.Windows.Forms.GroupBox();
+            this.depLabel = new System.Windows.Forms.Label();
+            this.depTextBox = new System.Windows.Forms.ComboBox();
+            this.docCreateDateLabel = new System.Windows.Forms.Label();
+            this.docNumberLabel = new System.Windows.Forms.Label();
+            this.docNumberTextBox = new System.Windows.Forms.TextBox();
+            this.docCreateDate = new System.Windows.Forms.DateTimePicker();
+            this.inventarizationLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.informationAboutDocPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.deleteRecordButton);
+            this.groupBox1.Controls.Add(this.saveChangeButton);
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.informationAboutDocPanel);
+            this.groupBox1.Controls.Add(this.inventarizationLabel);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(835, 625);
+            this.groupBox1.Size = new System.Drawing.Size(835, 687);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // deleteRecordButton
             // 
-            this.button1.Location = new System.Drawing.Point(261, 581);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(298, 36);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Сохранить изменения";
-            this.button1.UseVisualStyleBackColor = true;
+            this.deleteRecordButton.Location = new System.Drawing.Point(531, 645);
+            this.deleteRecordButton.Name = "deleteRecordButton";
+            this.deleteRecordButton.Size = new System.Drawing.Size(298, 36);
+            this.deleteRecordButton.TabIndex = 7;
+            this.deleteRecordButton.Text = "Удалить запись";
+            this.deleteRecordButton.UseVisualStyleBackColor = true;
+            // 
+            // saveChangeButton
+            // 
+            this.saveChangeButton.Location = new System.Drawing.Point(6, 645);
+            this.saveChangeButton.Name = "saveChangeButton";
+            this.saveChangeButton.Size = new System.Drawing.Size(298, 36);
+            this.saveChangeButton.TabIndex = 6;
+            this.saveChangeButton.Text = "Сохранить изменения";
+            this.saveChangeButton.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -80,7 +91,7 @@ namespace LR4_Team_programming.customElements
             this.dataGridView1.Location = new System.Drawing.Point(6, 215);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(823, 351);
+            this.dataGridView1.Size = new System.Drawing.Size(823, 428);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridViewComboBoxColumn1
@@ -105,82 +116,82 @@ namespace LR4_Team_programming.customElements
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // groupBox3
+            // informationAboutDocPanel
             // 
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
-            this.groupBox3.Location = new System.Drawing.Point(30, 69);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(774, 125);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Информация о документе";
+            this.informationAboutDocPanel.Controls.Add(this.depLabel);
+            this.informationAboutDocPanel.Controls.Add(this.depTextBox);
+            this.informationAboutDocPanel.Controls.Add(this.docCreateDateLabel);
+            this.informationAboutDocPanel.Controls.Add(this.docNumberLabel);
+            this.informationAboutDocPanel.Controls.Add(this.docNumberTextBox);
+            this.informationAboutDocPanel.Controls.Add(this.docCreateDate);
+            this.informationAboutDocPanel.Location = new System.Drawing.Point(30, 69);
+            this.informationAboutDocPanel.Name = "informationAboutDocPanel";
+            this.informationAboutDocPanel.Size = new System.Drawing.Size(774, 125);
+            this.informationAboutDocPanel.TabIndex = 5;
+            this.informationAboutDocPanel.TabStop = false;
+            this.informationAboutDocPanel.Text = "Информация о документе";
             // 
-            // label2
+            // depLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Цех";
+            this.depLabel.AutoSize = true;
+            this.depLabel.Location = new System.Drawing.Point(74, 76);
+            this.depLabel.Name = "depLabel";
+            this.depLabel.Size = new System.Drawing.Size(35, 20);
+            this.depLabel.TabIndex = 8;
+            this.depLabel.Text = "Цех";
             // 
-            // comboBox1
+            // depTextBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(122, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(206, 28);
-            this.comboBox1.TabIndex = 7;
+            this.depTextBox.FormattingEnabled = true;
+            this.depTextBox.Location = new System.Drawing.Point(122, 73);
+            this.depTextBox.Name = "depTextBox";
+            this.depTextBox.Size = new System.Drawing.Size(206, 28);
+            this.depTextBox.TabIndex = 7;
             // 
-            // label4
+            // docCreateDateLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(349, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(209, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Дата составления документа";
+            this.docCreateDateLabel.AutoSize = true;
+            this.docCreateDateLabel.Location = new System.Drawing.Point(349, 36);
+            this.docCreateDateLabel.Name = "docCreateDateLabel";
+            this.docCreateDateLabel.Size = new System.Drawing.Size(209, 20);
+            this.docCreateDateLabel.TabIndex = 6;
+            this.docCreateDateLabel.Text = "Дата составления документа";
             // 
-            // label3
+            // docNumberLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "№ документа";
+            this.docNumberLabel.AutoSize = true;
+            this.docNumberLabel.Location = new System.Drawing.Point(6, 36);
+            this.docNumberLabel.Name = "docNumberLabel";
+            this.docNumberLabel.Size = new System.Drawing.Size(103, 20);
+            this.docNumberLabel.TabIndex = 6;
+            this.docNumberLabel.Text = "№ документа";
             // 
-            // textBox1
+            // docNumberTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Номер документа";
-            this.textBox1.Size = new System.Drawing.Size(206, 27);
-            this.textBox1.TabIndex = 6;
+            this.docNumberTextBox.Location = new System.Drawing.Point(122, 35);
+            this.docNumberTextBox.Name = "docNumberTextBox";
+            this.docNumberTextBox.PlaceholderText = "Номер документа";
+            this.docNumberTextBox.Size = new System.Drawing.Size(206, 27);
+            this.docNumberTextBox.TabIndex = 6;
             // 
-            // dateTimePicker1
+            // docCreateDate
             // 
-            this.dateTimePicker1.CustomFormat = "dd MMMM yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(564, 35);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(194, 27);
-            this.dateTimePicker1.TabIndex = 2;
+            this.docCreateDate.CustomFormat = "dd MMMM yyyy";
+            this.docCreateDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.docCreateDate.Location = new System.Drawing.Point(564, 35);
+            this.docCreateDate.Name = "docCreateDate";
+            this.docCreateDate.Size = new System.Drawing.Size(194, 27);
+            this.docCreateDate.TabIndex = 2;
             // 
-            // label1
+            // inventarizationLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(261, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
+            this.inventarizationLabel.AutoSize = true;
+            this.inventarizationLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.inventarizationLabel.Location = new System.Drawing.Point(261, 23);
+            this.inventarizationLabel.Name = "inventarizationLabel";
+            this.inventarizationLabel.Size = new System.Drawing.Size(298, 25);
+            this.inventarizationLabel.TabIndex = 0;
+            this.inventarizationLabel.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
             // 
             // InventarizationDocument
             // 
@@ -188,12 +199,12 @@ namespace LR4_Team_programming.customElements
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Name = "InventarizationDocument";
-            this.Size = new System.Drawing.Size(840, 626);
+            this.Size = new System.Drawing.Size(835, 690);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.informationAboutDocPanel.ResumeLayout(false);
+            this.informationAboutDocPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -201,18 +212,19 @@ namespace LR4_Team_programming.customElements
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveChangeButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox informationAboutDocPanel;
+        private System.Windows.Forms.Label depLabel;
+        private System.Windows.Forms.ComboBox depTextBox;
+        private System.Windows.Forms.Label docCreateDateLabel;
+        private System.Windows.Forms.Label docNumberLabel;
+        private System.Windows.Forms.TextBox docNumberTextBox;
+        private System.Windows.Forms.DateTimePicker docCreateDate;
+        private System.Windows.Forms.Label inventarizationLabel;
+        private System.Windows.Forms.Button deleteRecordButton;
     }
 }
