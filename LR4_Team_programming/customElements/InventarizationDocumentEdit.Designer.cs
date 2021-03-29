@@ -33,8 +33,8 @@ namespace LR4_Team_programming.customElements
             this.inventarizationTable = new System.Windows.Forms.DataGridView();
             this.documentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreateDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inventarizationHeader = new System.Windows.Forms.Label();
             this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
+            this.inventarizationHeader = new System.Windows.Forms.Label();
             this.editAndLookVedomost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +75,13 @@ namespace LR4_Team_programming.customElements
             this.dateCreateDocument.MinimumWidth = 6;
             this.dateCreateDocument.Name = "dateCreateDocument";
             // 
+            // searchFilterBar1
+            // 
+            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
+            this.searchFilterBar1.Name = "searchFilterBar1";
+            this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
+            this.searchFilterBar1.TabIndex = 4;
+            // 
             // inventarizationHeader
             // 
             this.inventarizationHeader.AutoSize = true;
@@ -84,13 +91,6 @@ namespace LR4_Team_programming.customElements
             this.inventarizationHeader.Size = new System.Drawing.Size(301, 25);
             this.inventarizationHeader.TabIndex = 1;
             this.inventarizationHeader.Text = "ВЕДОМОСТИ ИНВЕНТАРИЗАЦИИ";
-            // 
-            // searchFilterBar1
-            // 
-            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
-            this.searchFilterBar1.Name = "searchFilterBar1";
-            this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
-            this.searchFilterBar1.TabIndex = 4;
             // 
             // InventarizationDocumentEdit
             // 
