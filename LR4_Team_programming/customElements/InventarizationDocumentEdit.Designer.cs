@@ -31,18 +31,20 @@ namespace LR4_Team_programming.customElements
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventarizationDocumentEdit));
             this.editAndLookVedomost = new System.Windows.Forms.Panel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.inventarizationTable = new System.Windows.Forms.DataGridView();
             this.documentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreateDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
-            this.headerLabel = new System.Windows.Forms.Label();
             this.editAndLookVedomost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).BeginInit();
             this.SuspendLayout();
             // 
             // editAndLookVedomost
             // 
+            this.editAndLookVedomost.Controls.Add(this.progressBar);
             this.editAndLookVedomost.Controls.Add(this.headerLabel);
             this.editAndLookVedomost.Controls.Add(this.searchButton);
             this.editAndLookVedomost.Controls.Add(this.inventarizationTable);
@@ -52,47 +54,15 @@ namespace LR4_Team_programming.customElements
             this.editAndLookVedomost.Size = new System.Drawing.Size(835, 690);
             this.editAndLookVedomost.TabIndex = 17;
             // 
-            // searchButton
+            // progressBar
             // 
-            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
-            this.searchButton.Location = new System.Drawing.Point(402, 126);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(35, 35);
-            this.searchButton.TabIndex = 18;
-            this.searchButton.UseVisualStyleBackColor = true;
-            // 
-            // inventarizationTable
-            // 
-            this.inventarizationTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.inventarizationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.inventarizationTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.documentNumber,
-            this.dateCreateDocument});
-            this.inventarizationTable.Location = new System.Drawing.Point(20, 251);
-            this.inventarizationTable.Name = "inventarizationTable";
-            this.inventarizationTable.RowHeadersWidth = 51;
-            this.inventarizationTable.RowTemplate.Height = 29;
-            this.inventarizationTable.Size = new System.Drawing.Size(801, 428);
-            this.inventarizationTable.TabIndex = 3;
-            // 
-            // documentNumber
-            // 
-            this.documentNumber.HeaderText = "Номер документа";
-            this.documentNumber.MinimumWidth = 6;
-            this.documentNumber.Name = "documentNumber";
-            // 
-            // dateCreateDocument
-            // 
-            this.dateCreateDocument.HeaderText = "Дата создания документа";
-            this.dateCreateDocument.MinimumWidth = 6;
-            this.dateCreateDocument.Name = "dateCreateDocument";
-            // 
-            // searchFilterBar1
-            // 
-            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
-            this.searchFilterBar1.Name = "searchFilterBar1";
-            this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
-            this.searchFilterBar1.TabIndex = 4;
+            this.progressBar.Location = new System.Drawing.Point(20, 234);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(801, 29);
+            this.progressBar.Step = 300;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 20;
+            this.progressBar.Visible = false;
             // 
             // headerLabel
             // 
@@ -103,6 +73,54 @@ namespace LR4_Team_programming.customElements
             this.headerLabel.Size = new System.Drawing.Size(411, 32);
             this.headerLabel.TabIndex = 19;
             this.headerLabel.Text = "ВЕДОМОСТИ ИНВЕНТАРИЗАЦИИ";
+            // 
+            // searchButton
+            // 
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(402, 126);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(35, 35);
+            this.searchButton.TabIndex = 18;
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // inventarizationTable
+            // 
+            this.inventarizationTable.AllowUserToAddRows = false;
+            this.inventarizationTable.AllowUserToDeleteRows = false;
+            this.inventarizationTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.inventarizationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.inventarizationTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.documentNumber,
+            this.dateCreateDocument});
+            this.inventarizationTable.Location = new System.Drawing.Point(20, 269);
+            this.inventarizationTable.Name = "inventarizationTable";
+            this.inventarizationTable.ReadOnly = true;
+            this.inventarizationTable.RowHeadersWidth = 51;
+            this.inventarizationTable.RowTemplate.Height = 29;
+            this.inventarizationTable.Size = new System.Drawing.Size(801, 410);
+            this.inventarizationTable.TabIndex = 3;
+            // 
+            // documentNumber
+            // 
+            this.documentNumber.HeaderText = "Номер документа";
+            this.documentNumber.MinimumWidth = 6;
+            this.documentNumber.Name = "documentNumber";
+            this.documentNumber.ReadOnly = true;
+            // 
+            // dateCreateDocument
+            // 
+            this.dateCreateDocument.HeaderText = "Дата создания документа";
+            this.dateCreateDocument.MinimumWidth = 6;
+            this.dateCreateDocument.Name = "dateCreateDocument";
+            this.dateCreateDocument.ReadOnly = true;
+            // 
+            // searchFilterBar1
+            // 
+            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
+            this.searchFilterBar1.Name = "searchFilterBar1";
+            this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
+            this.searchFilterBar1.TabIndex = 4;
             // 
             // InventarizationDocumentEdit
             // 
@@ -127,5 +145,6 @@ namespace LR4_Team_programming.customElements
         private screens.searchFilterBar searchFilterBar1;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label headerLabel;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

@@ -61,7 +61,7 @@
   <data name="searchButton.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAAB7pJREFUWEfNl+lvVNcZxvO3VOoiNeVTSlFQVEFFVal8AAlKEgVCEmhLC0UJqKqK
+        cQAAEnEB89x6jgAAB7pJREFUWEfNl+lvVNcZxvO3VOoiNeVTSlFQVEFFVal8AAlKEgVCEmhLC0UJqKqK
         EI0BYyMMKnvBENtjm2LjHWPsePd4vI7XifeZ8Yxn3/cZL/jpeY7nTm0MeHDzoY90dM+99yy/+y7nnvMO
         /o/0VjAmkwm9vb1ob29Hd3c3ZmZmkm++H20IY7FYcP/+fTx48ACdnZ3Q62dgtVrFVQ+NRoPc3FzcuHED
         4+PjyR6b1xth7t69i7q6upWb5XnEQ254HWbMzeoRcFmQCHvFiyX5uqGhAZcvX0YikZD3m9ErYSKRCLKy
@@ -97,6 +97,12 @@
         6I0mSkf/M8z3J+A/9V2B4t7EvvkAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="documentNumber.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>True</value>
+  </metadata>
+  <metadata name="dateCreateDocument.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>True</value>
+  </metadata>
   <metadata name="documentNumber.UserAddedColumn" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>True</value>
   </metadata>

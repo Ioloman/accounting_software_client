@@ -30,12 +30,10 @@ namespace LR4_Team_programming.customElements
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.headerLabel = new System.Windows.Forms.Label();
             this.deleteRecordButton = new System.Windows.Forms.Button();
             this.saveChangeButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.informationAboutDocPanel = new System.Windows.Forms.GroupBox();
             this.depLabel = new System.Windows.Forms.Label();
             this.depTextBox = new System.Windows.Forms.ComboBox();
@@ -43,7 +41,9 @@ namespace LR4_Team_programming.customElements
             this.docNumberLabel = new System.Windows.Forms.Label();
             this.docNumberTextBox = new System.Windows.Forms.TextBox();
             this.docCreateDate = new System.Windows.Forms.DateTimePicker();
-            this.headerLabel = new System.Windows.Forms.Label();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.informationAboutDocPanel.SuspendLayout();
@@ -61,6 +61,16 @@ namespace LR4_Team_programming.customElements
             this.groupBox1.Size = new System.Drawing.Size(835, 687);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
+            // 
+            // headerLabel
+            // 
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.headerLabel.Location = new System.Drawing.Point(208, 23);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(407, 32);
+            this.headerLabel.TabIndex = 8;
+            this.headerLabel.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
             // 
             // deleteRecordButton
             // 
@@ -93,28 +103,6 @@ namespace LR4_Team_programming.customElements
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(823, 428);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // dataGridViewComboBoxColumn1
-            // 
-            this.dataGridViewComboBoxColumn1.HeaderText = "Название детали";
-            this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            // 
-            // dataGridViewComboBoxColumn2
-            // 
-            this.dataGridViewComboBoxColumn2.HeaderText = "Код по ОКП";
-            this.dataGridViewComboBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
-            this.dataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Количество, шт";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // informationAboutDocPanel
             // 
@@ -183,15 +171,29 @@ namespace LR4_Team_programming.customElements
             this.docCreateDate.Size = new System.Drawing.Size(194, 27);
             this.docCreateDate.TabIndex = 2;
             // 
-            // headerLabel
+            // dataGridViewComboBoxColumn1
             // 
-            this.headerLabel.AutoSize = true;
-            this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.headerLabel.Location = new System.Drawing.Point(208, 23);
-            this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(407, 32);
-            this.headerLabel.TabIndex = 8;
-            this.headerLabel.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
+            this.dataGridViewComboBoxColumn1.HeaderText = "Название детали";
+            this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewComboBoxColumn2
+            // 
+            this.dataGridViewComboBoxColumn2.HeaderText = "Код по ОКП";
+            this.dataGridViewComboBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
+            this.dataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Количество, шт";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // InventarizationDocument
             // 
@@ -214,9 +216,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button saveChangeButton;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.GroupBox informationAboutDocPanel;
         private System.Windows.Forms.Label depLabel;
         private System.Windows.Forms.ComboBox depTextBox;
@@ -226,5 +225,8 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DateTimePicker docCreateDate;
         private System.Windows.Forms.Button deleteRecordButton;
         private System.Windows.Forms.Label headerLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

@@ -61,4 +61,12 @@ namespace Models
         public int workshop_pk { get; set; }
         public List<VedomostLine> vedomost_lines { get; set; }
     }
+
+    public class Workshop
+    {
+        public string url { get; set; }
+        public int workshop_pk { get; set; }
+        public string workshop_name { get; set; }
+        public string cipher_workshop { get; set; }
+    }
 }

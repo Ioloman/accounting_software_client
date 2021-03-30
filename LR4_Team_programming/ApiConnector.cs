@@ -316,7 +316,6 @@ namespace LR4_Team_programming
             }
         }
 
-
         public static IEnumerable<VedomostLine> getVedomostLine(Vedomost vedomost)
         {
             IEnumerable<VedomostLine> jsonDeserialized;
@@ -382,6 +381,51 @@ namespace LR4_Team_programming
             {
                 var result = streamReader.ReadToEnd();
             }
+        }
+
+        public static IEnumerable<Detail> getDetails()
+        {
+            IEnumerable<Detail> jsonDeserialized;
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/details/");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                string jsonString = streamReader.ReadToEnd();
+                jsonDeserialized = JsonConvert.DeserializeObject<IEnumerable<Detail>>(jsonString);
+            }
+            return jsonDeserialized;
+        }
+
+        public static IEnumerable<Workshop> getWorkshops()
+        {
+            IEnumerable<Workshop> jsonDeserialized;
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/workshops/");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                string jsonString = streamReader.ReadToEnd();
+                jsonDeserialized = JsonConvert.DeserializeObject<IEnumerable<Workshop>>(jsonString);
+            }
+            return jsonDeserialized;
+        }
+        
+        public static Workshop getWorkshop(string workshopName)
+        {
+            Workshop jsonDeserialized;
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/workshops/?search=" + workshopName);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                string jsonString = streamReader.ReadToEnd();
+                jsonDeserialized = JsonConvert.DeserializeObject<Workshop>(jsonString);
+            }
+            return jsonDeserialized;
         }
 
         class LineEqualityComparer : IEqualityComparer<Line>

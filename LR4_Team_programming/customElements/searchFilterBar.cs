@@ -82,6 +82,50 @@ namespace LR4_Team_programming.screens
             }
         }
 
+        public bool isDocumentNumberChecked()
+        {
+            return documentNumberSelector.Checked;
+        }
+
+        public bool isWorkshopChecked()
+        {
+            return senderDepSelector.Checked;
+        }
+
+        public bool isPeriodSelected()
+        {
+            return reportDatePeriodSelector.Checked;
+        }
+
+        public bool isDateSelected()
+        {
+            return reportDateSelector.Checked;
+        }
+
+        public int documentNumber()
+        {
+            return Convert.ToInt32(reportNumber.Text);
+        }
+
+        public DateTime getLowestDate()
+        {
+            return reportLowestDate.Value;
+        }
+
+        public DateTime getHighestDate()
+        {
+            return reportHighestDate.Value;
+        }
+
+        public DateTime getDate()
+        {
+            return reportDate.Value;
+        }
+
+        public string getWorkshop()
+        {
+            return senderDep.Text;
+        }
 
     }
 }
