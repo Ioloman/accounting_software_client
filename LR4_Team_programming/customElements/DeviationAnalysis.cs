@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
+using Models;
 
 namespace LR4_Team_programming.customElements
 {
@@ -51,6 +53,59 @@ namespace LR4_Team_programming.customElements
                     downMove = true;
                 }
             }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            table.Rows.Clear();
+            progressBar.Visible = true;
+
+            Thread thread = new Thread(fillTable);
+            thread.Start();
+        }
+        IEnumerable<Accounting> getAccounting()
+        {
+            List<Accounting> accountings = null;
+            try
+            {
+                string depName = "";
+                if (depComboBox.InvokeRequired)
+                    depComboBox.Invoke(new MethodInvoker(delegate
+                    {
+                        depName = depComboBox.Text;
+                    }));
+                var workshop = ApiConnector.getWorkshop(depName);
+                if (workshop != null)
+                    accountings = (List<Accounting>)ApiConnector.getAccountings(workshop, this.startDate.Value, this.endDate.Value);
+            }
+            catch (System.Net.WebException)
+            {
+                MessageBox.Show("Отсутствует подключение к сети Интернет", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<Accounting>();
+            }
+
+            return accountings;
+        }
+
+        private void fillTable()
+        {
+            List<Accounting> accountings = (List<Accounting>)getAccounting();
+
+            if (table.InvokeRequired)
+            {
+                table.Invoke(new MethodInvoker(delegate
+                {
+                    foreach (var accounting in accountings)
+                        table.Rows.Add(accounting.detail_name, accounting.cipher_detail, accounting.planned_amount, accounting.actual_amount, accounting.deviation);
+                    finishThread();
+                }));
+            }
+
+        }
+
+        void finishThread()
+        {
+            progressBar.Visible = false;
         }
     }
 }

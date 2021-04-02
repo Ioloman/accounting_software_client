@@ -18,44 +18,61 @@ namespace LR4_Team_programming.customElements
             InitializeComponent();
         }
 
-        Vedomost getVedomostsList(int documentNumber)
+        IEnumerable<Vedomost> getVedomostsList()
         {
-            List<Vedomost> vedomosts = (List<Vedomost>) ApiConnector.getVedomosts();
-            var vedomost = vedomosts.Find(vedomost => vedomost.doc_num == documentNumber);
-            return vedomost;
-        }
+            List<Vedomost> vedomosts = null;
+            try
+            {
+                vedomosts = (List<Vedomost>)ApiConnector.getVedomosts();
+            }
+            catch (System.Net.WebException)
+            {
+                MessageBox.Show("Отсутствует подключение к сети Интернет", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<Vedomost>();
+            }
 
-        IEnumerable<Vedomost> getVedomostsList(DateTime date, string senderWorkshop = "")
-        {
-            string format = "yyyy-MM-dd";
-            var result = DateTime.ParseExact("2020-12-22", format, CultureInfo.InvariantCulture);
+            if (searchFilterBar1.isDocumentNumberChecked())
+            {
+                int documentNumber = searchFilterBar1.documentNumber();
+                var vedomost = vedomosts.Find(vedomost => vedomost.doc_num == documentNumber);
+                if (vedomost != null)
+                    vedomosts = new List<Vedomost> { vedomost };
+                else
+                    vedomosts.Clear();
+            }
+            else
+            {
+                if (searchFilterBar1.isDateSelected())
+                {
+                    DateTime date = searchFilterBar1.getDate();
 
-            List<Vedomost> _vedomosts = (List<Vedomost>)ApiConnector.getVedomosts();
-            var vedomosts = _vedomosts.FindAll(vedomost =>
-            DateTime.ParseExact(vedomost.creation_date, format, CultureInfo.InvariantCulture) == date);
+                    string format = "yyyy-MM-dd";
+                    vedomosts = vedomosts.FindAll(vedomost =>
+                    DateTime.ParseExact(vedomost.creation_date, format, CultureInfo.InvariantCulture) == date);
+                }
 
-            var workshop = ApiConnector.getWorkshop(senderWorkshop);
+                if (searchFilterBar1.isPeriodSelected())
+                {
+                    DateTime lowestDate = searchFilterBar1.getLowestDate();
+                    DateTime highestDate = searchFilterBar1.getHighestDate();
 
-            if (senderWorkshop != string.Empty)
-                vedomosts = vedomosts.FindAll(vedomost => vedomost.workshop_pk == workshop.workshop_pk);
+                    string format = "yyyy-MM-dd";
+                    vedomosts = vedomosts.FindAll(vedomost =>
+                    DateTime.ParseExact(vedomost.creation_date, format, CultureInfo.InvariantCulture) >= lowestDate &&
+                    DateTime.ParseExact(vedomost.creation_date, format, CultureInfo.InvariantCulture) <= highestDate);
+                }
 
-            return vedomosts;
-        }
+                if (searchFilterBar1.isWorkshopChecked())
+                {
+                    string senderWorkshop = searchFilterBar1.getWorkshop();
 
-        IEnumerable<Vedomost> getVedomostsList(DateTime lowestDate = default(DateTime), DateTime highestDate = default(DateTime), string senderWorkshop = "")
-        {
-            string format = "yyyy-MM-dd";
-            var result = DateTime.ParseExact("2020-12-22", format, CultureInfo.InvariantCulture);
-
-            List<Vedomost> _vedomosts = (List<Vedomost>)ApiConnector.getVedomosts();
-            var vedomosts = _vedomosts.FindAll(vedomost =>
-            DateTime.ParseExact(vedomost.creation_date, format, CultureInfo.InvariantCulture) >= lowestDate &&
-            DateTime.ParseExact(vedomost.creation_date, format, CultureInfo.InvariantCulture) <= highestDate);
-
-            var workshop = ApiConnector.getWorkshop(senderWorkshop);
-
-            if (senderWorkshop != string.Empty)
-                vedomosts = vedomosts.FindAll(vedomost => vedomost.workshop_pk == workshop.workshop_pk);
+                    var workshop = ApiConnector.getWorkshop(senderWorkshop);
+                    if (workshop != null)
+                        vedomosts = vedomosts.FindAll(vedomost => vedomost.workshop_pk == workshop.workshop_pk);
+                    else
+                        vedomosts.Clear();
+                }
+            }
 
             return vedomosts;
         }
@@ -64,42 +81,24 @@ namespace LR4_Team_programming.customElements
         {
             inventarizationTable.Rows.Clear();
             progressBar.Visible = true;
+
             Thread thread = new Thread(fillTable);
             thread.Start();
         }
 
         private void fillTable()
         {
-            if (searchFilterBar1.isDocumentNumberChecked())
+            var vedomosts = getVedomostsList();
+            if (inventarizationTable.InvokeRequired)
             {
-                var vedomost = getVedomostsList(searchFilterBar1.documentNumber());
-                inventarizationTable.Rows.Add(vedomost.doc_num, vedomost.creation_date);
+                inventarizationTable.Invoke(new MethodInvoker(delegate
+                {
+                    foreach (var vedomost in (List<Vedomost>)vedomosts)
+                        inventarizationTable.Rows.Add(vedomost.doc_num, vedomost.creation_date);
+                    finishThread();
+                }));
             }
-            else if (searchFilterBar1.isDateSelected())
-            {
-                var vedomosts = getVedomostsList(searchFilterBar1.getDate(), searchFilterBar1.getWorkshop());
-                foreach (var vedomost in vedomosts)
-                    inventarizationTable.Rows.Add(vedomost.doc_num, vedomost.creation_date);
-            }
-            else if (searchFilterBar1.isPeriodSelected())
-            {
-                var vedomosts = getVedomostsList(searchFilterBar1.getLowestDate(), searchFilterBar1.getHighestDate(), searchFilterBar1.getWorkshop());
-                foreach (var vedomost in vedomosts)
-                    inventarizationTable.Rows.Add(vedomost.doc_num, vedomost.creation_date);
-            }
-            else if (searchFilterBar1.isWorkshopChecked())
-            {
-                var vedomosts = getVedomostsList(DateTime.MinValue, DateTime.MaxValue, searchFilterBar1.getWorkshop());
-                foreach (var vedomost in vedomosts)
-                    inventarizationTable.Rows.Add(vedomost.doc_num, vedomost.creation_date);
-            }
-            else
-            {
-                var vedomosts = ApiConnector.getVedomosts();
-                foreach (var vedomost in vedomosts)
-                    inventarizationTable.Rows.Add(vedomost.doc_num, vedomost.creation_date);
-            }
-            finishThread();
+
         }
 
         void finishThread()

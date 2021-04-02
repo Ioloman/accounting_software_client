@@ -61,6 +61,7 @@ namespace LR4_Team_programming.customElements
             this.depComboBox = new System.Windows.Forms.ComboBox();
             this.headerLabel = new System.Windows.Forms.Label();
             this.timerForShiftingTable = new System.Windows.Forms.Timer(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.deviationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -79,6 +80,7 @@ namespace LR4_Team_programming.customElements
             // 
             // deviationPanel
             // 
+            this.deviationPanel.Controls.Add(this.progressBar);
             this.deviationPanel.Controls.Add(this.table);
             this.deviationPanel.Controls.Add(this.extraSettingPanel);
             this.deviationPanel.Controls.Add(this.groupBox3);
@@ -91,6 +93,8 @@ namespace LR4_Team_programming.customElements
             // 
             // table
             // 
+            this.table.AllowUserToAddRows = false;
+            this.table.AllowUserToDeleteRows = false;
             this.table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -99,11 +103,13 @@ namespace LR4_Team_programming.customElements
             this.expectedColumn,
             this.producedColoumn,
             this.deviationColumn});
-            this.table.Location = new System.Drawing.Point(17, 207);
+            this.table.Location = new System.Drawing.Point(17, 396);
             this.table.Name = "table";
+            this.table.ReadOnly = true;
+            this.table.RowHeadersVisible = false;
             this.table.RowHeadersWidth = 51;
             this.table.RowTemplate.Height = 29;
-            this.table.Size = new System.Drawing.Size(805, 477);
+            this.table.Size = new System.Drawing.Size(805, 288);
             this.table.TabIndex = 4;
             // 
             // nameProductColoumn
@@ -111,30 +117,35 @@ namespace LR4_Team_programming.customElements
             this.nameProductColoumn.HeaderText = "Наименование продукта";
             this.nameProductColoumn.MinimumWidth = 6;
             this.nameProductColoumn.Name = "nameProductColoumn";
+            this.nameProductColoumn.ReadOnly = true;
             // 
             // codeOKPColumn
             // 
             this.codeOKPColumn.HeaderText = "Код по ОКП";
             this.codeOKPColumn.MinimumWidth = 6;
             this.codeOKPColumn.Name = "codeOKPColumn";
+            this.codeOKPColumn.ReadOnly = true;
             // 
             // expectedColumn
             // 
             this.expectedColumn.HeaderText = "По плану, шт";
             this.expectedColumn.MinimumWidth = 6;
             this.expectedColumn.Name = "expectedColumn";
+            this.expectedColumn.ReadOnly = true;
             // 
             // producedColoumn
             // 
             this.producedColoumn.HeaderText = "Произведено, шт";
             this.producedColoumn.MinimumWidth = 6;
             this.producedColoumn.Name = "producedColoumn";
+            this.producedColoumn.ReadOnly = true;
             // 
             // deviationColumn
             // 
             this.deviationColumn.HeaderText = "Отклонение, шт";
             this.deviationColumn.MinimumWidth = 6;
             this.deviationColumn.Name = "deviationColumn";
+            this.deviationColumn.ReadOnly = true;
             // 
             // extraSettingPanel
             // 
@@ -268,6 +279,7 @@ namespace LR4_Team_programming.customElements
             this.searchButton.Size = new System.Drawing.Size(35, 35);
             this.searchButton.TabIndex = 17;
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // settingButton
             // 
@@ -360,6 +372,16 @@ namespace LR4_Team_programming.customElements
             this.timerForShiftingTable.Interval = 10;
             this.timerForShiftingTable.Tick += new System.EventHandler(this.timerForShiftingTable_Tick);
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(17, 361);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(805, 29);
+            this.progressBar.Step = 300;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 22;
+            this.progressBar.Visible = false;
+            // 
             // DeviationAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -411,5 +433,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn producedColoumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deviationColumn;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

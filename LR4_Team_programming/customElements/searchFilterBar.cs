@@ -104,6 +104,8 @@ namespace LR4_Team_programming.screens
 
         public int documentNumber()
         {
+            if (reportNumber.Text == String.Empty)
+                reportNumber.Text = "0";
             return Convert.ToInt32(reportNumber.Text);
         }
 

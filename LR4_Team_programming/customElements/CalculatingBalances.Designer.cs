@@ -32,6 +32,7 @@ namespace LR4_Team_programming.customElements
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculatingBalances));
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchPanel = new System.Windows.Forms.GroupBox();
+            this.searchButton = new System.Windows.Forms.Button();
             this.depNameComboBox = new System.Windows.Forms.ComboBox();
             this.date = new System.Windows.Forms.DateTimePicker();
             this.dateLabel = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@ namespace LR4_Team_programming.customElements
             this.detailNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeOKPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
@@ -62,12 +63,22 @@ namespace LR4_Team_programming.customElements
             this.searchPanel.Controls.Add(this.date);
             this.searchPanel.Controls.Add(this.dateLabel);
             this.searchPanel.Controls.Add(this.depLabel);
-            this.searchPanel.Location = new System.Drawing.Point(9, 61);
+            this.searchPanel.Location = new System.Drawing.Point(9, 55);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(399, 141);
             this.searchPanel.TabIndex = 3;
             this.searchPanel.TabStop = false;
             this.searchPanel.Text = "поиск";
+            // 
+            // searchButton
+            // 
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(358, 100);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(35, 35);
+            this.searchButton.TabIndex = 18;
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // depNameComboBox
             // 
@@ -107,17 +118,21 @@ namespace LR4_Team_programming.customElements
             // 
             // table
             // 
+            this.table.AllowUserToAddRows = false;
+            this.table.AllowUserToDeleteRows = false;
             this.table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.detailNameColumn,
             this.codeOKPColumn,
             this.amount});
-            this.table.Location = new System.Drawing.Point(9, 217);
+            this.table.Location = new System.Drawing.Point(9, 237);
             this.table.Name = "table";
+            this.table.ReadOnly = true;
+            this.table.RowHeadersVisible = false;
             this.table.RowHeadersWidth = 51;
             this.table.RowTemplate.Height = 29;
-            this.table.Size = new System.Drawing.Size(814, 461);
+            this.table.Size = new System.Drawing.Size(814, 441);
             this.table.TabIndex = 4;
             // 
             // detailNameColumn
@@ -125,32 +140,37 @@ namespace LR4_Team_programming.customElements
             this.detailNameColumn.HeaderText = "Название детали";
             this.detailNameColumn.MinimumWidth = 6;
             this.detailNameColumn.Name = "detailNameColumn";
+            this.detailNameColumn.ReadOnly = true;
             // 
             // codeOKPColumn
             // 
             this.codeOKPColumn.HeaderText = "Код по ОКП";
             this.codeOKPColumn.MinimumWidth = 6;
             this.codeOKPColumn.Name = "codeOKPColumn";
+            this.codeOKPColumn.ReadOnly = true;
             // 
             // amount
             // 
             this.amount.HeaderText = "Количество, шт";
             this.amount.MinimumWidth = 6;
             this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
             // 
-            // searchButton
+            // progressBar
             // 
-            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
-            this.searchButton.Location = new System.Drawing.Point(358, 100);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(35, 35);
-            this.searchButton.TabIndex = 18;
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.progressBar.Location = new System.Drawing.Point(9, 202);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(814, 29);
+            this.progressBar.Step = 300;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 21;
+            this.progressBar.Visible = false;
             // 
             // CalculatingBalances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.table);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.headerLabel);
@@ -177,5 +197,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn codeOKPColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

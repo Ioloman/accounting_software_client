@@ -17,6 +17,7 @@ namespace Models
     public class Detail
     {
         public string url { get; set; }
+        public int detail_pk { get; set; }
         public string detail_name { get; set; }
         public string cipher_detail { get; set; }
     }
@@ -68,5 +69,38 @@ namespace Models
         public int workshop_pk { get; set; }
         public string workshop_name { get; set; }
         public string cipher_workshop { get; set; }
+    }
+
+    public class Leftover
+    {
+        public string url { get; set; }
+        public int detail_pk { get; set; }
+        public string detail_name { get; set; }
+        public string cipher_detail { get; set; }
+        public int amount { get; set; }
+    }
+
+    public class Accounting
+    {
+        public string url { get; set; }
+        public int detail_pk { get; set; }
+        public string detail_name { get; set; }
+        public string cipher_detail { get; set; }
+        public int actual_amount { get; set; }
+        public int planned_amount { get; set; }
+        public int deviation { get; set; }
+    }
+
+    public class AccountingResult
+    {
+        public object error { get; set; }
+        public List<Accounting> accounting { get; set; }
+    }
+
+    public class LeftoversResponse
+    {
+        public List<Leftover> leftovers { get; set; }
+        public List<object> stuck { get; set; }
+        public object error { get; set; }
     }
 }

@@ -35,9 +35,10 @@ namespace LR4_Team_programming.customElements
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.inventarizationTable = new System.Windows.Forms.DataGridView();
+            this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
             this.documentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreateDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
+            this.modifyColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.editAndLookVedomost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).BeginInit();
             this.SuspendLayout();
@@ -92,17 +93,28 @@ namespace LR4_Team_programming.customElements
             this.inventarizationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventarizationTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.documentNumber,
-            this.dateCreateDocument});
+            this.dateCreateDocument,
+            this.modifyColumn});
             this.inventarizationTable.Location = new System.Drawing.Point(20, 269);
             this.inventarizationTable.Name = "inventarizationTable";
             this.inventarizationTable.ReadOnly = true;
+            this.inventarizationTable.RowHeadersVisible = false;
             this.inventarizationTable.RowHeadersWidth = 51;
             this.inventarizationTable.RowTemplate.Height = 29;
             this.inventarizationTable.Size = new System.Drawing.Size(801, 410);
             this.inventarizationTable.TabIndex = 3;
             // 
+            // searchFilterBar1
+            // 
+            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
+            this.searchFilterBar1.Name = "searchFilterBar1";
+            this.searchFilterBar1.Size = new System.Drawing.Size(815, 191);
+            this.searchFilterBar1.TabIndex = 4;
+            // 
             // documentNumber
             // 
+            this.documentNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.documentNumber.FillWeight = 109.893F;
             this.documentNumber.HeaderText = "Номер документа";
             this.documentNumber.MinimumWidth = 6;
             this.documentNumber.Name = "documentNumber";
@@ -110,17 +122,24 @@ namespace LR4_Team_programming.customElements
             // 
             // dateCreateDocument
             // 
+            this.dateCreateDocument.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dateCreateDocument.FillWeight = 109.893F;
             this.dateCreateDocument.HeaderText = "Дата создания документа";
             this.dateCreateDocument.MinimumWidth = 6;
             this.dateCreateDocument.Name = "dateCreateDocument";
             this.dateCreateDocument.ReadOnly = true;
+            this.dateCreateDocument.Width = 350;
             // 
-            // searchFilterBar1
+            // modifyColumn
             // 
-            this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
-            this.searchFilterBar1.Name = "searchFilterBar1";
-            this.searchFilterBar1.Size = new System.Drawing.Size(814, 191);
-            this.searchFilterBar1.TabIndex = 4;
+            this.modifyColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.modifyColumn.FillWeight = 80.21391F;
+            this.modifyColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.modifyColumn.HeaderText = "";
+            this.modifyColumn.MinimumWidth = 6;
+            this.modifyColumn.Name = "modifyColumn";
+            this.modifyColumn.ReadOnly = true;
+            this.modifyColumn.Width = 50;
             // 
             // InventarizationDocumentEdit
             // 
@@ -140,11 +159,12 @@ namespace LR4_Team_programming.customElements
 
         private System.Windows.Forms.Panel editAndLookVedomost;
         private System.Windows.Forms.DataGridView inventarizationTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn documentNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateCreateDocument;
         private screens.searchFilterBar searchFilterBar1;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn documentNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateCreateDocument;
+        private System.Windows.Forms.DataGridViewButtonColumn modifyColumn;
     }
 }

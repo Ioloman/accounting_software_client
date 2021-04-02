@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Models;
+using System.Globalization;
 
 
 namespace LR4_Team_programming
@@ -43,7 +44,6 @@ namespace LR4_Team_programming
             }
             return jsonDeserialized;
         }
-
 
         public static void createReport(Report report)
         {
@@ -412,11 +412,48 @@ namespace LR4_Team_programming
             }
             return jsonDeserialized;
         }
-        
+
+        public static IEnumerable<Workshop> getWorkshops(IEnumerable<int> pks)
+        {
+            IEnumerable<Workshop> jsonDeserialized;
+            var requestString = "https://loloman.pythonanywhere.com/api/workshops/?workshop_pks=";
+            foreach (var pk in pks)
+                requestString += pk.ToString() + ",";
+            requestString = requestString.Remove(requestString.Length - 1);
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(requestString);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                string jsonString = streamReader.ReadToEnd();
+                jsonDeserialized = JsonConvert.DeserializeObject<IEnumerable<Workshop>>(jsonString);
+            }
+            return jsonDeserialized;
+        }
+
         public static Workshop getWorkshop(string workshopName)
         {
-            Workshop jsonDeserialized;
+            List<Workshop> jsonDeserialized;
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/workshops/?search=" + workshopName);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                string jsonString = streamReader.ReadToEnd();
+                jsonDeserialized = JsonConvert.DeserializeObject<List<Workshop>>(jsonString);
+            }
+            if (jsonDeserialized.Count != 0)
+                return jsonDeserialized.ToArray()[0];
+            else
+                return null;
+        }
+
+        public static Workshop getWorkshop(int workshop_pk)
+        {
+            Workshop jsonDeserialized;
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/workshops/" + workshop_pk.ToString());
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "GET";
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
@@ -426,6 +463,42 @@ namespace LR4_Team_programming
                 jsonDeserialized = JsonConvert.DeserializeObject<Workshop>(jsonString);
             }
             return jsonDeserialized;
+        }
+
+        public static IEnumerable<Leftover> getLeftovers (Workshop workshop, DateTime date)
+        {
+            LeftoversResponse jsonDeserialized;
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/leftovers/?date=" + date.ToString("yyyy-MM-dd") + "&workshop_pk=" + workshop.workshop_pk.ToString());
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                string jsonString = streamReader.ReadToEnd();
+                jsonDeserialized = JsonConvert.DeserializeObject<LeftoversResponse>(jsonString);
+            }
+            return jsonDeserialized.leftovers;
+        }
+
+        public static IEnumerable<Accounting> getAccountings(Workshop workshop, DateTime startDate, DateTime endDate)
+        {
+            string requestString = "https://loloman.pythonanywhere.com/api/accounting/?start_date=";
+            requestString += startDate.ToString("yyyy-MM-dd");
+            requestString += "&workshop_pk=";
+            requestString += workshop.workshop_pk.ToString();
+            requestString += "&end_date=";
+            requestString += endDate.ToString("yyyy-MM-dd");
+            AccountingResult jsonDeserialized;
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(requestString);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                string jsonString = streamReader.ReadToEnd();
+                jsonDeserialized = JsonConvert.DeserializeObject<AccountingResult>(jsonString);
+            }
+            return jsonDeserialized.accounting;
         }
 
         class LineEqualityComparer : IEqualityComparer<Line>

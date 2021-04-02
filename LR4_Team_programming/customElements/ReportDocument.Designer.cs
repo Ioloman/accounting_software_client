@@ -34,7 +34,7 @@ namespace LR4_Team_programming.customElements
             this.saveChangeButton = new System.Windows.Forms.Button();
             this.Head = new System.Windows.Forms.GroupBox();
             this.anotherReportLabel = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.docNumber = new System.Windows.Forms.TextBox();
             this.reportLabel = new System.Windows.Forms.Label();
             this.productsGrid = new System.Windows.Forms.DataGridView();
             this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,9 +42,9 @@ namespace LR4_Team_programming.customElements
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receiverDepColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportInfo1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.creationDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.senderTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.reportPanel.SuspendLayout();
             this.Head.SuspendLayout();
@@ -81,11 +81,12 @@ namespace LR4_Team_programming.customElements
             this.saveChangeButton.TabIndex = 11;
             this.saveChangeButton.Text = "Сохранить изменения";
             this.saveChangeButton.UseVisualStyleBackColor = true;
+            this.saveChangeButton.Click += new System.EventHandler(this.saveChangeButton_Click);
             // 
             // Head
             // 
             this.Head.Controls.Add(this.anotherReportLabel);
-            this.Head.Controls.Add(this.textBox2);
+            this.Head.Controls.Add(this.docNumber);
             this.Head.Controls.Add(this.reportLabel);
             this.Head.Location = new System.Drawing.Point(20, 10);
             this.Head.Name = "Head";
@@ -103,12 +104,12 @@ namespace LR4_Team_programming.customElements
             this.anotherReportLabel.TabIndex = 2;
             this.anotherReportLabel.Text = "СДАЧИ ПРОДУКЦИИ ЦЕХАМИ";
             // 
-            // textBox2
+            // docNumber
             // 
-            this.textBox2.Location = new System.Drawing.Point(244, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(138, 27);
-            this.textBox2.TabIndex = 9;
+            this.docNumber.Location = new System.Drawing.Point(244, 27);
+            this.docNumber.Name = "docNumber";
+            this.docNumber.Size = new System.Drawing.Size(138, 27);
+            this.docNumber.TabIndex = 9;
             // 
             // reportLabel
             // 
@@ -161,9 +162,9 @@ namespace LR4_Team_programming.customElements
             // 
             // reportInfo1
             // 
-            this.reportInfo1.Controls.Add(this.dateTimePicker4);
+            this.reportInfo1.Controls.Add(this.creationDate);
             this.reportInfo1.Controls.Add(this.label9);
-            this.reportInfo1.Controls.Add(this.textBox6);
+            this.reportInfo1.Controls.Add(this.senderTextBox);
             this.reportInfo1.Controls.Add(this.label10);
             this.reportInfo1.Location = new System.Drawing.Point(20, 85);
             this.reportInfo1.Name = "reportInfo1";
@@ -171,15 +172,15 @@ namespace LR4_Team_programming.customElements
             this.reportInfo1.TabIndex = 8;
             this.reportInfo1.TabStop = false;
             // 
-            // dateTimePicker4
+            // creationDate
             // 
-            this.dateTimePicker4.CustomFormat = "dd MMMM yyyy";
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker4.Location = new System.Drawing.Point(145, 34);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(180, 27);
-            this.dateTimePicker4.TabIndex = 4;
-            this.dateTimePicker4.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
+            this.creationDate.CustomFormat = "dd MMMM yyyy";
+            this.creationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.creationDate.Location = new System.Drawing.Point(145, 34);
+            this.creationDate.Name = "creationDate";
+            this.creationDate.Size = new System.Drawing.Size(180, 27);
+            this.creationDate.TabIndex = 4;
+            this.creationDate.Value = new System.DateTime(2021, 3, 25, 0, 0, 0, 0);
             // 
             // label9
             // 
@@ -190,12 +191,12 @@ namespace LR4_Team_programming.customElements
             this.label9.TabIndex = 7;
             this.label9.Text = "цех-отправитель";
             // 
-            // textBox6
+            // senderTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(145, 74);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(180, 27);
-            this.textBox6.TabIndex = 5;
+            this.senderTextBox.Location = new System.Drawing.Point(145, 74);
+            this.senderTextBox.Name = "senderTextBox";
+            this.senderTextBox.Size = new System.Drawing.Size(180, 27);
+            this.senderTextBox.TabIndex = 5;
             // 
             // label10
             // 
@@ -242,5 +243,8 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button deleteRecordButton;
         private System.Windows.Forms.Button saveChangeButton;
+        private System.Windows.Forms.TextBox senderTextBox;
+        private System.Windows.Forms.DateTimePicker creationDate;
+        private System.Windows.Forms.TextBox docNumber;
     }
 }
