@@ -31,10 +31,9 @@ namespace LR4_Team_programming.customElements
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.headerLabel = new System.Windows.Forms.Label();
-            this.deleteRecordButton = new System.Windows.Forms.Button();
             this.saveChangeButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.table = new System.Windows.Forms.DataGridView();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.informationAboutDocPanel = new System.Windows.Forms.GroupBox();
@@ -44,17 +43,18 @@ namespace LR4_Team_programming.customElements
             this.docNumberLabel = new System.Windows.Forms.Label();
             this.docNumberTextBox = new System.Windows.Forms.TextBox();
             this.docCreateDate = new System.Windows.Forms.DateTimePicker();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.informationAboutDocPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.Controls.Add(this.headerLabel);
-            this.groupBox1.Controls.Add(this.deleteRecordButton);
             this.groupBox1.Controls.Add(this.saveChangeButton);
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.table);
             this.groupBox1.Controls.Add(this.informationAboutDocPanel);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -72,52 +72,47 @@ namespace LR4_Team_programming.customElements
             this.headerLabel.TabIndex = 8;
             this.headerLabel.Text = "ВЕДОМОСТЬ ИНВЕНТАРИЗАЦИИ";
             // 
-            // deleteRecordButton
-            // 
-            this.deleteRecordButton.Location = new System.Drawing.Point(531, 645);
-            this.deleteRecordButton.Name = "deleteRecordButton";
-            this.deleteRecordButton.Size = new System.Drawing.Size(298, 36);
-            this.deleteRecordButton.TabIndex = 7;
-            this.deleteRecordButton.Text = "Удалить запись";
-            this.deleteRecordButton.UseVisualStyleBackColor = true;
-            // 
             // saveChangeButton
             // 
-            this.saveChangeButton.Location = new System.Drawing.Point(6, 645);
+            this.saveChangeButton.Location = new System.Drawing.Point(293, 649);
             this.saveChangeButton.Name = "saveChangeButton";
             this.saveChangeButton.Size = new System.Drawing.Size(298, 36);
             this.saveChangeButton.TabIndex = 6;
-            this.saveChangeButton.Text = "Сохранить изменения";
+            this.saveChangeButton.Text = "Сохранить";
             this.saveChangeButton.UseVisualStyleBackColor = true;
             this.saveChangeButton.Click += new System.EventHandler(this.saveChangeButton_Click);
             // 
-            // dataGridView1
+            // table
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.table.ColumnHeadersHeight = 29;
+            this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewComboBoxColumn1,
             this.dataGridViewComboBoxColumn2,
             this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 215);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(823, 428);
-            this.dataGridView1.TabIndex = 0;
+            this.table.Location = new System.Drawing.Point(6, 227);
+            this.table.Name = "table";
+            this.table.RowHeadersWidth = 51;
+            this.table.Size = new System.Drawing.Size(823, 416);
+            this.table.TabIndex = 0;
+            this.table.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.table_RowsAdded);
             // 
             // dataGridViewComboBoxColumn1
             // 
+            this.dataGridViewComboBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.dataGridViewComboBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dataGridViewComboBoxColumn1.HeaderText = "Название детали";
             this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
             this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
             this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dataGridViewComboBoxColumn2
             // 
             this.dataGridViewComboBoxColumn2.HeaderText = "Код по ОКП";
             this.dataGridViewComboBoxColumn2.MinimumWidth = 6;
             this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
+            this.dataGridViewComboBoxColumn2.ReadOnly = true;
             this.dataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -137,9 +132,9 @@ namespace LR4_Team_programming.customElements
             this.informationAboutDocPanel.Controls.Add(this.docNumberLabel);
             this.informationAboutDocPanel.Controls.Add(this.docNumberTextBox);
             this.informationAboutDocPanel.Controls.Add(this.docCreateDate);
-            this.informationAboutDocPanel.Location = new System.Drawing.Point(30, 69);
+            this.informationAboutDocPanel.Location = new System.Drawing.Point(6, 69);
             this.informationAboutDocPanel.Name = "informationAboutDocPanel";
-            this.informationAboutDocPanel.Size = new System.Drawing.Size(774, 125);
+            this.informationAboutDocPanel.Size = new System.Drawing.Size(823, 125);
             this.informationAboutDocPanel.TabIndex = 5;
             this.informationAboutDocPanel.TabStop = false;
             this.informationAboutDocPanel.Text = "Информация о документе";
@@ -196,6 +191,15 @@ namespace LR4_Team_programming.customElements
             this.docCreateDate.Size = new System.Drawing.Size(194, 27);
             this.docCreateDate.TabIndex = 2;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(6, 195);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(823, 29);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 9;
+            this.progressBar1.Visible = false;
+            // 
             // InventarizationDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -205,7 +209,7 @@ namespace LR4_Team_programming.customElements
             this.Size = new System.Drawing.Size(835, 690);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             this.informationAboutDocPanel.ResumeLayout(false);
             this.informationAboutDocPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -216,7 +220,7 @@ namespace LR4_Team_programming.customElements
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button saveChangeButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView table;
         private System.Windows.Forms.GroupBox informationAboutDocPanel;
         private System.Windows.Forms.Label depLabel;
         private System.Windows.Forms.ComboBox depTextBox;
@@ -224,10 +228,10 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.Label docNumberLabel;
         private System.Windows.Forms.TextBox docNumberTextBox;
         private System.Windows.Forms.DateTimePicker docCreateDate;
-        private System.Windows.Forms.Button deleteRecordButton;
         private System.Windows.Forms.Label headerLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

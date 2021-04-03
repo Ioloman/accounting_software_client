@@ -65,8 +65,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="document templates\" />
-  </ItemGroup>
-
 </Project>

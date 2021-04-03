@@ -30,9 +30,9 @@ namespace LR4_Team_programming.screens
         private void InitializeComponent()
         {
             this.departmentSearch = new System.Windows.Forms.GroupBox();
+            this.senderDep = new System.Windows.Forms.ComboBox();
             this.senderDepSelector = new System.Windows.Forms.CheckBox();
             this.senderDepLabel = new System.Windows.Forms.Label();
-            this.senderDep = new System.Windows.Forms.TextBox();
             this.numberSearch = new System.Windows.Forms.GroupBox();
             this.documentNumberSelector = new System.Windows.Forms.CheckBox();
             this.reportNumberLabel = new System.Windows.Forms.Label();
@@ -53,15 +53,23 @@ namespace LR4_Team_programming.screens
             // 
             // departmentSearch
             // 
+            this.departmentSearch.Controls.Add(this.senderDep);
             this.departmentSearch.Controls.Add(this.senderDepSelector);
             this.departmentSearch.Controls.Add(this.senderDepLabel);
-            this.departmentSearch.Controls.Add(this.senderDep);
             this.departmentSearch.Location = new System.Drawing.Point(420, 96);
             this.departmentSearch.Name = "departmentSearch";
             this.departmentSearch.Size = new System.Drawing.Size(380, 76);
             this.departmentSearch.TabIndex = 14;
             this.departmentSearch.TabStop = false;
             this.departmentSearch.Text = "поиск по цеху";
+            // 
+            // senderDep
+            // 
+            this.senderDep.FormattingEnabled = true;
+            this.senderDep.Location = new System.Drawing.Point(145, 34);
+            this.senderDep.Name = "senderDep";
+            this.senderDep.Size = new System.Drawing.Size(180, 28);
+            this.senderDep.TabIndex = 15;
             // 
             // senderDepSelector
             // 
@@ -80,13 +88,6 @@ namespace LR4_Team_programming.screens
             this.senderDepLabel.Size = new System.Drawing.Size(127, 20);
             this.senderDepLabel.TabIndex = 7;
             this.senderDepLabel.Text = "цех-отправитель";
-            // 
-            // senderDep
-            // 
-            this.senderDep.Location = new System.Drawing.Point(145, 34);
-            this.senderDep.Name = "senderDep";
-            this.senderDep.Size = new System.Drawing.Size(180, 27);
-            this.senderDep.TabIndex = 5;
             // 
             // numberSearch
             // 
@@ -121,6 +122,8 @@ namespace LR4_Team_programming.screens
             // 
             // reportNumber
             // 
+            this.reportNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.reportNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.reportNumber.Location = new System.Drawing.Point(145, 34);
             this.reportNumber.Name = "reportNumber";
             this.reportNumber.Size = new System.Drawing.Size(180, 27);
@@ -246,7 +249,6 @@ namespace LR4_Team_programming.screens
         private System.Windows.Forms.GroupBox departmentSearch;
         private System.Windows.Forms.CheckBox senderDepSelector;
         private System.Windows.Forms.Label senderDepLabel;
-        private System.Windows.Forms.TextBox senderDep;
         private System.Windows.Forms.GroupBox numberSearch;
         private System.Windows.Forms.CheckBox documentNumberSelector;
         private System.Windows.Forms.Label reportNumberLabel;
@@ -260,5 +262,6 @@ namespace LR4_Team_programming.screens
         private System.Windows.Forms.DateTimePicker reportDate;
         private System.Windows.Forms.Label reportLowestDateLabel;
         private System.Windows.Forms.Label reportDateLabel;
+        private System.Windows.Forms.ComboBox senderDep;
     }
 }

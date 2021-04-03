@@ -50,7 +50,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.headerLabel.Location = new System.Drawing.Point(86, 10);
+            this.headerLabel.Location = new System.Drawing.Point(87, 9);
             this.headerLabel.Name = "headerLabel";
             this.headerLabel.Size = new System.Drawing.Size(670, 32);
             this.headerLabel.TabIndex = 2;
@@ -121,6 +121,7 @@ namespace LR4_Team_programming.customElements
             this.table.AllowUserToAddRows = false;
             this.table.AllowUserToDeleteRows = false;
             this.table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table.BackgroundColor = System.Drawing.SystemColors.Control;
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.detailNameColumn,
@@ -129,11 +130,11 @@ namespace LR4_Team_programming.customElements
             this.table.Location = new System.Drawing.Point(9, 237);
             this.table.Name = "table";
             this.table.ReadOnly = true;
-            this.table.RowHeadersVisible = false;
             this.table.RowHeadersWidth = 51;
             this.table.RowTemplate.Height = 29;
-            this.table.Size = new System.Drawing.Size(814, 441);
+            this.table.Size = new System.Drawing.Size(814, 453);
             this.table.TabIndex = 4;
+            this.table.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.table_RowsAdded);
             // 
             // detailNameColumn
             // 

@@ -30,22 +30,22 @@ namespace LR4_Team_programming.customElements
         private void InitializeComponent()
         {
             this.reportPanel = new System.Windows.Forms.Panel();
-            this.deleteRecordButton = new System.Windows.Forms.Button();
             this.saveChangeButton = new System.Windows.Forms.Button();
             this.Head = new System.Windows.Forms.GroupBox();
             this.anotherReportLabel = new System.Windows.Forms.Label();
             this.docNumber = new System.Windows.Forms.TextBox();
             this.reportLabel = new System.Windows.Forms.Label();
             this.productsGrid = new System.Windows.Forms.DataGridView();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productName = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.okpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receiverDepColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receiverDepColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.reportInfo1 = new System.Windows.Forms.GroupBox();
+            this.senderComboBox = new System.Windows.Forms.ComboBox();
             this.creationDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.senderTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.reportPanel.SuspendLayout();
             this.Head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
@@ -54,7 +54,7 @@ namespace LR4_Team_programming.customElements
             // 
             // reportPanel
             // 
-            this.reportPanel.Controls.Add(this.deleteRecordButton);
+            this.reportPanel.Controls.Add(this.progressBar1);
             this.reportPanel.Controls.Add(this.saveChangeButton);
             this.reportPanel.Controls.Add(this.Head);
             this.reportPanel.Controls.Add(this.productsGrid);
@@ -64,22 +64,13 @@ namespace LR4_Team_programming.customElements
             this.reportPanel.Size = new System.Drawing.Size(835, 690);
             this.reportPanel.TabIndex = 13;
             // 
-            // deleteRecordButton
-            // 
-            this.deleteRecordButton.Location = new System.Drawing.Point(519, 643);
-            this.deleteRecordButton.Name = "deleteRecordButton";
-            this.deleteRecordButton.Size = new System.Drawing.Size(298, 36);
-            this.deleteRecordButton.TabIndex = 12;
-            this.deleteRecordButton.Text = "Удалить запись";
-            this.deleteRecordButton.UseVisualStyleBackColor = true;
-            // 
             // saveChangeButton
             // 
-            this.saveChangeButton.Location = new System.Drawing.Point(20, 643);
+            this.saveChangeButton.Location = new System.Drawing.Point(288, 643);
             this.saveChangeButton.Name = "saveChangeButton";
             this.saveChangeButton.Size = new System.Drawing.Size(298, 36);
             this.saveChangeButton.TabIndex = 11;
-            this.saveChangeButton.Text = "Сохранить изменения";
+            this.saveChangeButton.Text = "Сохранить";
             this.saveChangeButton.UseVisualStyleBackColor = true;
             this.saveChangeButton.Click += new System.EventHandler(this.saveChangeButton_Click);
             // 
@@ -108,6 +99,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.docNumber.Location = new System.Drawing.Point(244, 27);
             this.docNumber.Name = "docNumber";
+            this.docNumber.PlaceholderText = "№ документа";
             this.docNumber.Size = new System.Drawing.Size(138, 27);
             this.docNumber.TabIndex = 9;
             // 
@@ -124,29 +116,36 @@ namespace LR4_Team_programming.customElements
             // productsGrid
             // 
             this.productsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.productsGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.productsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
             this.okpCode,
             this.dataGridViewTextBoxColumn1,
             this.receiverDepColumn});
-            this.productsGrid.Location = new System.Drawing.Point(20, 223);
+            this.productsGrid.Location = new System.Drawing.Point(20, 234);
             this.productsGrid.Name = "productsGrid";
             this.productsGrid.RowHeadersWidth = 51;
-            this.productsGrid.Size = new System.Drawing.Size(797, 414);
+            this.productsGrid.Size = new System.Drawing.Size(797, 403);
             this.productsGrid.TabIndex = 1;
+            this.productsGrid.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.productsGrid_RowsAdded);
             // 
             // productName
             // 
+            this.productName.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.productName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.productName.HeaderText = "Наименование продукта";
             this.productName.MinimumWidth = 6;
             this.productName.Name = "productName";
+            this.productName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.productName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // okpCode
             // 
             this.okpCode.HeaderText = "Код ОКП";
             this.okpCode.MinimumWidth = 6;
             this.okpCode.Name = "okpCode";
+            this.okpCode.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -156,21 +155,33 @@ namespace LR4_Team_programming.customElements
             // 
             // receiverDepColumn
             // 
+            this.receiverDepColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.receiverDepColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.receiverDepColumn.HeaderText = "Цех-получатель";
             this.receiverDepColumn.MinimumWidth = 6;
             this.receiverDepColumn.Name = "receiverDepColumn";
+            this.receiverDepColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.receiverDepColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // reportInfo1
             // 
+            this.reportInfo1.Controls.Add(this.senderComboBox);
             this.reportInfo1.Controls.Add(this.creationDate);
             this.reportInfo1.Controls.Add(this.label9);
-            this.reportInfo1.Controls.Add(this.senderTextBox);
             this.reportInfo1.Controls.Add(this.label10);
-            this.reportInfo1.Location = new System.Drawing.Point(20, 85);
+            this.reportInfo1.Location = new System.Drawing.Point(20, 68);
             this.reportInfo1.Name = "reportInfo1";
             this.reportInfo1.Size = new System.Drawing.Size(380, 132);
             this.reportInfo1.TabIndex = 8;
             this.reportInfo1.TabStop = false;
+            // 
+            // senderComboBox
+            // 
+            this.senderComboBox.FormattingEnabled = true;
+            this.senderComboBox.Location = new System.Drawing.Point(145, 77);
+            this.senderComboBox.Name = "senderComboBox";
+            this.senderComboBox.Size = new System.Drawing.Size(180, 28);
+            this.senderComboBox.TabIndex = 8;
             // 
             // creationDate
             // 
@@ -191,13 +202,6 @@ namespace LR4_Team_programming.customElements
             this.label9.TabIndex = 7;
             this.label9.Text = "цех-отправитель";
             // 
-            // senderTextBox
-            // 
-            this.senderTextBox.Location = new System.Drawing.Point(145, 74);
-            this.senderTextBox.Name = "senderTextBox";
-            this.senderTextBox.Size = new System.Drawing.Size(180, 27);
-            this.senderTextBox.TabIndex = 5;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -206,6 +210,15 @@ namespace LR4_Team_programming.customElements
             this.label10.Size = new System.Drawing.Size(24, 20);
             this.label10.TabIndex = 6;
             this.label10.Text = "от";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(20, 202);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(797, 29);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 12;
+            this.progressBar1.Visible = false;
             // 
             // ReportDocument
             // 
@@ -232,19 +245,19 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label reportLabel;
         private System.Windows.Forms.DataGridView productsGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn okpCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receiverDepColumn;
         private System.Windows.Forms.GroupBox reportInfo1;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button deleteRecordButton;
         private System.Windows.Forms.Button saveChangeButton;
-        private System.Windows.Forms.TextBox senderTextBox;
         private System.Windows.Forms.DateTimePicker creationDate;
         private System.Windows.Forms.TextBox docNumber;
+        private System.Windows.Forms.ComboBox senderComboBox;
+        private System.Windows.Forms.DataGridViewComboBoxColumn productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn okpCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn receiverDepColumn;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

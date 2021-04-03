@@ -13,9 +13,28 @@ namespace LR4_Team_programming.customElements
 {
     public partial class CalculatingBalances : UserControl
     {
+        public ComboBox.ObjectCollection depNameComboBoxItems
+        {
+            get
+            {
+                return this.depNameComboBox.Items;
+            }
+            set
+            {
+                depNameComboBox.Items.Clear();
+                depNameComboBox.Items.Add(value);
+            }
+        }
+            
+
+
         public CalculatingBalances()
         {
             InitializeComponent();
+            depNameComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            table.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            table.AlternatingRowsDefaultCellStyle.BackColor = Color.Lavender;
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -69,6 +88,12 @@ namespace LR4_Team_programming.customElements
         void finishThread()
         {
             progressBar.Visible = false;
+        }
+
+        private void table_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < table.Rows.Count; i++)
+                table.Rows[i].HeaderCell.Value = (i + 1).ToString();
         }
     }
 }

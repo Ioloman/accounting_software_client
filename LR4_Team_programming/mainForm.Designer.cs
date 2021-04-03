@@ -162,6 +162,7 @@ namespace LR4_Team_programming
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 717);
             this.Controls.Add(this.menuTree);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "mainForm";
             this.Text = "Рабочее место";
             this.Load += new System.EventHandler(this.mainForm_Load_1);

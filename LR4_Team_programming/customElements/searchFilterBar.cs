@@ -11,12 +11,38 @@ namespace LR4_Team_programming.screens
     [System.ComponentModel.DefaultBindingProperty("SearchFilterBar")]
     public partial class searchFilterBar : UserControl
     {
+        
+        public AutoCompleteStringCollection AutoCompleteSourceForDocNum
+        {
+            get
+            {
+                return reportNumber.AutoCompleteCustomSource;
+            }
+        }
+
+
+
+        public ComboBox.ObjectCollection depNameComboBoxItems
+        {
+            get
+            {
+                return this.senderDep.Items;
+            }
+            set
+            {
+                senderDep.Items.Clear();
+                senderDep.Items.Add(value);
+            }
+        }
+
         bool periodButton = false;
         bool dateButton = false;
 
         public searchFilterBar()
         {
             InitializeComponent();
+            senderDep.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         private void documentNumberSelector_CheckedChanged(object sender, EventArgs e)

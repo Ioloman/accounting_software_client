@@ -12,10 +12,29 @@ namespace LR4_Team_programming.customElements
 {
     public partial class DeviationAnalysis : UserControl
     {
+        public ComboBox.ObjectCollection depNameComboBoxItems
+        {
+            get
+            {
+                return this.depComboBox.Items;
+            }
+            set
+            {
+                depComboBox.Items.Clear();
+                depComboBox.Items.Add(value);
+            }
+        }
+
+
+
         bool downMove = true;
         public DeviationAnalysis()
         {
             InitializeComponent();
+            depComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            table.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            table.AlternatingRowsDefaultCellStyle.BackColor = Color.Lavender;
+
         }
 
         private void searchInAllDebCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -38,7 +57,7 @@ namespace LR4_Team_programming.customElements
             if (downMove)
             {
                 table.Location = new Point(table.Location.X, table.Location.Y + 2);
-                if (table.Location.Y >= 359)
+                if (table.Location.Y >= 376)
                 {
                     timerForShiftingTable.Enabled = false;
                     downMove = false;
@@ -47,7 +66,7 @@ namespace LR4_Team_programming.customElements
             else
             {
                 table.Location = new Point(table.Location.X, table.Location.Y - 2);
-                if (table.Location.Y <= 207)
+                if (table.Location.Y <= 239)
                 {
                     timerForShiftingTable.Enabled = false;
                     downMove = true;
@@ -106,6 +125,12 @@ namespace LR4_Team_programming.customElements
         void finishThread()
         {
             progressBar.Visible = false;
+        }
+
+        private void table_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            for (int i = 0; i < table.Rows.Count; i++)
+                table.Rows[i].HeaderCell.Value = (i + 1).ToString();
         }
     }
 }

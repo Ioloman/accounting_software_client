@@ -445,7 +445,7 @@ namespace LR4_Team_programming
                 jsonDeserialized = JsonConvert.DeserializeObject<List<Workshop>>(jsonString);
             }
             if (jsonDeserialized.Count != 0)
-                return jsonDeserialized.ToArray()[0];
+                return jsonDeserialized.Find(workshop => workshop.workshop_name == workshopName);
             else
                 return null;
         }

@@ -33,6 +33,7 @@ namespace LR4_Team_programming.customElements
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviationAnalysis));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.deviationPanel = new System.Windows.Forms.GroupBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.table = new System.Windows.Forms.DataGridView();
             this.nameProductColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeOKPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +62,6 @@ namespace LR4_Team_programming.customElements
             this.depComboBox = new System.Windows.Forms.ComboBox();
             this.headerLabel = new System.Windows.Forms.Label();
             this.timerForShiftingTable = new System.Windows.Forms.Timer(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.deviationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -91,11 +91,22 @@ namespace LR4_Team_programming.customElements
             this.deviationPanel.TabIndex = 2;
             this.deviationPanel.TabStop = false;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(17, 204);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(805, 29);
+            this.progressBar.Step = 300;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 22;
+            this.progressBar.Visible = false;
+            // 
             // table
             // 
             this.table.AllowUserToAddRows = false;
             this.table.AllowUserToDeleteRows = false;
             this.table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table.BackgroundColor = System.Drawing.SystemColors.Control;
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameProductColoumn,
@@ -103,14 +114,14 @@ namespace LR4_Team_programming.customElements
             this.expectedColumn,
             this.producedColoumn,
             this.deviationColumn});
-            this.table.Location = new System.Drawing.Point(17, 396);
+            this.table.Location = new System.Drawing.Point(17, 239);
             this.table.Name = "table";
             this.table.ReadOnly = true;
-            this.table.RowHeadersVisible = false;
             this.table.RowHeadersWidth = 51;
             this.table.RowTemplate.Height = 29;
-            this.table.Size = new System.Drawing.Size(805, 288);
+            this.table.Size = new System.Drawing.Size(805, 451);
             this.table.TabIndex = 4;
+            this.table.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.table_RowsAdded);
             // 
             // nameProductColoumn
             // 
@@ -158,9 +169,9 @@ namespace LR4_Team_programming.customElements
             this.extraSettingPanel.Controls.Add(this.bigDevTextBox);
             this.extraSettingPanel.Controls.Add(this.mediumDevTextBox);
             this.extraSettingPanel.Controls.Add(this.smallDevTextBox);
-            this.extraSettingPanel.Location = new System.Drawing.Point(17, 222);
+            this.extraSettingPanel.Location = new System.Drawing.Point(17, 239);
             this.extraSettingPanel.Name = "extraSettingPanel";
-            this.extraSettingPanel.Size = new System.Drawing.Size(782, 131);
+            this.extraSettingPanel.Size = new System.Drawing.Size(805, 131);
             this.extraSettingPanel.TabIndex = 5;
             this.extraSettingPanel.TabStop = false;
             this.extraSettingPanel.Text = "Отклонения считать:";
@@ -323,7 +334,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.startDate.CustomFormat = "dd MMMM yyyy";
             this.startDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startDate.Location = new System.Drawing.Point(127, 83);
+            this.startDate.Location = new System.Drawing.Point(127, 81);
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(180, 27);
             this.startDate.TabIndex = 12;
@@ -333,7 +344,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.endDate.CustomFormat = "dd MMMM yyyy";
             this.endDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endDate.Location = new System.Drawing.Point(493, 83);
+            this.endDate.Location = new System.Drawing.Point(493, 81);
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(180, 27);
             this.endDate.TabIndex = 11;
@@ -371,16 +382,6 @@ namespace LR4_Team_programming.customElements
             // 
             this.timerForShiftingTable.Interval = 10;
             this.timerForShiftingTable.Tick += new System.EventHandler(this.timerForShiftingTable_Tick);
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(17, 361);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(805, 29);
-            this.progressBar.Step = 300;
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar.TabIndex = 22;
-            this.progressBar.Visible = false;
             // 
             // DeviationAnalysis
             // 

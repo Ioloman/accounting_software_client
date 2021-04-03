@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LR4_Team_programming.customElements;
+using Models;
+using System.Threading;
 
 namespace LR4_Team_programming
 {
@@ -14,9 +16,15 @@ namespace LR4_Team_programming
         Dictionary<TreeNode, UserControl> menuToPanel;
         List<UserControl> panels;
 
+        InventarizationDocument inventarization;
+        InventarizationDocumentEdit inventarizationEdit;
+        ReportDocument report;
+        ReportDocumentEdit reportEdit;
+        DeviationAnalysis deviationAnalysis;
+        CalculatingBalances calculatingBalances;
+
         // 835; 690 - size
         // 362; 0 - location
-
 
         Point locationPanels = new Point(362, 0);
         Size sizePanels = new Size(835, 690);
@@ -24,13 +32,18 @@ namespace LR4_Team_programming
         public mainForm()
         {
             InitializeComponent();
+            Thread thread = new Thread(fillComboboxes);
+            thread.Start();
+
+            menuTree.Nodes[0].Expand();
+            menuTree.Nodes[1].Expand();
             //reportEditPanel
-            InventarizationDocument inventarization = new InventarizationDocument();
-            InventarizationDocumentEdit inventarizationEdit = new InventarizationDocumentEdit();
-            ReportDocument report = new ReportDocument();
-            ReportDocumentEdit reportEdit = new ReportDocumentEdit();
-            DeviationAnalysis deviationAnalysis = new DeviationAnalysis();
-            CalculatingBalances calculatingBalances = new CalculatingBalances();
+            inventarization = new InventarizationDocument();
+            inventarizationEdit = new InventarizationDocumentEdit();
+            report = new ReportDocument();
+            reportEdit = new ReportDocumentEdit();
+            deviationAnalysis = new DeviationAnalysis();
+            calculatingBalances = new CalculatingBalances();
 
             inventarization.Location = 
                 inventarizationEdit.Location = 
@@ -52,8 +65,6 @@ namespace LR4_Team_programming
             this.Controls.Add(reportEdit);
             this.Controls.Add(deviationAnalysis);
             this.Controls.Add(calculatingBalances);
-
-
 
             menuToPanel = new Dictionary<TreeNode, UserControl>()
             {
@@ -77,8 +88,6 @@ namespace LR4_Team_programming
                 deviationAnalysis,
                 calculatingBalances
             };
-
-        
         }
     
         private void senderDep_TextChanged(object sender, EventArgs e)
@@ -101,13 +110,56 @@ namespace LR4_Team_programming
             {
                 // :(
             }
-
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
+        private void fillComboboxes()
         {
+            // получаем цеха и вносим их названия во все комбо-боксы
+            List<Workshop> workshops = (List<Workshop>)ApiConnector.getWorkshops();
+            List<string> workshopNames = new List<string>();
+            foreach (Workshop workshop in workshops)
+                workshopNames.Add(workshop.workshop_name);
 
+            calculatingBalances.depNameComboBoxItems.AddRange(workshopNames.ToArray());
+            deviationAnalysis.depNameComboBoxItems.AddRange(workshopNames.ToArray());
+            inventarization.depNameComboBoxItems.AddRange(workshopNames.ToArray());
+            inventarizationEdit.depNameComboBoxItems.AddRange(workshopNames.ToArray());
+            report.depNameComboBoxItems.AddRange(workshopNames.ToArray());
+            reportEdit.depNameComboBoxItems.AddRange(workshopNames.ToArray());
+            reportEdit.workshops = workshops;
+
+            // теперь тоже самое, только с деталями
+            List<Detail> details = (List<Detail>)ApiConnector.getDetails();
+            inventarizationEdit.details = details;
+            inventarization.SetDetails = details;
+            report.SetDetails = details;
+            reportEdit.details = details;
+
+
+            report.depComboBoxItemsInTable.AddRange(workshopNames.ToArray());
+
+            // тут заполняю автодополнение для поисков по номеру документа
+            // скорее всего, из-за этого прога иногда после запуска закрывается.
+
+                List<Report> reports = (List<Report>)ApiConnector.getReports();
+                List<Vedomost> vedomosts = (List<Vedomost>)ApiConnector.getVedomosts();
+
+                inventarizationEdit.vedomosts = vedomosts;
+                reportEdit.reports = reports;
+
+                List<string> reportsNames = new List<string>();
+                foreach (Report report in reports)
+                    reportsNames.Add(report.doc_num.ToString());
+
+                List<string> vedomostsNames = new List<string>();
+                foreach (Vedomost vedomost in vedomosts)
+                    vedomostsNames.Add(vedomost.doc_num.ToString());
+
+                reportEdit.AutoCompleteSourceForDocNum.AddRange(reportsNames.ToArray());
+                inventarizationEdit.AutoCompleteSourceForDocNum.AddRange(vedomostsNames.ToArray());
+            
         }
+
 
         private void mainForm_Load_1(object sender, EventArgs e)
         {

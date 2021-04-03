@@ -29,6 +29,7 @@ namespace LR4_Team_programming.customElements
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventarizationDocumentEdit));
             this.editAndLookVedomost = new System.Windows.Forms.Panel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -36,9 +37,11 @@ namespace LR4_Team_programming.customElements
             this.searchButton = new System.Windows.Forms.Button();
             this.inventarizationTable = new System.Windows.Forms.DataGridView();
             this.searchFilterBar1 = new LR4_Team_programming.screens.searchFilterBar();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.documentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreateDocument = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.editAndLookVedomost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inventarizationTable)).BeginInit();
             this.SuspendLayout();
@@ -90,26 +93,39 @@ namespace LR4_Team_programming.customElements
             this.inventarizationTable.AllowUserToAddRows = false;
             this.inventarizationTable.AllowUserToDeleteRows = false;
             this.inventarizationTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.inventarizationTable.BackgroundColor = System.Drawing.SystemColors.Control;
             this.inventarizationTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventarizationTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.documentNumber,
             this.dateCreateDocument,
-            this.modifyColumn});
+            this.modifyColumn,
+            this.deleteColumn});
             this.inventarizationTable.Location = new System.Drawing.Point(20, 269);
             this.inventarizationTable.Name = "inventarizationTable";
             this.inventarizationTable.ReadOnly = true;
-            this.inventarizationTable.RowHeadersVisible = false;
             this.inventarizationTable.RowHeadersWidth = 51;
             this.inventarizationTable.RowTemplate.Height = 29;
-            this.inventarizationTable.Size = new System.Drawing.Size(801, 410);
+            this.inventarizationTable.Size = new System.Drawing.Size(801, 421);
             this.inventarizationTable.TabIndex = 3;
+            this.inventarizationTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventarizationTable_CellContentClick);
+            this.inventarizationTable.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.inventarizationTable_CellPainting);
+            this.inventarizationTable.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.inventarizationTable_RowsAdded);
+            this.inventarizationTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.inventarizationTable_RowsRemoved);
             // 
             // searchFilterBar1
             // 
             this.searchFilterBar1.Location = new System.Drawing.Point(20, 54);
             this.searchFilterBar1.Name = "searchFilterBar1";
-            this.searchFilterBar1.Size = new System.Drawing.Size(815, 191);
+            this.searchFilterBar1.Size = new System.Drawing.Size(801, 191);
             this.searchFilterBar1.TabIndex = 4;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "109-1093904_png-file-svg-icon-clipart.png");
+            this.imageList1.Images.SetKeyName(1, "85a7134faf5c11e715adf10a243de7b4.png");
             // 
             // documentNumber
             // 
@@ -139,7 +155,16 @@ namespace LR4_Team_programming.customElements
             this.modifyColumn.MinimumWidth = 6;
             this.modifyColumn.Name = "modifyColumn";
             this.modifyColumn.ReadOnly = true;
-            this.modifyColumn.Width = 50;
+            this.modifyColumn.Width = 40;
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.deleteColumn.HeaderText = "";
+            this.deleteColumn.MinimumWidth = 6;
+            this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.ReadOnly = true;
+            this.deleteColumn.Width = 40;
             // 
             // InventarizationDocumentEdit
             // 
@@ -163,8 +188,10 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.DataGridViewTextBoxColumn documentNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateCreateDocument;
         private System.Windows.Forms.DataGridViewButtonColumn modifyColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
     }
 }
