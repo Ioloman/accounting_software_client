@@ -13,6 +13,30 @@ namespace LR4_Team_programming.customElements
 {
     public partial class CalculatingBalances : UserControl
     {
+        public DataGridView GetTable
+        {
+            get
+            {
+                return table;
+            }
+        }
+
+        public DateTimePicker GetDocCreateDate
+        {
+            get
+            {
+                return date;
+            }
+        }
+        public ComboBox GetDepComboBox
+        {
+            get
+            {
+                return depNameComboBox;
+            }
+        }
+
+
         public ComboBox.ObjectCollection depNameComboBoxItems
         {
             get
@@ -95,6 +119,42 @@ namespace LR4_Team_programming.customElements
         {
             for (int i = 0; i < table.Rows.Count; i++)
                 table.Rows[i].HeaderCell.Value = (i + 1).ToString();
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            this.progressBar.Visible = true;
+
+            DataGridView table = GetTable;
+            string dep = GetDepComboBox.Text;
+            string createDate = GetDocCreateDate.Text;
+            string docNum = String.Empty;
+
+            List<List<string>> data = new List<List<string>>();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                data.Add(new List<string>());
+                data[i].Add((i + 1).ToString());
+                for (int j = 0; j < table.Columns.Count; j++)
+                {
+                    data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                }
+            }
+
+            Thread thread = new Thread((s) =>
+            {
+                showPrintForm(dep, createDate, docNum, data);
+                this.progressBar.BeginInvoke((MethodInvoker)(() => this.progressBar.Visible = false));
+
+            });
+            thread.Start();
+        }
+
+        private void showPrintForm(string dep, string createDate, string docNum, List<List<string>> data)
+        {
+            string path = Program.GetPathToTemplatesFolder() + "calculating balances template.docx";
+            docViewerForm docViewerForm = new docViewerForm(docNum, dep, createDate, data, mainForm.docTypes.balances, path);
+            docViewerForm.ShowDialog();
         }
     }
 }

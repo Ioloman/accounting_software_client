@@ -229,6 +229,5 @@ namespace LR4_Team_programming.customElements
             docViewerForm docViewerForm = new docViewerForm(docNum, dep, createDate, data, mainForm.docTypes.report, path);
             docViewerForm.ShowDialog();
         }
-
     }
 }

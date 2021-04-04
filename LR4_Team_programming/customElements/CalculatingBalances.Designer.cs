@@ -176,6 +176,7 @@ namespace LR4_Team_programming.customElements
             this.printButton.Size = new System.Drawing.Size(50, 49);
             this.printButton.TabIndex = 22;
             this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // CalculatingBalances
             // 

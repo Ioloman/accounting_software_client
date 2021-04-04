@@ -12,6 +12,44 @@ namespace LR4_Team_programming.customElements
 {
     public partial class DeviationAnalysis : UserControl
     {
+        public DataGridView GetTable
+        {
+            get
+            {
+                return table;
+            }
+        }
+
+        public DateTimePicker GetDocStartDate
+        {
+            get
+            {
+                return startDate;
+            }
+        }
+        public DateTimePicker GetDocEndDate
+        {
+            get
+            {
+                return endDate;
+            }
+        }
+
+        public ComboBox GetDepComboBox
+        {
+            get
+            {
+                return depComboBox;
+            }
+        }
+
+
+
+
+
+
+
+
         public ComboBox.ObjectCollection depNameComboBoxItems
         {
             get
@@ -132,6 +170,42 @@ namespace LR4_Team_programming.customElements
         {
             for (int i = 0; i < table.Rows.Count; i++)
                 table.Rows[i].HeaderCell.Value = (i + 1).ToString();
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            this.progressBar.Visible = true;
+
+            DataGridView table = GetTable;
+            string startDate = GetDocStartDate.Text;
+            string endDate = GetDocEndDate.Text;
+            string dep = GetDepComboBox.Text;
+
+            List<List<string>> data = new List<List<string>>();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                data.Add(new List<string>());
+                data[i].Add((i + 1).ToString());
+                for (int j = 0; j < table.Columns.Count; j++)
+                {
+                    data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                }
+            }
+
+            Thread thread = new Thread((s) =>
+            {
+                showPrintForm(dep, startDate, endDate, data);
+                this.progressBar.BeginInvoke((MethodInvoker)(() => this.progressBar.Visible = false));
+
+            });
+            thread.Start();
+        }
+        private void showPrintForm(string dep, string startDate, string endDate, List<List<string>> data)
+        {
+            string path = Program.GetPathToTemplatesFolder() + "summary accounting template.docx";
+            docViewerForm docViewerForm = new docViewerForm(dep, startDate, endDate, data, path);
+
+            docViewerForm.ShowDialog();
         }
     }
 }

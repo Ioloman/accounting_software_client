@@ -33,6 +33,7 @@ namespace LR4_Team_programming.customElements
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviationAnalysis));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.deviationPanel = new System.Windows.Forms.GroupBox();
+            this.printButton = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.table = new System.Windows.Forms.DataGridView();
             this.nameProductColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +63,6 @@ namespace LR4_Team_programming.customElements
             this.depComboBox = new System.Windows.Forms.ComboBox();
             this.headerLabel = new System.Windows.Forms.Label();
             this.timerForShiftingTable = new System.Windows.Forms.Timer(this.components);
-            this.printButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.deviationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -92,6 +92,16 @@ namespace LR4_Team_programming.customElements
             this.deviationPanel.Size = new System.Drawing.Size(835, 690);
             this.deviationPanel.TabIndex = 2;
             this.deviationPanel.TabStop = false;
+            // 
+            // printButton
+            // 
+            this.printButton.Image = ((System.Drawing.Image)(resources.GetObject("printButton.Image")));
+            this.printButton.Location = new System.Drawing.Point(772, 15);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(50, 49);
+            this.printButton.TabIndex = 23;
+            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // progressBar
             // 
@@ -384,15 +394,6 @@ namespace LR4_Team_programming.customElements
             // 
             this.timerForShiftingTable.Interval = 10;
             this.timerForShiftingTable.Tick += new System.EventHandler(this.timerForShiftingTable_Tick);
-            // 
-            // printButton
-            // 
-            this.printButton.Image = ((System.Drawing.Image)(resources.GetObject("printButton.Image")));
-            this.printButton.Location = new System.Drawing.Point(772, 15);
-            this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(50, 49);
-            this.printButton.TabIndex = 23;
-            this.printButton.UseVisualStyleBackColor = true;
             // 
             // DeviationAnalysis
             // 

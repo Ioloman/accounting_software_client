@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing.Printing;
 using System.Drawing;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +14,13 @@ using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
 using Xceed.Words.NET;
 using Xceed.Document.NET;
-using System.Diagnostics;
 
 namespace LR4_Team_programming
 {
     public partial class docViewerForm : Form
     {
-
+        int counter = 0; // сквозной номер строки в массиве строк, которые выводятся
+        int curPage; // текущая страница
 
         private string createdFileName = String.Empty;
         private docViewerForm()
@@ -61,7 +63,6 @@ namespace LR4_Team_programming
             // Если docName = null, то к шаблону добавляется текущая дата - это название рапорта.
             // возвращает путь, по которому сохранен документ
             DocX document = DocX.Load(pathToTemplate);
-
             if (docType == mainForm.docTypes.report  || docType == mainForm.docTypes.vedomost || docType == mainForm.docTypes.analysis)
             {
                 document.Paragraphs[2].Append(numberDoc).FontSize(14).
@@ -109,9 +110,7 @@ namespace LR4_Team_programming
             Word.Application wordObject = new Word.Application();
             object File = filename;
             object nullobject = Missing.Value;
-            Microsoft.Office.Interop.Word.Application wordobject = new Microsoft.Office.Interop.Word.Application();
-            wordobject.DisplayAlerts = Microsoft.Office.Interop.Word.WdAlertLevel.wdAlertsNone;
-            Microsoft.Office.Interop.Word._Document docs = wordObject.Documents.Open(
+            Word._Document docs = wordObject.Documents.Open(
                 ref File, ref nullobject, ref nullobject, ref nullobject, 
                 ref nullobject, ref nullobject, ref nullobject, ref nullobject,
                 ref nullobject, ref nullobject, ref nullobject, ref nullobject, 
@@ -119,65 +118,94 @@ namespace LR4_Team_programming
             docs.ActiveWindow.Selection.WholeStory();
             docs.ActiveWindow.Selection.Copy();
             docViewer.Paste();
-            docs.Close(ref nullobject, ref nullobject, ref nullobject);      
+            docs.Close(ref nullobject, ref nullobject, ref nullobject);  
             docViewer.ReadOnly = true;
-            // дичайший костыль
-            try
-            {
-                foreach (var process in Process.GetProcessesByName("WINWORD"))
-                {
-                    process.Kill();
-                }
-            }
-            catch { };
+            wordObject.Quit(ref nullobject, ref nullobject, ref nullobject);
         }
-
-
 
         private void printButton_Click(object sender, EventArgs e)
         {
-            // Это потом удалится. Это - тест 
-            List<List<string>> data = new List<List<string>>();
-            for (int i = 0; i < 10; i++)
-            {
-                data.Add(new List<string>());
-                for (int j = 0; j < 4; j++)
-                {
-                    data[i].Add((i + j).ToString());
-                }
-            }
-            //makeDocument("1488", "Цех твоего очка", "20.10.2021", data,
-            //    "C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости.docx", "C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости1.docx");
-            //showDocument("C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости1.docx");
-
-
-
+                
         }
+
         private delegate DialogResult ShowSaveFileDialogInvoker();
-
-
         private void editButton_Click(object sender, EventArgs e)
+        {        
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            ShowSaveFileDialogInvoker invoker = new ShowSaveFileDialogInvoker(saveFileDialogMethod);
+            mainForm.activ.Invoke(invoker);
+        }      
+        private DialogResult saveFileDialogMethod()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            ShowSaveFileDialogInvoker invoker = new ShowSaveFileDialogInvoker(saveFileDialog.ShowDialog);
-
-            this.Invoke(invoker);
-
-            //saveFileDialog.DefaultExt = "docx";
-            //if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
-            //    return;
-            //string filename = saveFileDialog.FileName;
-           // File.Copy(createdFileName, filename);
-           // MessageBox.Show("Файл сохранен");
-
-        }      
-
-
+            saveFileDialog.DefaultExt = "docx";
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                return DialogResult.Cancel;
+            string filename = saveFileDialog.FileName;
+            File.Copy(createdFileName, filename);
+            MessageBox.Show("Файл сохранен", "Cохранение файла", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return DialogResult.OK;
+        }
 
         private void docViewerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             File.Delete(createdFileName);
         }
+
+        private void printDocument1_BeginPrint(object sender, PrintEventArgs e)
+        {
+            counter = 0;
+            curPage = 1;
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            System.Drawing.Font myFont = new System.Drawing.Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Pixel);
+
+            string curLine; // текущая выводимая строка
+
+            // Отступы внутри страницы
+            float leftMargin = e.MarginBounds.Left; // отступы слева в документе
+            float topMargin = e.MarginBounds.Top; // отступы сверху в документе
+            float yPos = 0; // текущая позиция Y для вывода строки
+
+            int nPages; // количество страниц
+            int nLines; // максимально-возможное количество строк на странице
+            int i; // номер текущей строки для вывода на странице
+
+            // Вычислить максимально возможное количество строк на странице
+            nLines = (int)(e.MarginBounds.Height / myFont.GetHeight(e.Graphics));
+
+            // Вычислить количество страниц для печати
+            nPages = (docViewer.Lines.Length - 1) / nLines + 1;
+
+            // Цикл печати/вывода одной страницы
+            i = 0;
+            while ((i < nLines) && (counter < docViewer.Lines.Length))
+            {
+                // Взять строку для вывода из richTextBox1
+                curLine = docViewer.Lines[counter];
+
+                // Вычислить текущую позицию по оси Y
+                yPos = topMargin + i * myFont.GetHeight(e.Graphics);
+
+                // Вывести строку в документ
+                e.Graphics.DrawString(curLine, myFont, Brushes.Blue,
+                  leftMargin, yPos, new StringFormat());
+
+                counter++;
+                i++;
+            }
+            // Если весь текст не помещается на 1 страницу, то
+            // нужно добавить дополнительную страницу для печати
+            e.HasMorePages = false;
+
+            if (curPage < nPages)
+            {
+                curPage++;
+                e.HasMorePages = true;
+            }
+        }
+
     }
 }

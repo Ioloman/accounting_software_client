@@ -11,8 +11,11 @@ using System.Threading.Tasks;
 using System.Threading;
 namespace LR4_Team_programming
 {
+    
     public partial class mainForm : Form
     {
+        public static mainForm activ;
+
         public enum docTypes
         {
             vedomost = 0,
@@ -42,7 +45,7 @@ namespace LR4_Team_programming
             InitializeComponent();
 
             fillComboboxesHelper();
-
+            activ = this;
 
             //Thread thread = new Thread(fillComboboxes);
             //thread.Start();
