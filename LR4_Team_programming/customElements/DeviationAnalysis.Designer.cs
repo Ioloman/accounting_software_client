@@ -62,6 +62,7 @@ namespace LR4_Team_programming.customElements
             this.depComboBox = new System.Windows.Forms.ComboBox();
             this.headerLabel = new System.Windows.Forms.Label();
             this.timerForShiftingTable = new System.Windows.Forms.Timer(this.components);
+            this.printButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.deviationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -80,6 +81,7 @@ namespace LR4_Team_programming.customElements
             // 
             // deviationPanel
             // 
+            this.deviationPanel.Controls.Add(this.printButton);
             this.deviationPanel.Controls.Add(this.progressBar);
             this.deviationPanel.Controls.Add(this.table);
             this.deviationPanel.Controls.Add(this.extraSettingPanel);
@@ -371,7 +373,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.headerLabel.Location = new System.Drawing.Point(41, 15);
+            this.headerLabel.Location = new System.Drawing.Point(17, 15);
             this.headerLabel.Name = "headerLabel";
             this.headerLabel.Size = new System.Drawing.Size(758, 64);
             this.headerLabel.TabIndex = 1;
@@ -382,6 +384,15 @@ namespace LR4_Team_programming.customElements
             // 
             this.timerForShiftingTable.Interval = 10;
             this.timerForShiftingTable.Tick += new System.EventHandler(this.timerForShiftingTable_Tick);
+            // 
+            // printButton
+            // 
+            this.printButton.Image = ((System.Drawing.Image)(resources.GetObject("printButton.Image")));
+            this.printButton.Location = new System.Drawing.Point(772, 15);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(50, 49);
+            this.printButton.TabIndex = 23;
+            this.printButton.UseVisualStyleBackColor = true;
             // 
             // DeviationAnalysis
             // 
@@ -435,5 +446,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn deviationColumn;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button printButton;
     }
 }

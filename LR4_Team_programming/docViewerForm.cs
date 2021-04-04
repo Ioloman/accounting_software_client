@@ -7,39 +7,79 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.IO;
 using Word = Microsoft.Office.Interop.Word;
 using System.Reflection;
-
 using Xceed.Words.NET;
 using Xceed.Document.NET;
+using System.Diagnostics;
 
 namespace LR4_Team_programming
 {
     public partial class docViewerForm : Form
     {
-        public docViewerForm()
+
+
+        private string createdFileName = String.Empty;
+        private docViewerForm()
         {
             InitializeComponent();
         }
 
-        private void makeDocument(string numberDoc, string dep, string createDate, List<List<String>> data, string pathToTemplate, string reportName = null)
+        public docViewerForm(string numberDoc, 
+                             string dep, 
+                             string createDate, 
+                             List<List<String>> data, 
+                             mainForm.docTypes docType, 
+                             string pathToTemplate) // для всего, кроме сводного учета
         {
-            // Если reportName = null, то к шаблону добавляется текущая дата - это название рапорта
-            // data должна содержать 6 элементов по ширине, нулевой - это порядковый номер (для рапорта, а для ведомости - 4)
+            InitializeComponent();
+            string fileName = makeDocument(docType, numberDoc, dep, createDate, data, pathToTemplate);
+            createdFileName = fileName;
+            showDocument(fileName);
+        }
+        public docViewerForm(string dep, 
+                             string startDate, 
+                             string endDate, 
+                             List<List<String>> data, 
+                             string pathToTemplate)// для сводного учета
+        {
+            InitializeComponent();
+            string fileName = makeDocument(mainForm.docTypes.analysis, dep, startDate, endDate, data, pathToTemplate);
+            createdFileName = fileName;
+            showDocument(fileName);
+        }
 
+        private string makeDocument(mainForm.docTypes docType, 
+                                    string numberDoc, 
+                                    string dep, 
+                                    string createDate, 
+                                    List<List<string>> data, 
+                                    string pathToTemplate, 
+                                    string docName = null)
+        {
+            // Если docName = null, то к шаблону добавляется текущая дата - это название рапорта.
+            // возвращает путь, по которому сохранен документ
             DocX document = DocX.Load(pathToTemplate);
 
-            document.Paragraphs[2].Append(numberDoc).FontSize(14).
-                Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);  // добавить номер документа
-            document.Paragraphs[3].Append(dep).FontSize(14).
-                Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);  // добавить цех-получатель
-            document.Paragraphs[4].Append(createDate).FontSize(14).
-                Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);  // добавить дату создания
+            if (docType == mainForm.docTypes.report  || docType == mainForm.docTypes.vedomost || docType == mainForm.docTypes.analysis)
+            {
+                document.Paragraphs[2].Append(numberDoc).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);  
+                document.Paragraphs[3].Append(dep).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true); 
+                document.Paragraphs[4].Append(createDate).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);                
+            }
+            if (docType == mainForm.docTypes.balances)
+            {
+                document.Paragraphs[2].Append(dep).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true); 
+                document.Paragraphs[3].Append(createDate).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);  
+            }
 
             Table tableinDoc = document.Tables[0];
-
             for (int i = 0; i < data.Count; i++)
             {
                 tableinDoc.InsertRow();
@@ -47,27 +87,49 @@ namespace LR4_Team_programming
                     tableinDoc.Rows[i + 1].Cells[j].Paragraphs[0].Append(data[i][j]).FontSize(14).
                         Font("Times New Roman");
             }
-
-            if (reportName == null)
-                document.SaveAs(pathToTemplate.Substring(0, pathToTemplate.Length - 5) + DateTime.Now.ToString().Replace(":", "-") + ".docx");
+            if (docName == null)
+            {
+                string path = pathToTemplate.Substring(0, pathToTemplate.Length - 5) + DateTime.Now.ToString().Replace(":", "-") + ".docx";
+                document.SaveAs(path);
+                document.Dispose();             
+                return path;
+            }
             else
-                document.SaveAs(reportName);
-
-            document.Dispose();
+            {
+                document.SaveAs(docName);
+                document.Dispose();
+                return docName;
+            }
         }
 
         private void showDocument(string filename)
         {
+            docViewer.ReadOnly = false;
+            docViewer.Text = "";
             Word.Application wordObject = new Word.Application();
             object File = filename;
             object nullobject = Missing.Value;
             Microsoft.Office.Interop.Word.Application wordobject = new Microsoft.Office.Interop.Word.Application();
             wordobject.DisplayAlerts = Microsoft.Office.Interop.Word.WdAlertLevel.wdAlertsNone;
-            Microsoft.Office.Interop.Word._Document docs = wordObject.Documents.Open(ref File, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject, ref nullobject);
+            Microsoft.Office.Interop.Word._Document docs = wordObject.Documents.Open(
+                ref File, ref nullobject, ref nullobject, ref nullobject, 
+                ref nullobject, ref nullobject, ref nullobject, ref nullobject,
+                ref nullobject, ref nullobject, ref nullobject, ref nullobject, 
+                ref nullobject, ref nullobject, ref nullobject, ref nullobject);
             docs.ActiveWindow.Selection.WholeStory();
             docs.ActiveWindow.Selection.Copy();
             docViewer.Paste();
-            docs.Close(ref nullobject, ref nullobject, ref nullobject);
+            docs.Close(ref nullobject, ref nullobject, ref nullobject);      
+            docViewer.ReadOnly = true;
+            // дичайший костыль
+            try
+            {
+                foreach (var process in Process.GetProcessesByName("WINWORD"))
+                {
+                    process.Kill();
+                }
+            }
+            catch { };
         }
 
 
@@ -75,8 +137,6 @@ namespace LR4_Team_programming
         private void printButton_Click(object sender, EventArgs e)
         {
             // Это потом удалится. Это - тест 
-            docViewer.ReadOnly = false;
-            docViewer.Text = "";
             List<List<string>> data = new List<List<string>>();
             for (int i = 0; i < 10; i++)
             {
@@ -86,36 +146,38 @@ namespace LR4_Team_programming
                     data[i].Add((i + j).ToString());
                 }
             }
-
             //makeDocument("1488", "Цех твоего очка", "20.10.2021", data,
             //    "C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости.docx", "C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости1.docx");
             //showDocument("C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости1.docx");
 
-            docViewer.ReadOnly = true;
 
 
         }
+        private delegate DialogResult ShowSaveFileDialogInvoker();
+
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            // Это потом удалится. Это - тест 
-            docViewer.ReadOnly = false;
-            docViewer.Text = "";
-            List<List<string>> data = new List<List<string>>();
-            for (int i = 0; i < 10; i++)
-            {
-                data.Add(new List<string>());
-                for (int j = 0; j < 4; j++)
-                {
-                    data[i].Add((i + j).ToString());
-                }
-            }
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            //makeDocument("1488", "Цех твоего очка", "20.10.2021", data,
-            //    "C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости.docx", "C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости1.docx");
-            //showDocument("C:\\Users\\aleks\\Desktop\\Шаблон  Ведомости1.docx");
+            ShowSaveFileDialogInvoker invoker = new ShowSaveFileDialogInvoker(saveFileDialog.ShowDialog);
 
-            docViewer.ReadOnly = true;
+            this.Invoke(invoker);
+
+            //saveFileDialog.DefaultExt = "docx";
+            //if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+            //    return;
+            //string filename = saveFileDialog.FileName;
+           // File.Copy(createdFileName, filename);
+           // MessageBox.Show("Файл сохранен");
+
+        }      
+
+
+
+        private void docViewerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            File.Delete(createdFileName);
         }
     }
 }

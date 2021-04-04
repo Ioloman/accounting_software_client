@@ -41,7 +41,7 @@ namespace LR4_Team_programming.customElements
         {
             table.Rows.Clear();
             progressBar.Visible = true;
-
+            UseWaitCursor = true;
             Thread thread = new Thread(fillTable);
             thread.Start();
         }
@@ -88,6 +88,7 @@ namespace LR4_Team_programming.customElements
         void finishThread()
         {
             progressBar.Visible = false;
+            UseWaitCursor = false;
         }
 
         private void table_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

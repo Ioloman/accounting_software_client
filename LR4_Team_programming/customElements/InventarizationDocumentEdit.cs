@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Models;
 using System.Globalization;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace LR4_Team_programming.customElements
 {
@@ -99,13 +100,17 @@ namespace LR4_Team_programming.customElements
             return vedomosts;
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private async void searchButton_Click(object sender, EventArgs e)
         {
             inventarizationTable.Rows.Clear();
             progressBar.Visible = true;
+            UseWaitCursor = true;
 
-            Thread thread = new Thread(fillTable);
-            thread.Start();
+            await Task.Run(() => fillTable());
+
+  
+            //Thread thread = new Thread(fillTable);
+            //thread.Start();
         }
 
         private void fillTable()
@@ -129,7 +134,9 @@ namespace LR4_Team_programming.customElements
 
         void finishThread()
         {
-            progressBar.Visible = false;
+            progressBar.Visible = false;           
+            UseWaitCursor = false;
+
         }
 
         private void inventarizationTable_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -195,7 +202,7 @@ namespace LR4_Team_programming.customElements
             if (e.ColumnIndex == 2)
             {
                 // открыть форму для редактирования инвентаризации
-                Vedomost currVedomost = vedomosts[e.RowIndex];
+                Vedomost currVedomost = vedomosts.Find(vedomost => inventarizationTable.CurrentRow.Cells[0].Value.ToString() == vedomost.doc_num.ToString());
 
                 EditingInventarization editingInventarizationForm = new EditingInventarization(currVedomost);
                 InventarizationDocument inventarization = editingInventarizationForm.GetPanel;
@@ -224,12 +231,17 @@ namespace LR4_Team_programming.customElements
                 editingInventarizationForm.FormClosed += new FormClosedEventHandler(RefreshVedomosts);
             }
         }
-        private void RefreshVedomosts(object sender, FormClosedEventArgs e)
+        private async void RefreshVedomosts(object sender, FormClosedEventArgs e)
         {
             inventarizationTable.Rows.Clear();
             progressBar.Visible = true;
-            Thread thread = new Thread(fillTable);
-            thread.Start();
+
+
+            await Task.Run(() => fillTable());
+
+
+            //Thread thread = new Thread(fillTable);
+            //thread.Start();
         }
 
         private void inventarizationTable_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)

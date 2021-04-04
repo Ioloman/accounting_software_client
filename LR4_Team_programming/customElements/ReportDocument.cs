@@ -114,7 +114,7 @@ namespace LR4_Team_programming.customElements
                 MessageBox.Show("Цех с таким названием не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            List<Detail> details = (List<Detail>)ApiConnector.getDetails();
+            //List<Detail> details = (List<Detail>)ApiConnector.getDetails(); // Возможно, можно удалить эту строку
             List<Workshop> workshops = (List<Workshop>)ApiConnector.getWorkshops();
             report.date = creationDate.Value.ToString("yyyy-MM-dd");
             report.doc_num = Convert.ToInt32(docNumber.Text);
@@ -140,6 +140,7 @@ namespace LR4_Team_programming.customElements
                 MessageBox.Show("Рапорт был успешно создан.", "Добавление рапорта", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             progressBar1.Visible = false;
+            UseWaitCursor = false;
         }
 
 
@@ -147,8 +148,8 @@ namespace LR4_Team_programming.customElements
         {
             Thread saveThread = new Thread(savingProccessing);
             progressBar1.Visible = true;
+            UseWaitCursor = true;
             saveThread.Start();
-
         }
 
         private void productsGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -161,5 +162,73 @@ namespace LR4_Team_programming.customElements
         {
 
         }
+
+        private void productsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                if (productsGrid.CurrentRow.Index != productsGrid.Rows.Count - 1)
+                    productsGrid.Rows.RemoveAt(productsGrid.CurrentRow.Index);
+            }
+        }
+
+        private void productsGrid_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            for (int i = 0; i < productsGrid.Rows.Count - 1; i++)
+                productsGrid.Rows[i].HeaderCell.Value = (i + 1).ToString();
+        }
+
+        private void productsGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            if (e.ColumnIndex == 4)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                var w = imageList1.Images[0].Width;
+                var h = imageList1.Images[0].Height;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(imageList1.Images[0], new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            this.progressBar1.Visible = true;
+
+            DataGridView table = GetTable;
+            string dep = GetDepSender.Text;
+            string createDate = GetDocCreationTime.Text;
+            string docNum = GetDocNumberTextBox.Text;
+
+            List<List<string>> data = new List<List<string>>();
+            for (int i = 0; i < table.Rows.Count - 1; i++)
+            {
+                data.Add(new List<string>());
+                data[i].Add((i + 1).ToString());
+                for (int j = 0; j < table.Columns.Count - 1; j++)
+                {
+                    data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                }
+            }
+
+            Thread thread = new Thread((s) =>
+            {
+                showPrintForm(dep, createDate, docNum, data);
+                this.progressBar1.BeginInvoke((MethodInvoker)(() => this.progressBar1.Visible = false));
+            });
+            thread.Start();
+        }
+        private void showPrintForm(string dep, string createDate, string docNum, List<List<string>> data)
+        {
+            string path = Program.GetPathToTemplatesFolder() + "report template.docx";
+            docViewerForm docViewerForm = new docViewerForm(docNum, dep, createDate, data, mainForm.docTypes.report, path);
+            docViewerForm.ShowDialog();
+        }
+
     }
 }

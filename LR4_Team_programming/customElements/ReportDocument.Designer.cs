@@ -29,7 +29,11 @@ namespace LR4_Team_programming.customElements
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportDocument));
             this.reportPanel = new System.Windows.Forms.Panel();
+            this.printButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.saveChangeButton = new System.Windows.Forms.Button();
             this.Head = new System.Windows.Forms.GroupBox();
             this.anotherReportLabel = new System.Windows.Forms.Label();
@@ -40,12 +44,13 @@ namespace LR4_Team_programming.customElements
             this.okpCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receiverDepColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.deleteRowColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.reportInfo1 = new System.Windows.Forms.GroupBox();
             this.senderComboBox = new System.Windows.Forms.ComboBox();
             this.creationDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.reportPanel.SuspendLayout();
             this.Head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
@@ -54,6 +59,7 @@ namespace LR4_Team_programming.customElements
             // 
             // reportPanel
             // 
+            this.reportPanel.Controls.Add(this.printButton);
             this.reportPanel.Controls.Add(this.progressBar1);
             this.reportPanel.Controls.Add(this.saveChangeButton);
             this.reportPanel.Controls.Add(this.Head);
@@ -63,6 +69,25 @@ namespace LR4_Team_programming.customElements
             this.reportPanel.Name = "reportPanel";
             this.reportPanel.Size = new System.Drawing.Size(835, 690);
             this.reportPanel.TabIndex = 13;
+            // 
+            // printButton
+            // 
+            this.printButton.Image = ((System.Drawing.Image)(resources.GetObject("printButton.Image")));
+            this.printButton.Location = new System.Drawing.Point(774, 26);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(50, 49);
+            this.printButton.TabIndex = 13;
+            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(20, 202);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(797, 29);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 12;
+            this.progressBar1.Visible = false;
             // 
             // saveChangeButton
             // 
@@ -81,7 +106,7 @@ namespace LR4_Team_programming.customElements
             this.Head.Controls.Add(this.reportLabel);
             this.Head.Location = new System.Drawing.Point(20, 10);
             this.Head.Name = "Head";
-            this.Head.Size = new System.Drawing.Size(797, 69);
+            this.Head.Size = new System.Drawing.Size(746, 69);
             this.Head.TabIndex = 10;
             this.Head.TabStop = false;
             // 
@@ -89,7 +114,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.anotherReportLabel.AutoSize = true;
             this.anotherReportLabel.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.anotherReportLabel.Location = new System.Drawing.Point(388, 23);
+            this.anotherReportLabel.Location = new System.Drawing.Point(361, 23);
             this.anotherReportLabel.Name = "anotherReportLabel";
             this.anotherReportLabel.Size = new System.Drawing.Size(360, 31);
             this.anotherReportLabel.TabIndex = 2;
@@ -97,7 +122,7 @@ namespace LR4_Team_programming.customElements
             // 
             // docNumber
             // 
-            this.docNumber.Location = new System.Drawing.Point(244, 27);
+            this.docNumber.Location = new System.Drawing.Point(217, 27);
             this.docNumber.Name = "docNumber";
             this.docNumber.PlaceholderText = "№ документа";
             this.docNumber.Size = new System.Drawing.Size(138, 27);
@@ -107,7 +132,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.reportLabel.AutoSize = true;
             this.reportLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.reportLabel.Location = new System.Drawing.Point(92, 22);
+            this.reportLabel.Location = new System.Drawing.Point(65, 22);
             this.reportLabel.Name = "reportLabel";
             this.reportLabel.Size = new System.Drawing.Size(146, 32);
             this.reportLabel.TabIndex = 0;
@@ -122,13 +147,17 @@ namespace LR4_Team_programming.customElements
             this.productName,
             this.okpCode,
             this.dataGridViewTextBoxColumn1,
-            this.receiverDepColumn});
+            this.receiverDepColumn,
+            this.deleteRowColumn});
             this.productsGrid.Location = new System.Drawing.Point(20, 234);
             this.productsGrid.Name = "productsGrid";
             this.productsGrid.RowHeadersWidth = 51;
             this.productsGrid.Size = new System.Drawing.Size(797, 403);
             this.productsGrid.TabIndex = 1;
+            this.productsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsGrid_CellContentClick);
+            this.productsGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.productsGrid_CellPainting);
             this.productsGrid.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.productsGrid_RowsAdded);
+            this.productsGrid.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.productsGrid_RowsRemoved);
             // 
             // productName
             // 
@@ -162,6 +191,14 @@ namespace LR4_Team_programming.customElements
             this.receiverDepColumn.Name = "receiverDepColumn";
             this.receiverDepColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.receiverDepColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // deleteRowColumn
+            // 
+            this.deleteRowColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.deleteRowColumn.HeaderText = "";
+            this.deleteRowColumn.MinimumWidth = 6;
+            this.deleteRowColumn.Name = "deleteRowColumn";
+            this.deleteRowColumn.Width = 40;
             // 
             // reportInfo1
             // 
@@ -211,14 +248,12 @@ namespace LR4_Team_programming.customElements
             this.label10.TabIndex = 6;
             this.label10.Text = "от";
             // 
-            // progressBar1
+            // imageList1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(20, 202);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(797, 29);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 12;
-            this.progressBar1.Visible = false;
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "778aac5a69fd790400b9bbfb72a3e7ce.png");
             // 
             // ReportDocument
             // 
@@ -254,10 +289,13 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DateTimePicker creationDate;
         private System.Windows.Forms.TextBox docNumber;
         private System.Windows.Forms.ComboBox senderComboBox;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button printButton;
         private System.Windows.Forms.DataGridViewComboBoxColumn productName;
         private System.Windows.Forms.DataGridViewTextBoxColumn okpCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn receiverDepColumn;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteRowColumn;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

@@ -50,6 +50,7 @@ namespace LR4_Team_programming
             this.senderLabel = new System.Windows.Forms.Label();
             this.senderDep = new System.Windows.Forms.TextBox();
             this.dateLabel = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // menuTree
@@ -156,11 +157,21 @@ namespace LR4_Team_programming
             this.dateLabel.Size = new System.Drawing.Size(100, 23);
             this.dateLabel.TabIndex = 0;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(371, 337);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(812, 41);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 5;
+            this.progressBar.Visible = false;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 717);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.menuTree);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "mainForm";
@@ -190,5 +201,6 @@ namespace LR4_Team_programming
         private System.Windows.Forms.ImageList imagesForMenuTree;
         private System.Windows.Forms.Label ct;
         private System.Windows.Forms.Label y;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

@@ -100,6 +100,7 @@ namespace LR4_Team_programming.customElements
         {
             reportsGrid.Rows.Clear();
             progressBar.Visible = true;
+            UseWaitCursor = true;
 
             Thread thread = new Thread(fillTable);
             thread.Start();
@@ -131,6 +132,7 @@ namespace LR4_Team_programming.customElements
         void finishThread()
         {
             progressBar.Visible = false;
+            UseWaitCursor = false;
         }
 
         private void reportsGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -196,7 +198,7 @@ namespace LR4_Team_programming.customElements
             {
                 // открыть форму для редактирования рапорта
 
-                Report currReport = reports[e.RowIndex];
+                Report currReport = reports.Find(report => reportsGrid.CurrentRow.Cells[0].Value.ToString() == report.doc_num.ToString());
 
                 EditingReportForm editingReportForm = new EditingReportForm(currReport);
                 ReportDocument reportDocument = editingReportForm.GetPanel;
@@ -228,7 +230,6 @@ namespace LR4_Team_programming.customElements
                 }
                 table.AllowUserToAddRows = true;
                 editingReportForm.Show();
-
                 editingReportForm.FormClosed += new FormClosedEventHandler(refreshFunc);
             }
         }

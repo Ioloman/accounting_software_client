@@ -7,12 +7,20 @@ using System.Text;
 using System.Windows.Forms;
 using LR4_Team_programming.customElements;
 using Models;
+using System.Threading.Tasks;
 using System.Threading;
-
 namespace LR4_Team_programming
 {
     public partial class mainForm : Form
     {
+        public enum docTypes
+        {
+            vedomost = 0,
+            report = 1,
+            balances = 2,
+            analysis = 3
+        }
+
         Dictionary<TreeNode, UserControl> menuToPanel;
         List<UserControl> panels;
 
@@ -32,8 +40,15 @@ namespace LR4_Team_programming
         public mainForm()
         {
             InitializeComponent();
-            Thread thread = new Thread(fillComboboxes);
-            thread.Start();
+
+            fillComboboxesHelper();
+
+
+            //Thread thread = new Thread(fillComboboxes);
+            //thread.Start();
+
+
+
 
             menuTree.Nodes[0].Expand();
             menuTree.Nodes[1].Expand();
@@ -89,7 +104,19 @@ namespace LR4_Team_programming
                 calculatingBalances
             };
         }
-    
+
+        private  void fillComboboxesHelper()
+        {
+            this.progressBar.Visible = true;
+            (new Thread((s) =>
+            {
+                fillComboboxes();
+                this.progressBar.BeginInvoke((MethodInvoker)(() => this.progressBar.Visible = false));
+            })).Start();
+
+        }
+
+
         private void senderDep_TextChanged(object sender, EventArgs e)
         {
 
@@ -115,6 +142,7 @@ namespace LR4_Team_programming
         private void fillComboboxes()
         {
             // получаем цеха и вносим их названия во все комбо-боксы
+            UseWaitCursor = true;
             List<Workshop> workshops = (List<Workshop>)ApiConnector.getWorkshops();
             List<string> workshopNames = new List<string>();
             foreach (Workshop workshop in workshops)
@@ -157,7 +185,7 @@ namespace LR4_Team_programming
 
                 reportEdit.AutoCompleteSourceForDocNum.AddRange(reportsNames.ToArray());
                 inventarizationEdit.AutoCompleteSourceForDocNum.AddRange(vedomostsNames.ToArray());
-            
+            UseWaitCursor = false;
         }
 
 

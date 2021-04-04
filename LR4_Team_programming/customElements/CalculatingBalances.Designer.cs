@@ -42,6 +42,7 @@ namespace LR4_Team_programming.customElements
             this.codeOKPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.printButton = new System.Windows.Forms.Button();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,7 @@ namespace LR4_Team_programming.customElements
             // 
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.headerLabel.Location = new System.Drawing.Point(87, 9);
+            this.headerLabel.Location = new System.Drawing.Point(41, 10);
             this.headerLabel.Name = "headerLabel";
             this.headerLabel.Size = new System.Drawing.Size(670, 32);
             this.headerLabel.TabIndex = 2;
@@ -167,10 +168,20 @@ namespace LR4_Team_programming.customElements
             this.progressBar.TabIndex = 21;
             this.progressBar.Visible = false;
             // 
+            // printButton
+            // 
+            this.printButton.Image = ((System.Drawing.Image)(resources.GetObject("printButton.Image")));
+            this.printButton.Location = new System.Drawing.Point(773, 10);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(50, 49);
+            this.printButton.TabIndex = 22;
+            this.printButton.UseVisualStyleBackColor = true;
+            // 
             // CalculatingBalances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.printButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.table);
             this.Controls.Add(this.searchPanel);
@@ -199,5 +210,6 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button printButton;
     }
 }

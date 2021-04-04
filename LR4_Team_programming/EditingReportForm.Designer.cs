@@ -46,7 +46,7 @@ namespace LR4_Team_programming
             this.ClientSize = new System.Drawing.Size(834, 686);
             this.Controls.Add(this.reportDocument1);
             this.Name = "EditingReportForm";
-            this.Text = "EditingReportForm";
+            this.Text = "Редактирование рапорта сдачи продуции цехами";
             this.ResumeLayout(false);
 
         }

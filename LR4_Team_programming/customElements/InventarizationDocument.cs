@@ -1,4 +1,6 @@
 ﻿using System;
+
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,8 @@ namespace LR4_Team_programming.customElements
 {
     public partial class InventarizationDocument : UserControl
     {
+        private delegate DialogResult ShowSaveFileDialogInvoker();
+
         public DataGridView GetTable
         {
             get
@@ -102,16 +106,16 @@ namespace LR4_Team_programming.customElements
         }
 
 
-        private void saveChages()
+        private void saveChages(object depName)
         {
             Vedomost vedomost = new Vedomost();
-            var workshop = ApiConnector.getWorkshop(depTextBox.Text);
+            var workshop = ApiConnector.getWorkshop((depName as string));
             if (workshop == null)
             {
                 MessageBox.Show("Цех с таким названием не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            List<Detail> details = (List<Detail>)ApiConnector.getDetails(); // Возможно, можно удалить эту строку
+            //List<Detail> details = (List<Detail>)ApiConnector.getDetails(); // Возможно, можно удалить эту строку
 
             vedomost.creation_date = docCreateDate.Value.ToString("yyyy-MM-dd");
             vedomost.doc_num = Convert.ToInt32(docNumberTextBox.Text);
@@ -137,15 +141,17 @@ namespace LR4_Team_programming.customElements
                 MessageBox.Show("Ведомость была успешно создана.", "Добавление ведомости", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             progressBar1.Visible = false;
+            UseWaitCursor = false;
         }
 
 
 
         private void saveChangeButton_Click(object sender, EventArgs e)
         {
-            Thread savingProcces = new Thread(saveChages);
+            Thread savingProcces = new Thread(new ParameterizedThreadStart(saveChages));
             progressBar1.Visible = true;
-            savingProcces.Start();
+            UseWaitCursor = true;
+            savingProcces.Start(depTextBox.Text);
         }
 
         private void table_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -153,5 +159,75 @@ namespace LR4_Team_programming.customElements
             for (int i = 0; i < table.Rows.Count - 1; i++)
                 table.Rows[i].HeaderCell.Value = (i + 1).ToString();
         }
+
+        private void table_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            if (e.ColumnIndex == 3)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                var w = imageList1.Images[0].Width;
+                var h = imageList1.Images[0].Height;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(imageList1.Images[0], new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
+
+        private void table_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                if (table.CurrentRow.Index != table.Rows.Count - 1)
+                    table.Rows.RemoveAt(table.CurrentRow.Index);
+            }
+        }
+
+        private void table_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            for (int i = 0; i < table.Rows.Count - 1; i++)
+                table.Rows[i].HeaderCell.Value = (i + 1).ToString();
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            this.progressBar1.Visible = true;
+
+            DataGridView table = GetTable;
+            string dep = GetDepComboBox.Text;
+            string createDate = GetDocCreateDate.Text;
+            string docNum = GetDocNumberTextBox.Text;
+
+            List<List<string>> data = new List<List<string>>();
+            for (int i = 0; i < table.Rows.Count - 1; i++)
+            {
+                data.Add(new List<string>());
+                data[i].Add((i + 1).ToString());
+                for (int j = 0; j < table.Columns.Count - 1; j++)
+                {
+                    data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                }
+            }
+        
+            Thread thread = new Thread((s) =>
+            {
+                showPrintForm(dep, createDate, docNum, data);
+                this.progressBar1.BeginInvoke((MethodInvoker)(() => this.progressBar1.Visible = false));
+
+            });
+            thread.Start();            
+        }
+
+        private void showPrintForm(string dep, string createDate, string docNum, List<List<string>> data)
+        {
+            string path = Program.GetPathToTemplatesFolder() + "inventarization template.docx";
+            docViewerForm docViewerForm = new docViewerForm(docNum, dep, createDate, data, mainForm.docTypes.vedomost, path);
+            docViewerForm.ShowDialog();
+        }
+
     }
 }

@@ -31,7 +31,7 @@ namespace LR4_Team_programming
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(docViewerForm));
             this.docViewer = new System.Windows.Forms.RichTextBox();
-            this.editButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.printButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,22 +43,22 @@ namespace LR4_Team_programming
             this.docViewer.TabIndex = 4;
             this.docViewer.Text = "";
             // 
-            // editButton
+            // saveButton
             // 
-            this.editButton.Image = ((System.Drawing.Image)(resources.GetObject("editButton.Image")));
-            this.editButton.Location = new System.Drawing.Point(1027, 98);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(80, 80);
-            this.editButton.TabIndex = 6;
-            this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
+            this.saveButton.Location = new System.Drawing.Point(1027, 12);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(50, 50);
+            this.saveButton.TabIndex = 6;
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // printButton
             // 
             this.printButton.Image = ((System.Drawing.Image)(resources.GetObject("printButton.Image")));
-            this.printButton.Location = new System.Drawing.Point(1027, 12);
+            this.printButton.Location = new System.Drawing.Point(1027, 84);
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(80, 80);
+            this.printButton.Size = new System.Drawing.Size(50, 50);
             this.printButton.TabIndex = 5;
             this.printButton.UseVisualStyleBackColor = true;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
@@ -67,12 +67,13 @@ namespace LR4_Team_programming
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 611);
-            this.Controls.Add(this.editButton);
+            this.ClientSize = new System.Drawing.Size(1086, 611);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.docViewer);
             this.Name = "docViewerForm";
-            this.Text = "docViewerForm";
+            this.Text = "Просмотр документа";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.docViewerForm_FormClosed);
             this.ResumeLayout(false);
 
         }
@@ -80,7 +81,7 @@ namespace LR4_Team_programming
         #endregion
 
         private System.Windows.Forms.RichTextBox docViewer;
-        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button printButton;
     }
 }
