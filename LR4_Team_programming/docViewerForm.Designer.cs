@@ -61,6 +61,7 @@ namespace LR4_Team_programming
             this.printButton.Size = new System.Drawing.Size(50, 50);
             this.printButton.TabIndex = 5;
             this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Visible = false;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // docViewerForm

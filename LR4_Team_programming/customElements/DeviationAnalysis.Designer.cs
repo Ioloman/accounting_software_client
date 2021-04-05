@@ -312,6 +312,7 @@ namespace LR4_Team_programming.customElements
             this.settingButton.Size = new System.Drawing.Size(35, 35);
             this.settingButton.TabIndex = 16;
             this.settingButton.UseVisualStyleBackColor = true;
+            this.settingButton.Visible = false;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
             // searchInAllDebCheckBox
@@ -323,6 +324,7 @@ namespace LR4_Team_programming.customElements
             this.searchInAllDebCheckBox.TabIndex = 15;
             this.searchInAllDebCheckBox.Text = "По предприятию";
             this.searchInAllDebCheckBox.UseVisualStyleBackColor = true;
+            this.searchInAllDebCheckBox.Visible = false;
             // 
             // label2
             // 
