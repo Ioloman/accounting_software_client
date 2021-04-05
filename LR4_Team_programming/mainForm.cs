@@ -9,11 +9,30 @@ using LR4_Team_programming.customElements;
 using Models;
 using System.Threading.Tasks;
 using System.Threading;
+using Word = Microsoft.Office.Interop.Word;
 namespace LR4_Team_programming
 {
     
     public partial class mainForm : Form
     {
+
+        private static Word.Application wordApp;
+        public static void printMethod(string path)
+        {
+            wordApp = new Word.Application();
+            wordApp.Visible = false;
+            PrintDialog pDialog = new PrintDialog();
+            if (pDialog.ShowDialog() == DialogResult.OK)
+            {
+                Word.Document doc = wordApp.Documents.Add(@"C:\Users\aleks\Desktop\хуй2.docx");
+                wordApp.ActivePrinter = pDialog.PrinterSettings.PrinterName;
+                wordApp.ActiveDocument.PrintOut();
+                doc.Close(SaveChanges: false);
+                doc = null;
+            }
+        }
+
+
         public static mainForm activ;
 
         public enum docTypes
