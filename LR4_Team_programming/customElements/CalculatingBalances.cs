@@ -137,7 +137,11 @@ namespace LR4_Team_programming.customElements
                 data[i].Add((i + 1).ToString());
                 for (int j = 0; j < table.Columns.Count; j++)
                 {
-                    data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                    try
+                    {
+                        data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                    }
+                    catch { };
                 }
             }
 
