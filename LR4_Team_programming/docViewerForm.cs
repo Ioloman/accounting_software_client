@@ -126,18 +126,14 @@ namespace LR4_Team_programming
             wordApp = new Word.Application();
             wordApp.Visible = false;
             PrintDialog pDialog = new PrintDialog();
-            if (pDialog.ShowDialog() == DialogResult.OK)
+            var dialogResult = pDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK)
             {
                 Word.Document doc = wordApp.Documents.Add(createdFileName);
                 wordApp.ActivePrinter = pDialog.PrinterSettings.PrinterName;
-                //Thread.Sleep(10000);
-                try
-                {
-                    wordApp.ActiveDocument.PrintOut();
-                    doc.Close(SaveChanges: false);
-                    doc = null;
-                }
-                catch { MessageBox.Show("Проблемы с принтером"); };
+                wordApp.ActiveDocument.PrintOut();
+                doc.Close(SaveChanges: false);
+                doc = null;
 
             }
 
@@ -146,8 +142,6 @@ namespace LR4_Team_programming
 
         private void printButton_Click(object sender, EventArgs e)
         {
-            //mainForm.printMethod(createdFileName);
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
             PrintFileDialogs invoker = new PrintFileDialogs(printFileDialog);
             mainForm.activ.Invoke(invoker);
         }
