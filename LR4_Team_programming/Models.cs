@@ -3,14 +3,26 @@
 
 namespace Models
 {
-    public class Line
+    public class ReportLineParent
     {
-        public virtual string url { get; set; }
+        public virtual int report_line_pk { get; set; }
         static int number = 0;
-        public Line()
+        public ReportLineParent()
         {
-            number++;
-            url = number.ToString();
+            number--;
+            report_line_pk = number;
+        }
+    }
+
+
+    public class VedomostLineParent
+    {
+        public virtual int vedomost_line_pk { get; set; }
+        static int number = 0;
+        public VedomostLineParent()
+        {
+            number--;
+            vedomost_line_pk = number;
         }
     }
 
@@ -22,10 +34,10 @@ namespace Models
         public string cipher_detail { get; set; }
     }
 
-    public class ReportLine : Line
+    public class ReportLine : ReportLineParent
     {
-        public override string url { get; set; }
-        public int report_line_pk { get; set; }
+        public string url { get; set; }
+        public override int report_line_pk { get; set; }
         public int report_pk { get; set; }
         public int detail_pk { get; set; }
         public int produced { get; set; }
@@ -43,10 +55,10 @@ namespace Models
         public int workshop_sender_pk { get; set; }
         public List<ReportLine> report_lines { get; set; }
     }
-    public class VedomostLine : Line
+    public class VedomostLine : VedomostLineParent
     {
-        public override string url { get; set; }
-        public int vedomost_line_pk { get; set; }
+        public string url { get; set; }
+        public override int vedomost_line_pk { get; set; }
         public int vedomost_pk { get; set; }
         public int detail_pk { get; set; }
         public int amount { get; set; }

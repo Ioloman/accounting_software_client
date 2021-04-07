@@ -201,9 +201,11 @@ namespace LR4_Team_programming.customElements
             }
             if (e.ColumnIndex == 2)
             {
+                var identificationTable = new Dictionary<DataGridViewRow, VedomostLine>();
+                
                 // открыть форму для редактирования инвентаризации
                 Vedomost currVedomost = vedomosts.Find(vedomost => inventarizationTable.CurrentRow.Cells[0].Value.ToString() == vedomost.doc_num.ToString());
-
+                
                 EditingInventarization editingInventarizationForm = new EditingInventarization(currVedomost);
                 InventarizationDocument inventarization = editingInventarizationForm.GetPanel;
                 inventarization.GetDocCreateDate.Value =  DateTime.Parse(currVedomost.creation_date);
@@ -219,12 +221,13 @@ namespace LR4_Team_programming.customElements
                 table.AllowUserToAddRows = false;
 
                 inventarization.SetDetails = details;
-                for (int i = 0; i<  currVedomost.vedomost_lines.Count; i++)
+                for (int i = 0; i < currVedomost.vedomost_lines.Count; i++)
                 {
                     table.Rows.Add();
                     table.Rows[i].Cells[1].Value = currVedomost.vedomost_lines[i].detail.cipher_detail;
                     table.Rows[i].Cells[2].Value = currVedomost.vedomost_lines[i].amount;
                     (table.Rows[i].Cells[0]).Value = currVedomost.vedomost_lines[i].detail.detail_name;
+                    identificationTable.Add(table.Rows[i], currVedomost.vedomost_lines[i]);
                 }
                 table.AllowUserToAddRows = true;
                 editingInventarizationForm.Show();

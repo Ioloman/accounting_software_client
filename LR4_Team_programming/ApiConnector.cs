@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Threading;
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
@@ -66,7 +67,11 @@ namespace LR4_Team_programming
             }
 
             foreach (ReportLine line in report.report_lines)
-                createReportLine(jsonDeserialized, line);
+            {
+                var req = new Thread(new ParameterizedThreadStart(createReportLine));
+                Tuple<Report, ReportLine> param = new Tuple<Report, ReportLine>(jsonDeserialized, line);
+                req.Start((object)param);
+            }
         }
 
         public static void deleteReport(Report report)
@@ -84,7 +89,7 @@ namespace LR4_Team_programming
 
         public static void editReport(Report report)
         {
-            var oldReport = getReport(report);
+            /*var oldReport = getReport(report);
             var oldCollection = oldReport.report_lines;
             var newCollection = report.report_lines;
             
@@ -103,7 +108,7 @@ namespace LR4_Team_programming
             oldSet.ExceptWith(newSet);
             HashSet<ReportLine> elementsToRemove = new HashSet<ReportLine>(oldSet);
             oldSet = new HashSet<ReportLine>(oldCollection, new LineEqualityComparer());
-
+   
             foreach (ReportLine line in sameElements)
                 editReportLine(line);
 
@@ -111,7 +116,7 @@ namespace LR4_Team_programming
                 createReportLine(oldReport, line);
 
             foreach (ReportLine line in elementsToRemove)
-                deleteReportLine(line);
+                deleteReportLine(line);*/
 
 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(report.url);
@@ -146,8 +151,11 @@ namespace LR4_Team_programming
             return jsonDeserialized;
         }
 
-        public static void createReportLine(Report report, ReportLine line)
+        public static void createReportLine(object param)
         {
+            Tuple<Report, ReportLine> paramUnpacked = (Tuple<Report, ReportLine>)param;
+            Report report = paramUnpacked.Item1;
+            ReportLine line = paramUnpacked.Item2;
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/report-lines/");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
@@ -249,7 +257,11 @@ namespace LR4_Team_programming
             }
 
             foreach (VedomostLine line in vedomost.vedomost_lines)
-                createVedomostLine(jsonDeserialized, line);
+            {
+                var req = new Thread(new ParameterizedThreadStart(createVedomostLine));
+                Tuple<Vedomost, VedomostLine> param = new Tuple<Vedomost, VedomostLine>(jsonDeserialized, line);
+                req.Start((object)param);
+            }
         }
 
         public static void deleteVedomost(Vedomost vedomost)
@@ -267,7 +279,7 @@ namespace LR4_Team_programming
 
         public static void editVedomost(Vedomost vedomost)
         {
-            var oldVedomost = getVedomost(vedomost);
+            /*var oldVedomost = getVedomost(vedomost);
             var oldCollection = oldVedomost.vedomost_lines;
             var newCollection = vedomost.vedomost_lines;
 
@@ -294,7 +306,7 @@ namespace LR4_Team_programming
                 createVedomostLine(oldVedomost, line);
 
             foreach (VedomostLine line in elementsToRemove)
-                deleteVedomostLine(line);
+                deleteVedomostLine(line);*/
 
 
 
@@ -331,8 +343,11 @@ namespace LR4_Team_programming
             return jsonDeserialized;
         }
 
-        public static void createVedomostLine(Vedomost vedomost, VedomostLine line)
+        public static void createVedomostLine(object param)
         {
+            Tuple<Vedomost, VedomostLine> paramUnpacked = (Tuple<Vedomost, VedomostLine>)param;
+            Vedomost vedomost = paramUnpacked.Item1;
+            VedomostLine line = paramUnpacked.Item2;
             var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://loloman.pythonanywhere.com/api/vedomost-lines/");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
@@ -501,18 +516,6 @@ namespace LR4_Team_programming
             return jsonDeserialized.accounting;
         }
 
-        class LineEqualityComparer : IEqualityComparer<Line>
-        {
-            public bool Equals(Line l1, Line l2)
-            {
-                return l1.url == l2.url;
-            }
-
-            public int GetHashCode(Line line)
-            {
-                return line.url.GetHashCode();
-            }
-        }
 
     }
 }
