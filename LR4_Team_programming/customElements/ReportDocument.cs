@@ -88,7 +88,14 @@ namespace LR4_Team_programming.customElements
         {
             try
             {
-                // вставить массу в сырье
+                if (this.productsGrid.CurrentCell.ColumnIndex == 0)
+                {
+                    ComboBox c = e.Control as ComboBox;
+                    ((ComboBox)c).DropDownStyle = ComboBoxStyle.DropDown;
+                    c.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    c.AutoCompleteSource = AutoCompleteSource.ListItems;
+                }
+
                 if ((sender as DataGridView).CurrentCell.ColumnIndex == 0)          
                     (e.Control as ComboBox).SelectedIndexChanged += new EventHandler(InsertCodeOKP);               
             }
@@ -212,7 +219,11 @@ namespace LR4_Team_programming.customElements
                 data[i].Add((i + 1).ToString());
                 for (int j = 0; j < table.Columns.Count - 1; j++)
                 {
-                    data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                    try
+                    {
+                        data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                    }
+                    catch { };
                 }
             }
 
@@ -228,6 +239,20 @@ namespace LR4_Team_programming.customElements
             string path = Program.GetPathToTemplatesFolder() + "report template.docx";
             docViewerForm docViewerForm = new docViewerForm(docNum, dep, createDate, data, mainForm.docTypes.report, path);
             docViewerForm.ShowDialog();
+        }
+
+        private void productsGrid_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == this.productsGrid.Columns[0].Index)
+            {
+                DataGridViewComboBoxColumn comboBoxColumn = (DataGridViewComboBoxColumn)this.productsGrid.Columns[0];
+                object eFV = e.FormattedValue;
+                if (!comboBoxColumn.Items.Contains(eFV))
+                {
+                    comboBoxColumn.Items.Add(eFV);
+                    this.productsGrid.CurrentCell.Value = e.FormattedValue;
+                }
+            }
         }
     }
 }

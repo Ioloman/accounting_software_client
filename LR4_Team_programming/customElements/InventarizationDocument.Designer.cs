@@ -124,6 +124,7 @@ namespace LR4_Team_programming.customElements
             this.table.TabIndex = 0;
             this.table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_CellContentClick);
             this.table.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.table_CellPainting);
+            this.table.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.table_CellValidating);
             this.table.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.table_RowsAdded);
             this.table.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.table_RowsRemoved);
             // 

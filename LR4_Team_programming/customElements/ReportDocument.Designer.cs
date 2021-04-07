@@ -156,6 +156,7 @@ namespace LR4_Team_programming.customElements
             this.productsGrid.TabIndex = 1;
             this.productsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsGrid_CellContentClick);
             this.productsGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.productsGrid_CellPainting);
+            this.productsGrid.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.productsGrid_CellValidating);
             this.productsGrid.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.productsGrid_RowsAdded);
             this.productsGrid.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.productsGrid_RowsRemoved);
             // 

@@ -85,7 +85,14 @@ namespace LR4_Team_programming.customElements
         {
             try
             {
-                // вставить массу в сырье
+                if (this.table.CurrentCell.ColumnIndex == 0)
+                {
+                    ComboBox c = e.Control as ComboBox;
+                    c.DropDownStyle = ComboBoxStyle.DropDown;
+                    c.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    c.AutoCompleteSource = AutoCompleteSource.ListItems;
+                }
+
                 if ((sender as DataGridView).CurrentCell.ColumnIndex == 0)
                 {
                     (e.Control as ComboBox).SelectedIndexChanged += new EventHandler(InsertCodeOKP);
@@ -209,7 +216,11 @@ namespace LR4_Team_programming.customElements
                 data[i].Add((i + 1).ToString());
                 for (int j = 0; j < table.Columns.Count - 1; j++)
                 {
-                    data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                    try
+                    {
+                        data[i].Add(table.Rows[i].Cells[j].Value.ToString());
+                    }
+                    catch { };
                 }
             }
         
@@ -229,5 +240,18 @@ namespace LR4_Team_programming.customElements
             docViewerForm.ShowDialog();
         }
 
+        private void table_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == this.table.Columns[0].Index)
+            {
+                DataGridViewComboBoxColumn comboBoxColumn = (DataGridViewComboBoxColumn)this.table.Columns[0];
+                object eFV = e.FormattedValue;
+                if (!comboBoxColumn.Items.Contains(eFV))
+                {
+                    comboBoxColumn.Items.Add(eFV);
+                    this.table.CurrentCell.Value = e.FormattedValue;
+                }
+            }
+        }
     }
 }

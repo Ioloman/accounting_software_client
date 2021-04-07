@@ -171,8 +171,12 @@ namespace LR4_Team_programming
         private void docViewerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             File.Delete(createdFileName);
-            ((Word._Application)wordApp).Quit(SaveChanges: false);
-            wordApp = null;
+            try
+            {
+                ((Word._Application)wordApp).Quit(SaveChanges: false);
+                wordApp = null;
+            }
+            catch { };
         }
     }
 }
