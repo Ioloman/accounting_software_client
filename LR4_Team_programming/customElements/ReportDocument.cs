@@ -163,10 +163,13 @@ namespace LR4_Team_programming.customElements
                 MessageBox.Show("Рапорт был успешно создан.", "Добавление рапорта", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             progressBar1.Visible = false;
-            productsGrid.Rows.Clear();
-            senderComboBox.Text = "";
-            docNumber.Text = "";
-            creationDate.Value = DateTime.Now;
+            if (!(Parent is EditingReportForm))
+            {
+                productsGrid.Rows.Clear();
+                senderComboBox.Text = "";
+                docNumber.Text = "";
+                creationDate.Value = DateTime.Now;
+            }
         }
 
 

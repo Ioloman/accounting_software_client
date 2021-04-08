@@ -16,6 +16,8 @@ namespace LR4_Team_programming.customElements
         public List<Report> reports;
         public List<Detail> details;
         public List<Workshop> workshops;
+        private Report editingReport;
+        private int indexEditingReport;
 
         public AutoCompleteStringCollection AutoCompleteSourceForDocNum
         {
@@ -199,6 +201,8 @@ namespace LR4_Team_programming.customElements
                 // открыть форму для редактирования рапорта
 
                 Report currReport = reports.Find(report => reportsGrid.CurrentRow.Cells[0].Value.ToString() == report.doc_num.ToString());
+                editingReport = currReport;
+                indexEditingReport = e.RowIndex;
 
                 EditingReportForm editingReportForm = new EditingReportForm(currReport);
                 ReportDocument reportDocument = editingReportForm.GetPanel;
@@ -237,10 +241,18 @@ namespace LR4_Team_programming.customElements
         }
         private void refreshFunc(object sender, FormClosedEventArgs e)
         {
-            reportsGrid.Rows.Clear();
-            progressBar.Visible = true;
-            Thread thread = new Thread(fillTable);
-            thread.Start();
+
+            Report NewReport = ApiConnector.getReport(editingReport);
+            reportsGrid.Rows[indexEditingReport].Cells[0].Value = NewReport.doc_num.ToString();
+            reportsGrid.Rows[indexEditingReport].Cells[1].Value = NewReport.date;
+            reportsGrid.Rows[indexEditingReport].Cells[2].Value = workshops.Find(workshops => workshops.workshop_pk == NewReport.workshop_sender_pk).workshop_name.ToString();
+            reports[reports.IndexOf(editingReport)] = NewReport;
+
+
+            //reportsGrid.Rows.Clear();
+            //progressBar.Visible = true;
+            //Thread thread = new Thread(fillTable);
+            //thread.Start();
         }
     }
 }

@@ -156,10 +156,13 @@ namespace LR4_Team_programming.customElements
                 MessageBox.Show("Ведомость была успешно создана.", "Добавление ведомости", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             progressBar1.Visible = false;
-            table.Rows.Clear();
-            depTextBox.Text = "";
-            docNumberTextBox.Text = "";
-            docCreateDate.Value = DateTime.Now;
+            if (!(Parent is EditingInventarization))
+            {
+                table.Rows.Clear();
+                depTextBox.Text = "";
+                docNumberTextBox.Text = "";
+                docCreateDate.Value = DateTime.Now;
+            }
         }
 
 

@@ -164,7 +164,6 @@ namespace LR4_Team_programming
         private void fillComboboxes()
         {
             // получаем цеха и вносим их названия во все комбо-боксы
-            UseWaitCursor = true;
             List<Workshop> workshops = (List<Workshop>)ApiConnector.getWorkshops();
             List<string> workshopNames = new List<string>();
             foreach (Workshop workshop in workshops)
@@ -184,13 +183,14 @@ namespace LR4_Team_programming
             inventarization.SetDetails = details;
             report.SetDetails = details;
             reportEdit.details = details;
-
-
             report.depComboBoxItemsInTable.AddRange(workshopNames.ToArray());
+
+
+
 
             // тут заполняю автодополнение для поисков по номеру документа
             // скорее всего, из-за этого прога иногда после запуска закрывается.
-
+            /*
                 List<Report> reports = (List<Report>)ApiConnector.getReports();
                 List<Vedomost> vedomosts = (List<Vedomost>)ApiConnector.getVedomosts();
 
@@ -208,6 +208,7 @@ namespace LR4_Team_programming
                 reportEdit.AutoCompleteSourceForDocNum.AddRange(reportsNames.ToArray());
                 inventarizationEdit.AutoCompleteSourceForDocNum.AddRange(vedomostsNames.ToArray());
             UseWaitCursor = false;
+            */
         }
 
 

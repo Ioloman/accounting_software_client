@@ -15,6 +15,8 @@ namespace LR4_Team_programming.customElements
     public partial class InventarizationDocumentEdit : UserControl
     {
         public List<Vedomost> vedomosts;
+        private Vedomost editingVedomost;
+        private int indexEditingVedomost;
         public List<Detail> details;
 
         public AutoCompleteStringCollection AutoCompleteSourceForDocNum
@@ -107,7 +109,6 @@ namespace LR4_Team_programming.customElements
 
             await Task.Run(() => fillTable());
 
-  
             //Thread thread = new Thread(fillTable);
             //thread.Start();
         }
@@ -203,7 +204,8 @@ namespace LR4_Team_programming.customElements
                 
                 // открыть форму для редактирования инвентаризации
                 Vedomost currVedomost = vedomosts.Find(vedomost => inventarizationTable.CurrentRow.Cells[0].Value.ToString() == vedomost.doc_num.ToString());
-                
+                editingVedomost = currVedomost;
+                indexEditingVedomost = e.RowIndex;
                 EditingInventarization editingInventarizationForm = new EditingInventarization(currVedomost);
                 InventarizationDocument inventarization = editingInventarizationForm.GetPanel;
                 inventarization.GetDocCreateDate.Value =  DateTime.Parse(currVedomost.creation_date);
@@ -230,20 +232,16 @@ namespace LR4_Team_programming.customElements
                 table.AllowUserToAddRows = true;
                 inventarization.identificationTable = identificationTable;
                 editingInventarizationForm.Show();
+
                 editingInventarizationForm.FormClosed += new FormClosedEventHandler(RefreshVedomosts);
             }
         }
-        private async void RefreshVedomosts(object sender, FormClosedEventArgs e)
+        private  void RefreshVedomosts(object sender, FormClosedEventArgs e)
         {
-            inventarizationTable.Rows.Clear();
-            progressBar.Visible = true;
-
-
-            await Task.Run(() => fillTable());
-
-
-            //Thread thread = new Thread(fillTable);
-            //thread.Start();
+            Vedomost newVedomost = ApiConnector.getVedomost(editingVedomost);
+            inventarizationTable.Rows[indexEditingVedomost].Cells[0].Value = newVedomost.doc_num.ToString();
+            inventarizationTable.Rows[indexEditingVedomost].Cells[1].Value = newVedomost.creation_date;
+            vedomosts[vedomosts.IndexOf(editingVedomost)] = newVedomost;         
         }
 
         private void inventarizationTable_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
