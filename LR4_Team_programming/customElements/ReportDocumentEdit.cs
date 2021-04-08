@@ -100,7 +100,6 @@ namespace LR4_Team_programming.customElements
         {
             reportsGrid.Rows.Clear();
             progressBar.Visible = true;
-            UseWaitCursor = true;
 
             Thread thread = new Thread(fillTable);
             thread.Start();
@@ -132,7 +131,6 @@ namespace LR4_Team_programming.customElements
         void finishThread()
         {
             progressBar.Visible = false;
-            UseWaitCursor = false;
         }
 
         private void reportsGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -196,6 +194,8 @@ namespace LR4_Team_programming.customElements
             }
             if (e.ColumnIndex == 3)
             {
+                var identificationTable = new Dictionary<DataGridViewRow, ReportLine>();
+
                 // открыть форму для редактирования рапорта
 
                 Report currReport = reports.Find(report => reportsGrid.CurrentRow.Cells[0].Value.ToString() == report.doc_num.ToString());
@@ -204,7 +204,7 @@ namespace LR4_Team_programming.customElements
                 ReportDocument reportDocument = editingReportForm.GetPanel;
 
                 reportDocument.GetDocCreationTime.Value = DateTime.Parse(currReport.date);
-                reportDocument.GetDocNumberTextBox.Text = currReport.doc_num.ToString();
+                reportDocument.GetDocNumberTextBox = currReport.doc_num.ToString();
 
                 for (int i = 0; i < depNameComboBoxItems.Count; i++)
                     reportDocument.GetDepSender.Items.Add(depNameComboBoxItems[i]);
@@ -227,7 +227,9 @@ namespace LR4_Team_programming.customElements
                     (table.Rows[i].Cells[0]).Value = currReport.report_lines[i].detail.detail_name;
                     table.Rows[i].Cells[3].Value = 
                        workshops.Find(workshop => workshop.workshop_pk == currReport.report_lines[i].workshop_receiver_pk).workshop_name;
+                    identificationTable.Add(table.Rows[i], currReport.report_lines[i]);
                 }
+                reportDocument.identificationTable = identificationTable;
                 table.AllowUserToAddRows = true;
                 editingReportForm.Show();
                 editingReportForm.FormClosed += new FormClosedEventHandler(refreshFunc);

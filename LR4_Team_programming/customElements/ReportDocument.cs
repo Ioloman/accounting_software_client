@@ -12,6 +12,8 @@ namespace LR4_Team_programming.customElements
 {
     public partial class ReportDocument : UserControl
     {
+        public Dictionary<DataGridViewRow, ReportLine> identificationTable;
+
         public DataGridView GetTable
         {
             get
@@ -19,11 +21,15 @@ namespace LR4_Team_programming.customElements
                 return productsGrid;
             }
         }
-        public TextBox GetDocNumberTextBox
+        public string GetDocNumberTextBox
         {
             get
             {
-                return docNumber;
+                return docNumber.Text;
+            }
+            set
+            {
+                docNumber.Text = value;
             }
         }
         public DateTimePicker GetDocCreationTime
@@ -66,7 +72,7 @@ namespace LR4_Team_programming.customElements
             }
         }
 
-        public  DataGridViewComboBoxCell.ObjectCollection depComboBoxItemsInTable
+        public DataGridViewComboBoxCell.ObjectCollection depComboBoxItemsInTable
         {
             get
             {
@@ -96,8 +102,8 @@ namespace LR4_Team_programming.customElements
                     c.AutoCompleteSource = AutoCompleteSource.ListItems;
                 }
 
-                if ((sender as DataGridView).CurrentCell.ColumnIndex == 0)          
-                    (e.Control as ComboBox).SelectedIndexChanged += new EventHandler(InsertCodeOKP);               
+                if ((sender as DataGridView).CurrentCell.ColumnIndex == 0)
+                    (e.Control as ComboBox).SelectedIndexChanged += new EventHandler(InsertCodeOKP);
             }
             catch { }
         }
@@ -115,7 +121,9 @@ namespace LR4_Team_programming.customElements
         private void savingProccessing()
         {
             Report report = new Report();
-            var workshop = ApiConnector.getWorkshop(senderComboBox.Text);
+            var workshop = ApiConnector.getWorkshop(GetDepSender.Text);
+            //var workshop = ApiConnector.getWorkshop("Сборочный");
+
             if (workshop == null)
             {
                 MessageBox.Show("Цех с таким названием не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -137,7 +145,15 @@ namespace LR4_Team_programming.customElements
             }
             if (Parent is EditingReportForm)
             {
+                for (int i = 0; i < report.report_lines.Count; i++)
+                    try
+                    {
+                        report.report_lines[i].report_line_pk = identificationTable[productsGrid.Rows[i]].report_line_pk;
+                        report.report_lines[i].report_pk = (Parent as EditingReportForm).reportLast.report_pk;
+                    }
+                    catch { }
                 report.url = (Parent as EditingReportForm).reportLast.url;
+                report.report_pk = (Parent as EditingReportForm).reportLast.report_pk;
                 ApiConnector.editReport(report);
                 MessageBox.Show("Рапорт был успешно изменен.", "Редактирование рапорта", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -147,7 +163,10 @@ namespace LR4_Team_programming.customElements
                 MessageBox.Show("Рапорт был успешно создан.", "Добавление рапорта", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             progressBar1.Visible = false;
-            UseWaitCursor = false;
+            productsGrid.Rows.Clear();
+            senderComboBox.Text = "";
+            docNumber.Text = "";
+            creationDate.Value = DateTime.Now;
         }
 
 
@@ -155,7 +174,6 @@ namespace LR4_Team_programming.customElements
         {
             Thread saveThread = new Thread(savingProccessing);
             progressBar1.Visible = true;
-            UseWaitCursor = true;
             saveThread.Start();
         }
 
@@ -210,7 +228,7 @@ namespace LR4_Team_programming.customElements
             DataGridView table = GetTable;
             string dep = GetDepSender.Text;
             string createDate = GetDocCreationTime.Text;
-            string docNum = GetDocNumberTextBox.Text;
+            string docNum = GetDocNumberTextBox;
 
             List<List<string>> data = new List<List<string>>();
             for (int i = 0; i < table.Rows.Count - 1; i++)

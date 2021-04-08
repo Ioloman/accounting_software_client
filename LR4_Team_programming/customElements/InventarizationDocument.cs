@@ -16,6 +16,8 @@ namespace LR4_Team_programming.customElements
     public partial class InventarizationDocument : UserControl
     {
         private delegate DialogResult ShowSaveFileDialogInvoker();
+        public Dictionary<DataGridViewRow, VedomostLine> identificationTable;
+        List<Detail> details = new List<Detail>();
 
         public DataGridView GetTable
         {
@@ -49,7 +51,6 @@ namespace LR4_Team_programming.customElements
         }
 
 
-        List<Detail> details = new List<Detail>();
         public List<Detail> SetDetails
         {
             set
@@ -131,6 +132,12 @@ namespace LR4_Team_programming.customElements
             for (int i = 0; i < table.Rows.Count - 1; i++)
             {
                 var vedomostLine = new VedomostLine();
+                try
+                {
+                    vedomostLine.vedomost_line_pk = identificationTable[table.Rows[i]].vedomost_line_pk;
+                    vedomostLine.vedomost_pk = (Parent as EditingInventarization).vedomostLast.vedomost_pk;
+                }
+                catch { };
                 vedomostLine.detail_pk = details.Find(detail => detail.detail_name == table.Rows[i].Cells[0].Value.ToString()).detail_pk;
                 vedomostLine.amount = Convert.ToInt32(table.Rows[i].Cells[2].Value);
                 vedomost.vedomost_lines.Add(vedomostLine);
@@ -139,6 +146,7 @@ namespace LR4_Team_programming.customElements
             if (Parent is EditingInventarization)
             {
                 vedomost.url = (Parent as EditingInventarization).vedomostLast.url;
+                vedomost.vedomost_pk = (Parent as EditingInventarization).vedomostLast.vedomost_pk;
                 ApiConnector.editVedomost(vedomost);
                 MessageBox.Show("Ведомость была успешно изменена.", "Редактирование ведомости", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -148,7 +156,10 @@ namespace LR4_Team_programming.customElements
                 MessageBox.Show("Ведомость была успешно создана.", "Добавление ведомости", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             progressBar1.Visible = false;
-            UseWaitCursor = false;
+            table.Rows.Clear();
+            depTextBox.Text = "";
+            docNumberTextBox.Text = "";
+            docCreateDate.Value = DateTime.Now;
         }
 
 
@@ -157,7 +168,6 @@ namespace LR4_Team_programming.customElements
         {
             Thread savingProcces = new Thread(new ParameterizedThreadStart(saveChages));
             progressBar1.Visible = true;
-            UseWaitCursor = true;
             savingProcces.Start(depTextBox.Text);
         }
 
@@ -190,7 +200,10 @@ namespace LR4_Team_programming.customElements
             if (e.ColumnIndex == 3)
             {
                 if (table.CurrentRow.Index != table.Rows.Count - 1)
+                {
+                    //identificationTable.Remove(table.CurrentRow);
                     table.Rows.RemoveAt(table.CurrentRow.Index);
+                }
             }
         }
 

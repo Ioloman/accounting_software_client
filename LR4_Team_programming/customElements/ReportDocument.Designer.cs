@@ -67,7 +67,7 @@ namespace LR4_Team_programming.customElements
             this.reportPanel.Controls.Add(this.reportInfo1);
             this.reportPanel.Location = new System.Drawing.Point(0, 0);
             this.reportPanel.Name = "reportPanel";
-            this.reportPanel.Size = new System.Drawing.Size(835, 690);
+            this.reportPanel.Size = new System.Drawing.Size(846, 690);
             this.reportPanel.TabIndex = 13;
             // 
             // printButton

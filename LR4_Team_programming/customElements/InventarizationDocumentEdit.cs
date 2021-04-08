@@ -104,7 +104,6 @@ namespace LR4_Team_programming.customElements
         {
             inventarizationTable.Rows.Clear();
             progressBar.Visible = true;
-            UseWaitCursor = true;
 
             await Task.Run(() => fillTable());
 
@@ -135,7 +134,6 @@ namespace LR4_Team_programming.customElements
         void finishThread()
         {
             progressBar.Visible = false;           
-            UseWaitCursor = false;
 
         }
 
@@ -230,6 +228,7 @@ namespace LR4_Team_programming.customElements
                     identificationTable.Add(table.Rows[i], currVedomost.vedomost_lines[i]);
                 }
                 table.AllowUserToAddRows = true;
+                inventarization.identificationTable = identificationTable;
                 editingInventarizationForm.Show();
                 editingInventarizationForm.FormClosed += new FormClosedEventHandler(RefreshVedomosts);
             }
