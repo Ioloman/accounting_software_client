@@ -66,12 +66,12 @@ namespace LR4_Team_programming
                 jsonDeserialized = JsonConvert.DeserializeObject<Report>(result);
             }
 
-            foreach (ReportLine line in report.report_lines)
+            /*foreach (ReportLine line in report.report_lines)
             {
                 var req = new Thread(new ParameterizedThreadStart(createReportLine));
                 Tuple<Report, ReportLine> param = new Tuple<Report, ReportLine>(jsonDeserialized, line);
                 req.Start((object)param);
-            }
+            }*/
         }
 
         public static void deleteReport(Report report)
@@ -256,12 +256,12 @@ namespace LR4_Team_programming
                 jsonDeserialized = JsonConvert.DeserializeObject<Vedomost>(result);
             }
 
-            foreach (VedomostLine line in vedomost.vedomost_lines)
+            /*foreach (VedomostLine line in vedomost.vedomost_lines)
             {
                 var req = new Thread(new ParameterizedThreadStart(createVedomostLine));
                 Tuple<Vedomost, VedomostLine> param = new Tuple<Vedomost, VedomostLine>(jsonDeserialized, line);
                 req.Start((object)param);
-            }
+            }*/
         }
 
         public static void deleteVedomost(Vedomost vedomost)
