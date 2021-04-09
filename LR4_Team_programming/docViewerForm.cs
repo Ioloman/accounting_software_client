@@ -61,7 +61,7 @@ namespace LR4_Team_programming
             // Если docName = null, то к шаблону добавляется текущая дата - это название рапорта.
             // возвращает путь, по которому сохранен документ
             DocX document = DocX.Load(pathToTemplate);
-            if (docType == mainForm.docTypes.report || docType == mainForm.docTypes.vedomost || docType == mainForm.docTypes.analysis)
+            if (docType == mainForm.docTypes.vedomost)
             {
                 document.Paragraphs[2].Append(numberDoc).FontSize(14).
                     Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
@@ -70,6 +70,29 @@ namespace LR4_Team_programming
                 document.Paragraphs[4].Append(createDate).FontSize(14).
                     Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
             }
+
+            if (docType == mainForm.docTypes.analysis)
+            {
+                document.Paragraphs[2].Append(dep).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
+                document.Paragraphs[3].Append(createDate).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
+                document.Paragraphs[4].Append(numberDoc).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
+            }
+
+
+            if (docType == mainForm.docTypes.report)
+            {
+                document.Paragraphs[0].Append(createDate).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
+                document.Paragraphs[1].Append(numberDoc).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
+                document.Paragraphs[2].Append(dep).FontSize(14).
+                    Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
+            }
+
+
             if (docType == mainForm.docTypes.balances)
             {
                 document.Paragraphs[2].Append(dep).FontSize(14).
