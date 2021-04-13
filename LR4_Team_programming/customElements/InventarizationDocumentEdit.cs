@@ -239,7 +239,7 @@ namespace LR4_Team_programming.customElements
         private  void RefreshVedomosts(object sender, FormClosedEventArgs e)
         {
             Vedomost newVedomost = ApiConnector.getVedomost(editingVedomost);
-            inventarizationTable.Rows[indexEditingVedomost].Cells[0].Value = newVedomost.doc_num.ToString();
+            inventarizationTable.Rows[indexEditingVedomost].Cells[0].Value = newVedomost.doc_num;
             inventarizationTable.Rows[indexEditingVedomost].Cells[1].Value = newVedomost.creation_date;
             vedomosts[vedomosts.IndexOf(editingVedomost)] = newVedomost;         
         }

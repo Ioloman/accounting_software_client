@@ -243,7 +243,7 @@ namespace LR4_Team_programming.customElements
         {
 
             Report NewReport = ApiConnector.getReport(editingReport);
-            reportsGrid.Rows[indexEditingReport].Cells[0].Value = NewReport.doc_num.ToString();
+            reportsGrid.Rows[indexEditingReport].Cells[0].Value = NewReport.doc_num;
             reportsGrid.Rows[indexEditingReport].Cells[1].Value = NewReport.date;
             reportsGrid.Rows[indexEditingReport].Cells[2].Value = workshops.Find(workshops => workshops.workshop_pk == NewReport.workshop_sender_pk).workshop_name.ToString();
             reports[reports.IndexOf(editingReport)] = NewReport;

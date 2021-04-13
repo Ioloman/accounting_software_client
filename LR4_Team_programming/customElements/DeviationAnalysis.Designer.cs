@@ -385,12 +385,12 @@ namespace LR4_Team_programming.customElements
             // 
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.headerLabel.Location = new System.Drawing.Point(17, 15);
+            this.headerLabel.Location = new System.Drawing.Point(105, 15);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(758, 64);
+            this.headerLabel.Size = new System.Drawing.Size(600, 64);
             this.headerLabel.TabIndex = 1;
-            this.headerLabel.Text = "СВОДНЫЙ УЧЕТ И АНАЛИЗ ОТКЛОНЕНИЙ ОТ ФАКТИЧЕСКОГО\r\n                               " +
-    "          ПРОИЗВОДСТВА                                     ";
+            this.headerLabel.Text = "    СВОДНЫЙ УЧЕТ И АНАЛИЗ ВЫПОЛНЕНИЯ       \r\nПРОИЗВОДСТВЕННОЙ ПРОГРАММЫ ЗА ПЕРИОД" +
+    "";
             // 
             // timerForShiftingTable
             // 
