@@ -85,9 +85,9 @@ namespace LR4_Team_programming.screens
             this.senderDepLabel.AutoSize = true;
             this.senderDepLabel.Location = new System.Drawing.Point(12, 37);
             this.senderDepLabel.Name = "senderDepLabel";
-            this.senderDepLabel.Size = new System.Drawing.Size(127, 20);
+            this.senderDepLabel.Size = new System.Drawing.Size(33, 20);
             this.senderDepLabel.TabIndex = 7;
-            this.senderDepLabel.Text = "цех-отправитель";
+            this.senderDepLabel.Text = "цех";
             // 
             // numberSearch
             // 
