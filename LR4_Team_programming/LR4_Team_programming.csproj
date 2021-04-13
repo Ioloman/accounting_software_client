@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>1581610429.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

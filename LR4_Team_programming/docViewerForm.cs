@@ -73,11 +73,11 @@ namespace LR4_Team_programming
 
             if (docType == mainForm.docTypes.analysis)
             {
-                document.Paragraphs[2].Append(dep).FontSize(14).
+                document.Paragraphs[1].Append(dep).FontSize(14).
                     Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
-                document.Paragraphs[3].Append(createDate).FontSize(14).
+                document.Paragraphs[2].Append(createDate).FontSize(14).
                     Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
-                document.Paragraphs[4].Append(numberDoc).FontSize(14).
+                document.Paragraphs[3].Append(numberDoc).FontSize(14).
                     Font("Times New Roman").UnderlineStyle(UnderlineStyle.singleLine).Bold(true);
             }
 
