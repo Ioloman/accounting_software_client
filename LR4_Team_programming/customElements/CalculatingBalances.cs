@@ -50,6 +50,15 @@ namespace LR4_Team_programming.customElements
             }
         }
             
+        public TextBox detail
+        {
+            get
+            {
+                return detailTextBox;
+            }
+        }
+
+
 
 
         public CalculatingBalances()
@@ -101,7 +110,15 @@ namespace LR4_Team_programming.customElements
                 table.Invoke(new MethodInvoker(delegate
                 {
                     foreach (var leftover in leftovers)
+                    {
+                        if (detailTextBox.Text != "")
+                        {
+                            if (leftover.detail_name == detailTextBox.Text)
+                                table.Rows.Add(leftover.detail_name, leftover.cipher_detail, leftover.amount);
+                        }
+                        else
                         table.Rows.Add(leftover.detail_name, leftover.cipher_detail, leftover.amount);
+                    }
                     finishThread();
                 }));
             }
@@ -110,7 +127,7 @@ namespace LR4_Team_programming.customElements
 
         void finishThread()
         {
-            progressBar.Visible = false;
+            progressBar.Visible = false;      
         }
 
         private void table_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

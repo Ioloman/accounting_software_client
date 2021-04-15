@@ -12,6 +12,7 @@ namespace LR4_Team_programming.customElements
 {
     public partial class DeviationAnalysis : UserControl
     {
+        List<DataGridViewRow> tableRows = new List<DataGridViewRow>();
         public DataGridView GetTable
         {
             get
@@ -42,12 +43,7 @@ namespace LR4_Team_programming.customElements
                 return depComboBox;
             }
         }
-
-
-
-
-
-
+     
 
 
         public ComboBox.ObjectCollection depNameComboBoxItems
@@ -62,8 +58,6 @@ namespace LR4_Team_programming.customElements
                 depComboBox.Items.Add(value);
             }
         }
-
-
 
         bool downMove = true;
         public DeviationAnalysis()
@@ -153,6 +147,7 @@ namespace LR4_Team_programming.customElements
                 {
                     foreach (var accounting in accountings)
                         table.Rows.Add(accounting.detail_name, accounting.cipher_detail, accounting.planned_amount, accounting.actual_amount, accounting.deviation);
+                    
                     finishThread();
                 }));
             }
@@ -162,6 +157,45 @@ namespace LR4_Team_programming.customElements
         void finishThread()
         {
             progressBar.Visible = false;
+            if (startDevTextBox.Text != "" && endDevTextBox.Text == "")
+            {
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    if (Convert.ToInt32(table.Rows[i].Cells[4].Value) < Convert.ToInt32(startDevTextBox.Text))
+                    {
+                        table.Rows.RemoveAt(i);
+                        i--;
+                    }                   
+                }
+            }
+            if (startDevTextBox.Text != "" && endDevTextBox.Text != "")
+            {
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    if (Convert.ToInt32(table.Rows[i].Cells[4].Value) < Convert.ToInt32(startDevTextBox.Text) ||
+                        Convert.ToInt32(table.Rows[i].Cells[4].Value) > Convert.ToInt32(endDevTextBox.Text)
+                        )
+                    {
+                        table.Rows.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if (startDevTextBox.Text == "" && endDevTextBox.Text != "")
+            {
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    if (Convert.ToInt32(table.Rows[i].Cells[4].Value) > Convert.ToInt32(endDevTextBox.Text))
+                    {
+                        table.Rows.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+
+
         }
 
         private void table_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

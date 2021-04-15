@@ -43,6 +43,9 @@ namespace LR4_Team_programming.customElements
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.printButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.detailTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
@@ -178,10 +181,39 @@ namespace LR4_Team_programming.customElements
             this.printButton.UseVisualStyleBackColor = true;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(-122, 169);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 27);
+            this.textBox1.TabIndex = 23;
+            // 
+            // detailTextBox
+            // 
+            this.detailTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.detailTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.detailTextBox.Location = new System.Drawing.Point(599, 110);
+            this.detailTextBox.Name = "detailTextBox";
+            this.detailTextBox.PlaceholderText = "Название детали";
+            this.detailTextBox.Size = new System.Drawing.Size(140, 27);
+            this.detailTextBox.TabIndex = 24;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(468, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 20);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Поиск по детали";
+            // 
             // CalculatingBalances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.detailTextBox);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.printButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.table);
@@ -212,5 +244,8 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button printButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox detailTextBox;
+        private System.Windows.Forms.Label label1;
     }
 }

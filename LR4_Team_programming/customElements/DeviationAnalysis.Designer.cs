@@ -42,15 +42,10 @@ namespace LR4_Team_programming.customElements
             this.producedColoumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deviationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraSettingPanel = new System.Windows.Forms.GroupBox();
-            this.smallDevCheckBox = new System.Windows.Forms.CheckBox();
-            this.mediumDepCheckBox = new System.Windows.Forms.CheckBox();
-            this.bigDebCheckBox = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.bigDevTextBox = new System.Windows.Forms.TextBox();
-            this.mediumDevTextBox = new System.Windows.Forms.TextBox();
-            this.smallDevTextBox = new System.Windows.Forms.TextBox();
+            this.endDevTextBox = new System.Windows.Forms.TextBox();
+            this.startDevTextBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.settingButton = new System.Windows.Forms.Button();
@@ -63,6 +58,8 @@ namespace LR4_Team_programming.customElements
             this.depComboBox = new System.Windows.Forms.ComboBox();
             this.headerLabel = new System.Windows.Forms.Label();
             this.timerForShiftingTable = new System.Windows.Forms.Timer(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.deviationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -172,109 +169,51 @@ namespace LR4_Team_programming.customElements
             // 
             // extraSettingPanel
             // 
-            this.extraSettingPanel.Controls.Add(this.smallDevCheckBox);
-            this.extraSettingPanel.Controls.Add(this.mediumDepCheckBox);
-            this.extraSettingPanel.Controls.Add(this.bigDebCheckBox);
-            this.extraSettingPanel.Controls.Add(this.label6);
             this.extraSettingPanel.Controls.Add(this.label4);
+            this.extraSettingPanel.Controls.Add(this.label6);
             this.extraSettingPanel.Controls.Add(this.label3);
-            this.extraSettingPanel.Controls.Add(this.bigDevTextBox);
-            this.extraSettingPanel.Controls.Add(this.mediumDevTextBox);
-            this.extraSettingPanel.Controls.Add(this.smallDevTextBox);
+            this.extraSettingPanel.Controls.Add(this.label5);
+            this.extraSettingPanel.Controls.Add(this.endDevTextBox);
+            this.extraSettingPanel.Controls.Add(this.startDevTextBox);
             this.extraSettingPanel.Location = new System.Drawing.Point(17, 239);
             this.extraSettingPanel.Name = "extraSettingPanel";
-            this.extraSettingPanel.Size = new System.Drawing.Size(805, 131);
+            this.extraSettingPanel.Size = new System.Drawing.Size(805, 103);
             this.extraSettingPanel.TabIndex = 5;
             this.extraSettingPanel.TabStop = false;
-            this.extraSettingPanel.Text = "Отклонения считать:";
+            this.extraSettingPanel.Text = "Отклонения от плана:  ";
             this.extraSettingPanel.Visible = false;
-            // 
-            // smallDevCheckBox
-            // 
-            this.smallDevCheckBox.AutoSize = true;
-            this.smallDevCheckBox.Checked = true;
-            this.smallDevCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.smallDevCheckBox.Location = new System.Drawing.Point(44, 93);
-            this.smallDevCheckBox.Name = "smallDevCheckBox";
-            this.smallDevCheckBox.Size = new System.Drawing.Size(95, 24);
-            this.smallDevCheckBox.TabIndex = 22;
-            this.smallDevCheckBox.Text = "Показать";
-            this.smallDevCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // mediumDepCheckBox
-            // 
-            this.mediumDepCheckBox.AutoSize = true;
-            this.mediumDepCheckBox.Checked = true;
-            this.mediumDepCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mediumDepCheckBox.Location = new System.Drawing.Point(344, 93);
-            this.mediumDepCheckBox.Name = "mediumDepCheckBox";
-            this.mediumDepCheckBox.Size = new System.Drawing.Size(95, 24);
-            this.mediumDepCheckBox.TabIndex = 21;
-            this.mediumDepCheckBox.Text = "Показать";
-            this.mediumDepCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // bigDebCheckBox
-            // 
-            this.bigDebCheckBox.AutoSize = true;
-            this.bigDebCheckBox.Checked = true;
-            this.bigDebCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.bigDebCheckBox.Location = new System.Drawing.Point(602, 93);
-            this.bigDebCheckBox.Name = "bigDebCheckBox";
-            this.bigDebCheckBox.Size = new System.Drawing.Size(95, 24);
-            this.bigDebCheckBox.TabIndex = 20;
-            this.bigDebCheckBox.Text = "Показать";
-            this.bigDebCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(601, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 20);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Критичными";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(333, 37);
+            this.label4.Location = new System.Drawing.Point(420, 42);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 20);
+            this.label4.Size = new System.Drawing.Size(129, 20);
             this.label4.TabIndex = 18;
-            this.label4.Text = "Некритичными";
+            this.label4.Text = "Верхняя граница";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 37);
+            this.label3.Location = new System.Drawing.Point(143, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 20);
+            this.label3.Size = new System.Drawing.Size(127, 20);
             this.label3.TabIndex = 17;
-            this.label3.Text = "незначительными";
+            this.label3.Text = "Нижняя граница";
             // 
-            // bigDevTextBox
+            // endDevTextBox
             // 
-            this.bigDevTextBox.Location = new System.Drawing.Point(587, 60);
-            this.bigDevTextBox.Name = "bigDevTextBox";
-            this.bigDevTextBox.Size = new System.Drawing.Size(125, 27);
-            this.bigDevTextBox.TabIndex = 2;
-            this.bigDevTextBox.Text = "30";
+            this.endDevTextBox.Location = new System.Drawing.Point(555, 42);
+            this.endDevTextBox.Name = "endDevTextBox";
+            this.endDevTextBox.Size = new System.Drawing.Size(107, 27);
+            this.endDevTextBox.TabIndex = 1;
             // 
-            // mediumDevTextBox
+            // startDevTextBox
             // 
-            this.mediumDevTextBox.Location = new System.Drawing.Point(326, 60);
-            this.mediumDevTextBox.Name = "mediumDevTextBox";
-            this.mediumDevTextBox.Size = new System.Drawing.Size(125, 27);
-            this.mediumDevTextBox.TabIndex = 1;
-            this.mediumDevTextBox.Text = "20";
-            // 
-            // smallDevTextBox
-            // 
-            this.smallDevTextBox.Location = new System.Drawing.Point(24, 60);
-            this.smallDevTextBox.Name = "smallDevTextBox";
-            this.smallDevTextBox.Size = new System.Drawing.Size(137, 27);
-            this.smallDevTextBox.TabIndex = 0;
-            this.smallDevTextBox.Text = "10";
+            this.startDevTextBox.Location = new System.Drawing.Point(276, 42);
+            this.startDevTextBox.Name = "startDevTextBox";
+            this.startDevTextBox.Size = new System.Drawing.Size(107, 27);
+            this.startDevTextBox.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -312,7 +251,6 @@ namespace LR4_Team_programming.customElements
             this.settingButton.Size = new System.Drawing.Size(35, 35);
             this.settingButton.TabIndex = 16;
             this.settingButton.UseVisualStyleBackColor = true;
-            this.settingButton.Visible = false;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
             // searchInAllDebCheckBox
@@ -397,6 +335,26 @@ namespace LR4_Team_programming.customElements
             this.timerForShiftingTable.Interval = 10;
             this.timerForShiftingTable.Tick += new System.EventHandler(this.timerForShiftingTable_Tick);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(194, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 31);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "⩾";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(473, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 31);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "⩽";
+            // 
             // DeviationAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -423,14 +381,9 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.GroupBox deviationPanel;
         private System.Windows.Forms.DataGridView table;
         private System.Windows.Forms.GroupBox extraSettingPanel;
-        private System.Windows.Forms.CheckBox smallDevCheckBox;
-        private System.Windows.Forms.CheckBox mediumDepCheckBox;
-        private System.Windows.Forms.CheckBox bigDebCheckBox;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox bigDevTextBox;
-        private System.Windows.Forms.TextBox mediumDevTextBox;
+        private System.Windows.Forms.TextBox endDevTextBox;
         private System.Windows.Forms.TextBox smallDevTextBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button settingButton;
@@ -450,5 +403,8 @@ namespace LR4_Team_programming.customElements
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button printButton;
+        private System.Windows.Forms.TextBox startDevTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }

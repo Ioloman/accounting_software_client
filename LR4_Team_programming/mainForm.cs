@@ -179,11 +179,19 @@ namespace LR4_Team_programming
 
             // теперь тоже самое, только с деталями
             List<Detail> details = (List<Detail>)ApiConnector.getDetails();
+            List<string> detailsName = new List<string>();
+            foreach (Detail detail in details)
+            {
+                detailsName.Add(detail.detail_name);
+            }
+
             inventarizationEdit.details = details;
             inventarization.SetDetails = details;
             report.SetDetails = details;
             reportEdit.details = details;
             report.depComboBoxItemsInTable.AddRange(workshopNames.ToArray());
+
+            calculatingBalances.detail.AutoCompleteCustomSource.AddRange(detailsName.ToArray());
 
 
 
